@@ -1,0 +1,57 @@
+﻿@functions{
+    protected string EncodeScriptForAttribute(object content) {
+        return HttpUtility.HtmlEncode(DevExpress.Web.Internal.HtmlConvertor.ToScript(content));
+    }
+}
+
+@Html.DevExpress().PageControl(s => {
+    s.Name = "DemoPageControl";
+    s.Width = Unit.Percentage(100);
+    s.EnableTheming = false;
+    s.EnableClientSideAPI = true;
+    s.TabAlign = TabAlign.Justify;
+    s.ControlStyle.CssClass = "DemoPageControl";
+    s.ControlStyle.Paddings.Padding = 0;
+    s.EnableTabScrolling = true;
+    s.ClientSideEvents.ActiveTabChanged = "DXDemo.HightlightedCode.DemoPageControl_OnActiveTabChanged";
+    s.CallbackRouteValues = new { Controller = "Home", Action = "DemoTabsPartial", Group = Utils.CurrentDemoPage.Group.Key, Demo = Utils.CurrentDemoPage.Key };
+    s.TabPages.Add(t => {
+        t.Name = "Description";
+        t.Text = "Description";
+        t.SetContent(() => {
+            string seeAlsoList = "";
+            if(Utils.CurrentDemoPage.SeeAlsoLinks.Count > 0) {
+                seeAlsoList += "<br /> <span class=\"SeeAlso\">See Also:</span> ";
+                seeAlsoList += "<ul>";
+                foreach(var sa in Utils.CurrentDemoPage.SeeAlsoLinks) {
+                    seeAlsoList += string.Format("<li><a href=\"{0}\">{1}</a></li>", sa.Url, sa.Title);
+                }
+                seeAlsoList += "</ul>";
+            }
+            ViewContext.Writer.Write(
+                "<div class=\"TextContent\">" +
+                Utils.CurrentDemo.Description +
+                seeAlsoList +
+                "</div>"
+            );
+        });
+    });
+
+    foreach(SourceCodePage page in Utils.GetCurrentSourceCodePages()) {
+        s.TabPages.Add(t => {
+            t.Name = page.Title;
+            t.Text = page.Title;
+            string additionalProperties = String.Empty;
+            if (DemosModel.Instance.DisableTextWrap) 
+                additionalProperties =  "style =\"width: 920px;white-space: nowrap;\"";
+            t.SetContent(
+                "<div class=\"NewWinLink\">" + 
+                string.Format("<a href=\"javascript:void(0);\" onclick=\"DXDemo.ShowCodeInNewWindow({0}, {1})\">Open in popup window</a>", EncodeScriptForAttribute(Utils.CurrentDemoTitleHtml), EncodeScriptForAttribute(page.Title)) +
+                "</div>" +
+                string.Format("<div id=\"CodeBlock{0}\" class=\"CodeBlock\" {1}>", t.Index - 1, additionalProperties) +
+                page.Code +
+                "</div>"
+            );
+        });
+    }
+}).GetHtml()

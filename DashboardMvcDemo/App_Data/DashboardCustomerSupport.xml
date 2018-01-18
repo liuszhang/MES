@@ -1,0 +1,86 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomerSupport>
+  <xs:schema id="CustomerSupport" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="CustomerSupport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="IssueTypes">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:int" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="Index" type="xs:int" minOccurs="0" />
+                <xs:element name="SolvedTime" type="xs:int" minOccurs="0" />
+                <xs:element name="SolvedTimeDev" type="xs:int" minOccurs="0" />
+                <xs:element name="Distribution" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Products">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:int" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="SupportCount" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <IssueTypes>
+    <Id>0</Id>
+    <Name>Critical</Name>
+    <Index>0</Index>
+    <SolvedTime>0</SolvedTime>
+    <SolvedTimeDev>4</SolvedTimeDev>
+    <Distribution>2</Distribution>
+  </IssueTypes>
+  <IssueTypes>
+    <Id>1</Id>
+    <Name>Urgent</Name>
+    <Index>1</Index>
+    <SolvedTime>3</SolvedTime>
+    <SolvedTimeDev>6</SolvedTimeDev>
+    <Distribution>4</Distribution>
+  </IssueTypes>
+  <IssueTypes>
+    <Id>2</Id>
+    <Name>Normal</Name>
+    <Index>2</Index>
+    <SolvedTime>12</SolvedTime>
+    <SolvedTimeDev>8</SolvedTimeDev>
+    <Distribution>14</Distribution>
+  </IssueTypes>
+  <Products>
+    <Id>0</Id>
+    <Name>Win Forms</Name>
+    <SupportCount>4</SupportCount>
+  </Products>
+  <Products>
+    <Id>1</Id>
+    <Name>Web Forms</Name>
+    <SupportCount>4</SupportCount>
+  </Products>
+  <Products>
+    <Id>2</Id>
+    <Name>Mobile</Name>
+    <SupportCount>3</SupportCount>
+  </Products>
+  <Products>
+    <Id>3</Id>
+    <Name>Wpf</Name>
+    <SupportCount>2</SupportCount>
+  </Products>
+  <Products>
+    <Id>4</Id>
+    <Name>Silverlight</Name>
+    <SupportCount>1</SupportCount>
+  </Products>
+  <Products>
+    <Id>5</Id>
+    <Name>Windows 8</Name>
+    <SupportCount>1</SupportCount>
+  </Products>
+</CustomerSupport>

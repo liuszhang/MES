@@ -1,0 +1,1965 @@
+﻿/* Reset */
+
+body, form, div, li,
+h1, h2, h3, h4, h5, h6,
+pre, form, fieldset,
+p, blockquote
+{
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img
+{
+    border: 0;
+}
+
+ol, ul
+{
+    list-style: none;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+
+/* Common */
+
+html
+{
+    overflow-y: scroll;
+    height: 100%;
+}
+
+body
+{
+    font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    color: #3c3c3c;
+    background: #FFFFFF;
+    height: 100%;
+}
+
+a
+{
+    color: #f17f21;
+}
+
+.AspForm
+{
+    display: block;
+    height: 100%;
+}
+
+/* Sprite */
+.LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxWeb_tvExpBtn,
+.Search .Pic,
+.LayoutLeft .Inner .Navigation .DemoTree .dxWeb_tvExpBtn,
+.LayoutLeft .Inner .Navigation .DemoTree .dxWeb_tvColBtn,
+.LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxWeb_tvExpBtn,
+.LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxWeb_tvColBtn,
+.LogoImage,
+.LayoutRight .Inner .Header .DownloadButton .Icon,
+.LayoutRight .Inner .Header .BuyButton .Icon,
+.LayoutRight .Inner .ThemeButton .Icon,
+.LayoutRight .Inner .ThemeButton .Glyph,
+.LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft,
+.LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight,
+.LayoutLeft .Inner .Navigation .DemoTree .IntroNodeIco,
+.LayoutLeft .Inner .Navigation .DemoTree .UpdatedIco,
+.LayoutLeft .Inner .Navigation .DemoTree .NewIco,
+.LayoutLeft .Inner .Navigation .DemoTree .PreviewIco,
+.LayoutLeft .Inner .Navigation .IntroPageLink .Ico
+{
+    background-image: url(sprite.png);
+    background-repeat: no-repeat;
+}
+
+/* Common Sizes */
+.LayoutContainer
+{
+    margin: 0 auto;
+    min-height: 100%;
+    text-align: left;
+    width: 1210px;
+    position: relative;
+}
+
+.LayoutFooterSpacing
+{
+    clear: both;
+    height: 240px; /* footer height + spacing */
+}
+
+.LayoutFooter
+{
+    margin: -180px auto 0;
+    height: 180px;
+    width: 1210px;
+    position: relative;
+}
+
+    .LayoutFooter .LayoutRight
+    {
+        height: 158px;
+    }
+
+/* Left */
+.LayoutLeft
+{
+    float: left;
+    width: 269px;
+    margin-right: 20px;
+}
+
+    .LayoutLeft .Inner .Header
+    {
+        height: 96px;
+    }
+
+        .LayoutLeft .Inner .Header .AspLogo
+        {
+            padding-top: 11px;
+            padding-bottom: 21px;
+            white-space: nowrap;
+        }
+
+            .LayoutLeft .Inner .Header .AspLogo h2
+            {
+                font-size: 36px;
+                font-weight: lighter;
+            }
+
+            .LayoutLeft .Inner .Header .AspLogo h5
+            {
+                font-size: 14px;
+                margin-top: -4px;
+            }
+
+            .LayoutLeft .Inner .Header .AspLogo h2 a
+            {
+                color: #323232;
+                text-decoration: none;
+            }
+
+            .LayoutLeft .Inner .Header .AspLogo h5 a
+            {
+                color: #8f8f8f;
+                text-decoration: none;
+            }
+
+    /* Tree View*/
+    .LayoutLeft .Inner .Navigation
+    {
+        margin-bottom: 80px;
+    }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd
+        {
+            margin-left: 25px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-ndTxt
+        {
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #505050;
+            padding-left: 1px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxtv-ndTxt
+        {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-nd
+        {
+            margin: 3px 0 1px -4px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxtv-nd
+        {
+            margin: 2px 0 0 -4px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-ndSel
+        {
+            border: 1px solid transparent;
+            background-color: transparent;
+        }
+
+            .LayoutLeft .Inner .Navigation .DemoTree .dxtv-ndSel .dxtv-ndTxt
+            {
+                font-weight: bold;
+                color: #f17f21;
+            }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-ndHov .dxtv-ndTxt
+        {
+            text-decoration: underline;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-ndSel.dxtv-ndHov .dxtv-ndTxt
+        {
+            text-decoration: none;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-ndHov
+        {
+            border: 1px solid transparent;
+            background-color: transparent;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxWeb_tvExpBtn
+        {
+            width: 22px;
+            height: 22px;
+            background-position: -125px 0;
+            margin: 6px 0 0 0;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .dxWeb_tvColBtn
+        {
+            width: 22px;
+            height: 22px;
+            background-position: -97px 0;
+            margin: 6px 0 0 0;
+        }
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxWeb_tvExpBtn
+        {
+            margin-top: 10px;
+            width: 11px;
+            height: 11px;
+            background-position: -67px -93px;
+        }
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxWeb_tvColBtn 
+        {
+            margin-top: 10px;
+            width: 11px;
+            height: 11px;
+            background-position: -52px -93px;
+        }
+        
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxtv-elbNoLn, 
+        .LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dxtv-elb 
+        {
+            width: 15px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .demo-selected
+        {
+            font-weight: bold;
+        }
+
+            .LayoutLeft .Inner .Navigation .DemoTree .demo-selected.dxtv-ndHov .dxtv-ndTxt
+            {
+                text-decoration: none;
+            }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .UpdatedIco,
+        .LayoutLeft .Inner .Navigation .DemoTree .NewIco,
+        .LayoutLeft .Inner .Navigation .DemoTree .PreviewIco
+        {
+            width: 21px;
+            height: 13px;
+            padding: 0;
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 6px;
+            margin-top: 2px;
+            vertical-align: top;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .UpdatedIco,
+        .LayoutLeft .Inner .Navigation .DemoTree .NewIco
+        {
+            width: 21px;
+            height: 13px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .PreviewIco {
+            width: 38px;
+            height: 13px;
+            background-position: -52px -115px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .UpdatedIco
+        {
+            background-position: -80px -36px;
+        }
+
+        .LayoutLeft .Inner .Navigation .DemoTree .NewIco
+        {
+            background-position: -107px -36px;
+        }
+
+
+        .LayoutLeft .Inner .Navigation .IntroPageLink
+        {
+            margin-bottom: 3px;
+        }
+
+            .LayoutLeft .Inner .Navigation .IntroPageLink .Ico
+            {
+                width: 22px;
+                height: 22px;
+                background-position: -134px -31px;
+                vertical-align: middle;
+                display: inline-block;
+                margin-top: -4px;
+            }
+
+            .LayoutLeft .Inner .Navigation .IntroPageLink .Text
+            {
+                display: inline-block;
+                font-size: 13px;
+                margin-left: 3px;
+                color: #505050;
+                text-decoration: none;
+            }
+            
+            .LayoutLeft .Inner .Navigation .IntroPageLink .Text.Bold 
+            {
+                font-weight: bold;
+            }
+
+                .LayoutLeft .Inner .Navigation .IntroPageLink .Text:hover
+                {
+                    text-decoration: underline;
+                }
+
+    /* Left Footer */
+    .LayoutLeft .FooterInner
+    {
+    }
+
+        .LayoutLeft .FooterInner .Version
+        {
+            font-size: 16px;
+            margin-bottom: 9px;
+            margin-top: 10px;
+        }
+
+        .LayoutLeft .FooterInner .Copyrights
+        {
+            margin-top: 42px;
+            margin-right: -5px;
+        }
+
+/* Right */
+.LayoutRight
+{
+    float: left;
+    width: 920px;
+}
+
+    .LayoutRight .Inner .Header
+    {
+        height: 96px;
+    }
+
+        .LayoutRight .Inner .Header .Buttons
+        {
+            padding-top: 25px;
+            float: right;
+        }
+
+            .LayoutRight .Inner .Header .Buttons .DownloadButton,
+            .LayoutRight .Inner .Header .Buttons .BuyButton
+            {
+                font-size: 16px;
+                color: #f88e1d;
+                text-decoration: none;
+                margin-right: 15px;
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 12px;
+                float: left;
+            }
+
+                .LayoutRight .Inner .Header .Buttons .DownloadButton .Icon,
+                .LayoutRight .Inner .Header .Buttons .BuyButton .Icon
+                {
+                    width: 28px;
+                    height: 28px;
+                    vertical-align: middle;
+                    margin-top: -5px;
+                }
+
+                .LayoutRight .Inner .Header .Buttons .DownloadButton .Icon
+                {
+                    background-position: -31px 0;
+                }
+
+                .LayoutRight .Inner .Header .Buttons .BuyButton .Icon
+                {
+                    background-position: 0 0;
+                }
+
+            .LayoutRight .Inner .Header .Buttons .Logo
+            {
+                vertical-align: top;
+                display: inline-block;
+                margin-top: 9px;
+                float: left;
+            }
+
+            .LayoutRight .Inner .Header .Buttons .Separator.Vertical
+            {
+                height: 46px;
+                float: left;
+                display: inline-block;
+                margin-left: 15px;
+                margin-right: 34px;
+            }
+
+    .LayoutRight .Inner .ThemeButton
+    {
+        display: inline-block;
+        font-size: 16px;
+        color: #F88E1D;
+        text-decoration: none;
+        vertical-align: top;
+        float: right;
+        margin-top: 20px;
+    }
+
+        .LayoutRight .Inner .ThemeButton .Icon
+        {
+            width: 28px;
+            height: 28px;
+            background-position: -62px 0;
+            vertical-align: middle;
+            margin-top: -5px;
+        }
+
+        .LayoutRight .Inner .ThemeButton .Glyph
+        {
+            width: 9px;
+            height: 5px;
+            background-position: -62px -36px;
+            vertical-align: middle;
+            margin-left: 2px;
+            margin-top: -2px;
+        }
+
+    .LayoutRight .Inner .DemoTitle
+    {
+        float: left;
+        margin: 19px 0 40px 0;
+    }
+
+        .LayoutRight .Inner .DemoTitle span.DemoNavigationTitle
+        {
+            font-size: 16px;
+            color: #848484;
+            margin: 0;
+        }
+
+        .LayoutRight .Inner .DemoTitle span
+        {
+            font-weight: lighter;
+            font-size: 40px;
+            color: #3c3c3c;
+            margin-top: -8px;
+            margin-left: -2px;
+            display: block;
+        }
+
+    /* Intro Area */
+    .LayoutRight .Inner .IntroArea
+    {
+        margin-top: 49px;
+    }
+
+        .LayoutRight .Inner .IntroArea .Banner.Featured
+        {
+            margin-top: 45px;
+        }
+
+        .LayoutRight .Inner .IntroArea .Banner .LeftArea
+        {
+            text-align: center;
+            width: 240px;
+        }
+
+            .LayoutRight .Inner .IntroArea .Banner .LeftArea a.BannerLink
+            {
+                text-decoration: none;
+                color: #2e45a6;
+                margin-top: 10px;
+                display: inline-block;
+                font-size: 14px;
+            }
+
+            .LayoutRight .Inner .IntroArea .Banner .LeftArea .SmallScreenshotShadow
+            {
+                background-color: white;
+                border: #CBCBCB solid 1px;
+                -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                padding: 4px;
+                width: 230px;
+                height: 150px;
+            }
+
+            .LayoutRight .Inner .IntroArea .Banner .LeftArea .VideoButton 
+            {
+                margin: -125px auto 0 auto;
+                display: block;
+            }
+            .LayoutRight .Inner .IntroArea .Banner .LeftArea .VideoFrame 
+            {
+                width: 230px;
+                height: 150px;
+                display: inline-block;
+            }
+
+        .LayoutRight .Inner .IntroArea .Banner .RightArea
+        {
+            width: 642px;
+            padding-left: 38px;
+            font-size: 16px;
+            color: #727272;
+        }
+
+            .LayoutRight .Inner .IntroArea .Banner .RightArea h1
+            {
+                font-size: 48px;
+                line-height: 52px;
+                font-weight: lighter;
+                color: #3c3c3c;
+                margin-top: -10px;
+                margin-bottom: 14px;
+            }
+
+            .LayoutRight .Inner .IntroArea .Banner .RightArea h3
+            {
+                font-size: 24px;
+                font-weight: lighter;
+                color: #3c3c3c;
+                margin-bottom: 5px;
+            }
+
+            .LayoutRight .Inner .IntroArea .Banner .RightArea .SeeDemo
+            {
+                color: #244db5;
+                text-decoration: none;
+                display: block;
+                font-size: 14px;
+                margin-top: 6px;
+            }
+        .LayoutRight .Inner .IntroArea .Banner.Featured .RightArea 
+        {
+            font-size: 14px;
+        }
+
+        .LayoutRight .Inner .IntroArea .FeaturesHeader
+        {
+            margin-top: 42px;
+            color: #8c8c8c;
+            text-align: right;
+            font-size: 20px;
+            font-weight: lighter;
+        }
+
+            .LayoutRight .Inner .IntroArea .FeaturesHeader .Separator
+            {
+                height: 1px;
+                margin-top: 4px;
+            }
+
+.LayoutRight .theme-selector-container
+{
+    display:inline-block;
+}
+
+    /* Demo */
+    .LayoutRight .Inner .DemoPageControl
+    {
+        margin-top: 50px;
+    }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-content
+        {
+            border: none;
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #3c3c3c;
+            padding: 25px 0 0 0;
+        }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-activeTab .dxtc-text,
+        .LayoutRight .Inner .DemoPageControl .dxtc-tab .dxtc-text
+        {
+            font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #3c3c3c;
+        }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-activeTab .dxtc-text
+        {
+            color: #f17f21;
+        }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-activeTab,
+        .LayoutRight .Inner .DemoPageControl .dxtc-tab,
+        .LayoutRight .Inner .DemoPageControl .dxtc-rightIndent,
+        .LayoutRight .Inner .DemoPageControl .dxtc-spacer
+        {
+            border: #e0e0e0 1px solid;
+        }
+
+            .LayoutRight .Inner .DemoPageControl .dxtc-tab .dxtc-link
+            {
+                padding: 6px 10px 0 10px;
+            }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-activeTab
+        {
+            border-bottom: none;
+        }
+
+            .LayoutRight .Inner .DemoPageControl .dxtc-activeTab .dxtc-link
+            {
+                padding: 6px 9px 0 9px;
+            }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-tab,
+        .LayoutRight .Inner .DemoPageControl .dxtc-rightIndent,
+        .LayoutRight .Inner .DemoPageControl .dxtc-spacer
+        {
+            background-color: transparent;
+            border-width: 0 0 1px 0;
+        }
+        .LayoutRight .OverviewArea .DemoPageControl .dxtc-spacer,
+        .LayoutRight .Inner .DemoPageControl .dxtc-sbWrapper,
+        .LayoutRight .Inner .DemoPageControl .dxtc-sbSpacer,
+        .LayoutRight .Inner .DemoPageControl .dxtc-sbIndent
+        {
+            border: 0;
+        }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-sbWrapper
+        {
+            height: 30px;
+        }
+        .LayoutRight .OverviewArea .DemoPageControl .dxtc-rightIndent,
+        .LayoutRight .OverviewArea .DemoPageControl .dxtc-leftIndent,
+        .LayoutRight .Inner .DemoPageControl .dxtc-sbIndent
+        {
+            width: 0;
+        }
+
+        .LayoutRight .Inner .DemoPageControl .dxtc-sb
+        {
+            border: 0;
+            padding: 5px 0;
+            background-color: transparent;
+            background-image: none;
+        }
+
+            .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft
+            {
+                width: 20px;
+                height: 20px;
+                background-position: -0px -90px;
+                margin-right: 5px;
+            }
+
+                .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollLeft.dxWeb_tcScrollLeftDisabled
+                {
+                    background-position: -0px -112px;
+                }
+
+            .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight
+            {
+                width: 20px;
+                height: 20px;
+                background-position: -25px -90px;
+                margin-left: 5px;
+            }
+
+                .LayoutRight .Inner .DemoPageControl .dxtc-sb .dxWeb_tcScrollRight.dxWeb_tcScrollRightDisabled
+                {
+                    background-position: -25px -112px;
+                }
+
+        /* Code Viewer */
+        .LayoutRight .Inner .DemoPageControl .NewWinLink
+        {
+            text-align: right;
+            margin-top: -15px;
+            margin-bottom: 5px;
+        }
+
+        .LayoutRight .Inner .CodeBlock
+        {
+            overflow: auto;
+            font-family: 'Courier New', Courier, 'Nimbus Mono L', monospace;
+        }
+        .LayoutRight .Inner .DemoArea .DemoPageControl .CodeBlock
+        {
+            height: 600px;
+            width: 100%;
+        }
+		.LayoutRight .Inner .CodeBlock.ASPX .NotHighlightedBlock
+		{
+			filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=40);
+			opacity: 0.4;
+		}
+		.dxMacOSMobilePlatform .LayoutRight .Inner .CodeBlock.ASPX .NotHighlightedBlock {
+			opacity: 0.2;
+		}
+
+        /* Overview Demo */
+        .OverviewArea .Description
+        {
+            padding-top: 50px;
+        }
+        .OverviewArea .RightArea .KeyFeatures,
+        .OverviewArea .Description .TextContent
+        {
+            padding-bottom: 0;
+        }
+        .OverviewArea .KeyFeatures ul li
+        {
+            margin-bottom: 13px;
+        }
+        .OverviewArea .TextContent
+        {
+            padding: 0 0 50px 0px;
+        }
+        .OverviewArea .RightArea,
+        .OverviewArea .LeftArea
+        {
+            vertical-align: top;
+        }
+        .LayoutRight .OverviewArea .LeftArea
+        {
+            padding-right: 40px;
+            width: 550px;
+        }
+        .LayoutRight .OverviewArea .Title
+        {
+            display: inline-block;
+            font-weight: lighter;
+            margin-bottom: 11px;
+            margin-top: -8px;
+            font-size: 24px;
+        }
+        .OverviewArea .TextContent.KeyFeatures ul
+        {
+            margin-left: 15px;
+            color: #989898;
+        }
+        .OverviewArea .TextContent li
+        {
+            margin-bottom: 6px;
+        }
+        .OverviewArea .TextContent .KeyFeatureName,
+        .OverviewArea .TextContent .KeyFeatureName a
+        {
+            color: #3C3C3C;
+        }
+        .OverviewArea .TextContent .KeyFeatureDescription 
+        {
+            color: #737373;
+        }
+        
+        .LayoutRight .Inner .OverviewArea .DemoPageControl ul,
+        .LayoutRight .Inner .OverviewArea .DemoPageControl li
+        {
+            margin-left: 0;
+            margin-bottom: 0;
+        }
+        .LayoutRight .OverviewArea .DemoPageControl .dxtc-activeTab
+        {
+            border-bottom: 2px solid;
+            background-color: #EFEFEF;
+            border-color: #EFEFEF;
+        }
+        .LayoutRight .OverviewArea .DemoPageControl .dxtc-tab
+        {
+            background-color: #EFEFEF;
+            border-bottom: 2px solid #FFFFFF;
+        }
+        .LayoutRight .OverviewArea .DemoPageControl .dxtc-spacer
+        {
+            width: 2px;
+        }
+        .LayoutRight .Inner .Description .DemoPageControl .dxtc-text
+        {
+            color: #7D7D7D;
+        }
+        .LayoutRight .Inner .Description .DemoPageControl .dxtc-activeTab .dxtc-text
+        {
+            color: #333333;
+        }
+        .LayoutRight .Inner .OverviewArea .DemoPageControl
+        {
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        .LayoutRight .OverviewArea .CodeBlock
+        {
+            padding: 20px 20px 4px;
+            background-color: #EFEFEF;
+        }
+        .LayoutRight .OverviewArea .DemoPageControl .CodeBlock
+        {
+            height: 180px;
+            overflow: auto;
+        }
+        .LayoutRight .OverviewArea .DemoPageControl .dxtc-content
+        {
+            padding: 0;
+        }
+
+    /* Right Footer */
+    .LayoutRight .FooterInner,
+    .LayoutLeft .FooterInner
+    {
+        font-size: 12px;
+    }
+
+        .LayoutRight .FooterInner .Slogan
+        {
+            font-size: 16px;
+            margin-bottom: 9px;
+            margin-top: 10px;
+        }
+
+.RootIntro
+{
+    width: 1090px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+    .RootIntro .Header
+    {
+        font-size: 24px;
+        font-weight: lighter;
+        color: #7b7b7b;
+        margin: 30px 0 30px 0;
+        display: inline-block;
+    }
+
+        .RootIntro .Header h1
+        {
+            color: #131313;
+            font-size: 60px;
+            font-weight: lighter;
+        }
+    
+    .RootIntro .Search {
+        width: 270px;
+        margin: 0 auto 40px auto;
+    }
+
+    .RootIntro .ProductsView
+    {
+        text-align: center;
+        margin: 0 auto;
+    }
+        .RootIntro .ProductsView.Small td.dxdvCtrl
+        {
+            padding: 0;
+        }
+
+        .RootIntro .ProductsView .Product
+        {
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #3c3c3c;
+            text-align: center;
+            color: #5c5c5c;
+            overflow: hidden;
+        }
+        .RootIntro .ProductsView.Large .Product
+        {
+            width: 275px;
+            height: 290px;
+            display: inline-block;
+            margin: 0 40px 0 40px;
+            vertical-align: top;
+        }
+        .RootIntro .ProductsView.Large.Row4 
+        {
+            width: 1115px;
+            margin-left: -37px;
+        }
+        .RootIntro .ProductsView.Large.Row4 .Product 
+        {
+            margin: 0;
+        }
+        .RootIntro .ProductsView.Small .Product 
+        {
+            background: transparent;
+            border: 0;
+            padding: 0;
+            height: auto;
+        }
+
+            .RootIntro .ProductsView .Product .ProductWrapper
+            {
+                width: 230px;
+                padding-bottom: 5px;
+            }
+
+            .RootIntro .ProductsView .Product .SmallScreenshotShadow
+            {
+                background-color: white;
+                border: #CBCBCB solid 1px;
+                -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                padding: 4px;
+                width: 180px;
+                height: 110px;
+                margin: 0 auto;
+            }
+
+            .RootIntro .ProductsView .Product h3
+            {
+                font-size: 18px;
+                font-weight: lighter;
+                margin-bottom: 6px;
+            }
+
+        .RootIntro .ProductsView.Large
+        {
+            margin-bottom: 14px;
+        }
+
+            .RootIntro .ProductsView.Large .Product h3
+            {
+                font-size: 30px;
+                font-weight: lighter;
+                margin-bottom: 10px;
+            }
+
+
+        .RootIntro .ProductsView .Product h3 a
+        {
+            color: #5c5c5c;
+            text-decoration: none;
+        }
+
+        .RootIntro .ProductsView.Large .Product .SmallScreenshotShadow
+        {
+            width: 250px;
+            height: 138px;
+        }
+
+        .RootIntro .ProductsView.Large .Product .Description
+        {
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+.ErrorContainer
+{
+    background-color: #F7F7F7;
+    border: 1px solid #DBDBDB;  
+    margin: 100px auto;
+    padding: 46px 58px 46px 58px ;
+    width: 663px;
+}
+    
+    .ErrorContainer .MainMessage
+    {        
+        font-size: 24px;       
+    }
+    
+    .ErrorContainer .Details
+    {
+        font-size: 16px;
+        margin-top: 35px;
+        margin-bottom: 10px;
+    }
+    
+    .ErrorContainer .Details p 
+    {
+        margin-bottom: 12px;
+    }
+    
+    .ErrorContainer .ProductsView 
+    {
+        margin: 0px;
+        margin-bottom: 24px;
+        width: 720px;
+    }
+    
+        .ErrorContainer .ProductsView td
+        {
+            padding: 0px;
+        }
+    
+        .ErrorContainer .ProductsView .Product
+        {
+            background: none;            
+            border-style: none;            
+            padding-top: 8px;            
+                height: 16px;
+        }
+        
+        .ErrorContainer .ProductsView .EmptyProduct
+        {            
+            height: 16px;
+            width: 285px;
+        }
+        
+        .ErrorContainer .ProductsView a
+        {
+            text-decoration: none;
+        }
+
+/* Utils */
+.Separator
+{
+    height: 2px;
+    background: #e0e0e0;
+}
+
+    .Separator.Orange
+    {
+        background: #f17f21;
+    }
+
+    .Separator.Vertical
+    {
+        width: 1px;
+    }
+
+.LogoImage
+{
+    background-position: 0 -56px;
+    width: 158px;
+    height: 31px;
+}
+
+.TextContent p,
+.TextContent ul li,
+.TextContent ol li,
+.TextContent code
+{
+    margin-bottom: 10px;
+}
+
+.TextContent ul,
+.TextContent ol
+{
+    list-style: outside;
+    padding: 0;
+    margin-left: 32px;
+}
+
+.TextContent ul
+{
+    list-style-type: disc;
+}
+
+.TextContent ol
+{
+    list-style-type: decimal;
+}
+
+.TextContent a
+{
+    color: #f28022;
+    text-decoration: none;
+}
+
+    .TextContent a:hover
+    {
+        text-decoration: underline;
+    }
+
+.TextContent .SeeAlso
+{
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Demo pages */
+
+#DemoArea h1 !ContentHolder
+{
+    font-size: 24px;
+}
+
+#DemoArea h2 !ContentHolder
+{
+    font-size: 20px;
+}
+
+#DemoArea h3 !ContentHolder
+{
+    font-size: 18px;
+}
+
+#DemoArea h4 !ContentHolder
+{
+    font-size: 16px;
+}
+
+#DemoArea h5 !ContentHolder
+{
+    font-size: 14px;
+}
+
+#DemoArea h6 !ContentHolder
+{
+    font-size: 13px;
+}
+
+#DemoArea p !ContentHolder
+{
+    margin-bottom: 10px;
+}
+
+/* Event monitor */
+
+.EventLogPanel
+{
+    clear: both;
+    float: left;
+    padding: 0 10px 0 0;
+}
+
+#EventListContainer {
+    overflow: auto;
+}
+
+.EventListPanel
+{
+    line-height: 200%;
+    float: left;
+    white-space: nowrap;
+}
+
+    .EventListPanel input
+    {
+        vertical-align: middle;
+    }
+
+
+#EventLog,
+.EventLog
+{
+    background-color: White;
+    border: solid 1px #9d9d9d;
+    color: Black;
+    font-family: Tahoma, Sans-Serif;
+    font-size: 11px;
+    overflow: auto;
+    padding: 5px;
+    width: 550px;
+    height: 200px;
+    margin-bottom: 8px;
+}
+
+.Logger {
+    margin-top: 5px;
+    width: 914px;
+    height: 200px;
+    resize: none;
+}
+
+/* UploadedFilesContainer */
+.uploadedFilesContainer
+{
+    width: 100%;
+    table-layout: fixed;
+}
+.uploadedFilesContainer > tbody > tr > td
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 5px 10px 5px 10px;
+}
+.uploadedFilesContainer .sizeCell
+{
+    text-align: right;
+}
+/*ColorSelector*/
+.theme-parameters-selector-container
+{
+    display: inline-block; 
+    margin-bottom: 4px;
+    margin-left: 30px;
+}
+.theme-parameters-selector-container .theme-parameters-popup
+{
+    background-color: transparent!important;
+    border: 0!important;
+}
+.theme-parameters-selector-container .theme-parameters-popup .dxpc-content
+{
+    padding: 0!important;
+    font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    color: #3c3c3c;
+}
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper
+{
+    padding: 0 10px 20px 10px;
+    overflow: hidden;
+    width: 276px;
+    display: inline-block;
+    margin-top: -1px;
+    margin-left: 20px;
+}
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper .parameters-container
+{
+    background-color: white;
+    border: 1px solid #b0b0b0;
+    -webkit-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
+    padding: 16px 21px 21px;
+    clear: both;
+}
+
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper .parameters-container .base-color-container
+{
+    padding-bottom: 12px;
+}
+
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper .parameters-container .caption,
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper .parameters-container .caption-font
+{
+    font: 14px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    color: #848484;
+    text-transform:uppercase;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    display: block;
+}
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper .parameters-container .caption-font
+{
+    margin-bottom: 6px;
+}
+
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper .dxEditors_edtRadioButtonChecked_Metropolis {
+    background-color: #ff8800;
+}
+
+.theme-parameters-selector-container .theme-parameters-popup .parameters-container-wrapper .dxeBase_Metropolis.dxeTAR {
+    margin-bottom: 3px;
+}
+
+.theme-parameters-selector-container .theme-parameters-popup .themes-button-wrapper:hover
+{
+    cursor: pointer;
+}
+.theme-parameters-selector-container .theme-parameters-popup .themes-button-wrapper
+{
+    overflow: hidden;
+    width: 119px;
+    height: 36px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.theme-parameters-selector-container .theme-parameters-popup .button-wrapper
+{
+    overflow: hidden;
+    padding: 8px 10px 0 10px;
+    float: right;
+}
+.theme-parameters-selector-container .theme-parameters-popup .button-wrapper .color-button-border 
+{
+    border: 1px solid #b0b0b0;
+    border-bottom-width: 0;
+    width: 164px;
+    height: 40px;
+}
+.theme-parameters-selector-container .theme-parameters-popup .button-wrapper-bottomBorder 
+{
+    position: absolute;
+    width: 164px;
+    height: 1px;
+    background-color: white;
+    z-index: 1000;
+    top: 48px;
+    left: 141px;
+}
+.theme-parameters-selector-container .color-item-container
+{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 0px auto;
+    padding: 4px;
+}
+.theme-parameters-selector-container .color-item-container .color-item-wrapper
+{
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    border: none;
+}
+.theme-parameters-selector-container .color-item-container .color-item
+{
+    width: 100% !important;
+    height: 100%  !important;
+    border: none;
+}
+
+.parameters-container-wrapper .parameters-container .dxe .dxeTAR .dxichTextCellSys {
+    font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    color: #848484;
+}
+.parameters-container-wrapper .parameters-container .dxe .dxeTAR .dxichTextCellSys label
+{
+    margin-right: 0;
+}
+
+.dxeRadioButtonList .dxe .dxeTAR
+{
+    margin-top: 2px;
+}
+
+/*.parameters-container-wrapper .parameters-container .dxichCellSys
+{
+    padding-left: 0;
+}*/
+
+.theme-parameters-selector-container .color-item-container .color-item.selected-item
+{
+    border: 1px solid white;
+    outline: 2px solid #F88E1D;
+}
+.theme-parameters-selector-container .color-item.dxbButton 
+{
+    background: none;
+}
+.theme-parameters-selector-container .selected-color-icon
+{
+    display: inline-block; 
+    width: 17px; 
+    height: 17px; 
+    border-radius: 50%; 
+    margin-bottom: -3px;
+}
+/* ThemeSelector */
+.ThemeSelectorPopup
+{
+    background-color: transparent!important;
+    border: 0!important;
+}
+
+    .ThemeSelectorPopup .dxpc-content
+    {
+        padding: 0!important;
+        font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+        color: #3c3c3c;
+    }
+
+    .ThemeSelectorPopup .ContainerTopBorder
+    {
+        float: left;
+        width: 311px;
+        height: 2px;
+        overflow: hidden;
+        padding: 8px 0 0 0;
+        margin: 39px -10px -2px 8px;
+    }
+    .ThemeSelectorPopup .TopBorder
+    {
+        float: left;
+        width: 316px;
+        height: 1px;
+        border-top: 1px solid #b0b0b0;
+        -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.345);
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.345);
+    }
+    .theme-parameters-selector-container .theme-parameters-popup .ButtonWrapper,
+    .ThemeSelectorPopup .ButtonWrapper
+    {
+        overflow: hidden;
+        padding: 8px 10px 0 10px;
+        float: right;
+    }
+
+        .ThemeSelectorPopup .ButtonWrapper .ThemeButtonBorder
+        {
+            border: 1px solid #b0b0b0;
+            border-bottom-width: 0;
+            width: 136px;
+            height: 40px;
+        }
+
+    .ThemeSelectorPopup .ButtonWrapperBtmBorder
+    {
+        position: absolute;
+        width: 136px;
+        height: 1px;
+        background-color: white;
+        z-index: 1000;
+        top: 48px;
+        left: 321px;
+    }
+
+    .ThemeSelectorPopup .ContainerWrapper
+    {
+        padding: 0 10px 20px 10px;
+        overflow: hidden;
+        width: 448px;
+        display: inline-block;
+        margin-top: -1px;
+    }
+
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer
+        {
+            background-color: white;
+            border: 1px solid #b0b0b0;
+            -webkit-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2); 
+            padding: 17px 25px;
+            clear: both;
+            height: 350px; /* for IE7 */
+        }
+
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeColumnLeft
+        {
+            width: 170px;
+            float:left;
+        }
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeColumnRight  
+        {
+            float: right;
+            width: 160px;
+        }
+        
+
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroup 
+        {
+            color: #999999;
+            font-size: 14px;
+            margin: 10px 0 5px 0;
+        }
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu
+        {
+            background-color: transparent!important;
+            border: 0!important;
+            padding: 0!important;
+        }
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-item,
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-hover,
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-selected,
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-content
+        {
+            background-color: transparent!important;
+            border: 0!important;
+            padding: 0!important;
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #3c3c3c;
+        }
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .ThemeIco
+        {
+            vertical-align: middle;
+            margin: 1px 7px 3px 2px;
+            display: inline-block;
+            width: 40px;
+            height: 19px;
+            padding: 1px;
+            zoom: 1;
+            *display: inline;
+        }
+
+        .ThemeSelectorPopup .ContainerWrapper .ThemeContainer .ThemeGroupMenu .dxm-selected .ThemeIco
+        {
+            border: #ff8400 solid 2px;
+            margin: -1px 4px 1px 0;
+        }
+
+/* Themes*/
+.Theme,
+.ThemeDevEx,
+.ThemeMetropolis,
+.ThemeMetropolisBlue,
+.ThemeModerno,
+.ThemeiOS,
+.ThemeMaterial,
+.ThemeOffice2010Blue,
+.ThemeOffice2010Black,
+.ThemeOffice2010Silver,
+.ThemeOffice2003Blue,
+.ThemeOffice2003Olive,
+.ThemeOffice2003Silver,
+.ThemeAqua,
+.ThemeMulberry,
+.ThemeGlass,
+.ThemeBlackGlass,
+.ThemePlasticBlue,
+.ThemeRedWine,
+.ThemeSoftOrange,
+.ThemeYouthful 
+{
+    width: 40px;
+    height: 19px;
+    display: inline-block;
+}
+.Theme
+{
+    background-color: #DCDCDC;
+}
+.ThemeDevEx
+{
+    background-color: #CDCCF5;
+}
+.ThemeMetropolis
+{
+    background-color: #7F7F7F;
+}
+.ThemeMetropolisBlue
+{
+    background-color: #0072C6;
+}
+.ThemeModerno
+{
+    background-color: #1279c0;
+}
+.ThemeiOS
+{
+    background-color: #007BF7;
+}
+.ThemeMaterial
+{
+    background-color: #009688;
+}
+.ThemeOffice2010Blue
+{
+    background-color: #B5CCE5;
+}
+.ThemeOffice2010Black
+{
+    background-color: #474747;
+}
+.ThemeOffice2010Silver
+{
+    background-color: #E7EAEF;
+}
+.ThemeOffice2003Blue
+{
+    background-color: #B5CEF2;
+}
+.ThemeOffice2003Olive
+{
+    background-color: #D4DEB6;
+}
+.ThemeOffice2003Silver
+{
+    background-color: #D1D1E0;
+}
+.ThemeAqua
+{
+    background-color: #96B9EC;
+}
+.ThemeMulberry
+{
+    background-color: #BF4E6A;
+}
+.ThemeGlass
+{
+    background-color: #C8DDE8;
+}
+.ThemeBlackGlass
+{
+    background-color: #4D5A63;
+}
+.ThemePlasticBlue
+{
+    background-color: #5066B3;
+}
+.ThemeRedWine
+{
+    background-color: #8A0E3C;
+}
+.ThemeSoftOrange
+{
+    background-color: #F06F30;
+}
+.ThemeYouthful
+{
+    background-color: #9CC524;
+}
+
+/* Search box */
+.Search
+{
+    margin-top: 49px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+    .Search .SearchBox
+    {
+        float: left;
+        border: 0;
+    }
+
+        .Search .SearchBox .dxeEditAreaSys
+        {
+            font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+            color: #3c3c3c;
+        }
+
+    .Search .Pic
+    {
+        float: left;
+        width: 13px;
+        height: 13px;
+        background-position: -40px -37px;
+        margin: 5px 6px;
+    }
+
+/* Search Popup */
+.SearchPopup .dxpc-mainDiv,
+td.SearchPopup
+{
+    background-color: white;
+    border: 1px solid #c6c6c6!important;
+}
+.SearchPopup .dxpc-content 
+{
+    min-height: 50px;
+    padding: 0!important;
+}
+.SearchPopup .ResultsPanel 
+{
+    padding: 5px 1px;
+    max-height: 400px;
+    overflow: auto;
+	overflow-x: hidden;
+    margin-bottom: 3px;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar 
+{
+    margin: 1px 0 0 0;
+    padding: 0;
+    font: 13px 'Segoe UI', 'Helvetica Neue', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+    color: #3c3c3c;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-gr 
+{
+    padding-bottom: 16px;
+    margin-bottom: 0;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-gr.dxnb-last 
+{
+    padding-bottom: 5px;
+}
+
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-content 
+{
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-header 
+{
+    background: none;
+    border: 0;
+    padding: 4px 11px;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-header,
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-header a 
+{
+    color: #999999;
+    text-decoration: none;
+    font-weight: normal;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item 
+{
+    padding: 0px 12px 1px 12px;
+    margin: 1px 0;
+    font-size: 12px;
+    line-height: 110%;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemHover,
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemSelected
+{
+    background-color: #ff8400;
+    border-color: transparent;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemHover a,
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item.dxnb-itemSelected a
+{
+    color: white;
+}
+.SearchPopup .ResultsPanel .ResultsNavBar .dxnb-item a 
+{
+    color: #323232;
+    text-decoration: none;
+}
+
+
+.SearchPopup .ResultsPanel .dxm-item.dxm-hovered
+{
+    background-color: #ff8400;
+}
+.SearchPopup .ResultsPanel .dxm-item.dxm-hovered a 
+{
+    color: white;
+}
+.SearchPopup .NoResultsPanel 
+{
+    padding: 10px;
+}
+.SearchLoadingPanel 
+{ 
+    background: White;
+    width: 120px;
+    height: 40px;
+    border: #c6c6c6 solid 1px;
+}
+.SearchLoadingPanel .dx 
+{
+    padding: 5px 5px 3px 5px;
+}
+
+/* Loading DIV */
+.LoadingDiv 
+{
+    background-color: white;
+    opacity: 0.9!important;
+}
+
+/* Aux */
+
+.Clear
+{
+    display: block;
+    clear: both;
+    overflow: hidden;
+    width: 1px;
+    height: 0;
+}
+
+.LeftPadding
+{
+    padding-left: 12px;
+}
+
+.TopPadding
+{
+    padding-top: 6px;
+}
+
+.BottomPadding
+{
+    padding-bottom: 6px;
+}
+
+.AlignCenter
+{
+    margin: 0 auto;
+}
+
+.TopMargin
+{
+    margin-top: 6px;
+}
+
+.BottomMargin
+{
+    margin-bottom: 6px;
+}
+
+.TopLargeMargin
+{
+    margin-top: 16px;
+}
+
+.BottomLargeMargin
+{
+    margin-bottom: 16px;
+}
+
+.Note
+{
+    margin: 10px 0;
+}
+
+div.Spacer
+{
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+}
+
+.NoWrap
+{
+    white-space: nowrap;
+}
+
+.NoBorder
+{
+    border-style: none !important;
+}
+
+.OptionsTable > tbody > tr > td,
+.OptionsCell
+{
+    padding: 2px 8px 2px 0;
+}
+.OptionsCell
+{
+    float: right;
+}
+.OptionsTable > tbody > tr > td.edit
+{
+    padding-right: 18px;
+}
+
+.OptionsBottomMargin,
+.OptionsCell
+{
+    margin-bottom: 19px;
+}
+.OptionsRightMarign
+{
+    margin-right: 9px;
+}
+.NewLine
+{
+    clear: both;
+}
+
+.helplink 
+{
+    font-weight: bold;
+}
+.fullscreenlinksContainer
+{
+    line-height: 2em;
+    text-align: center;
+    width: 100%;
+}
+.fullscreenlinksContainer > span
+{
+    font-size: 1.1em!important;
+    width: 540px;
+    display: inline-block;
+}
+.fullscreenlinksContainer .links
+{
+    margin: 20px auto;
+    width: 840px;
+
+}
+.fullscreenlinksContainer .link
+{
+    margin: 0 12px;
+    float: left;
+}
+.fullscreenlinksContainer .link > a
+{
+    display: inline-block;
+}
+.qrcode
+{
+    background-color: white;
+
+    display: inline-block;
+    padding: 12px 32px 12px 12px;
+}
+.qrcode img
+{
+    border: 1px solid #c3c3c3;
+    padding: 1px;
+
+    width: 120px;
+    height: 120px;
+}
+/* Accessible navigation tree view sprites */
+.LayoutLeft .Inner .Navigation .DemoTree .dx-acc:before 
+{
+    content: url("sprite.png");
+}
+.LayoutLeft .Inner .Navigation .DemoTree .dx-acc.dxWeb_tvColBtn:before 
+{
+    top: 0px;
+    left: -97px;
+}
+.LayoutLeft .Inner .Navigation .DemoTree .dx-acc.dxWeb_tvExpBtn:before 
+{
+    top: 0px;
+    left: -125px;
+}
+.LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dx-acc.dxWeb_tvColBtn:before 
+{
+    top: -93px;
+    left: -52px;
+}
+.LayoutLeft .Inner .Navigation .DemoTree .dxtv-subnd .dx-acc.dxWeb_tvExpBtn:before 
+{
+    top: -93px;
+    left: -67px;
+}
+
+.skipPanel {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    text-align: center;
+    z-index: 200000;
+    background-color: white;
+    border-bottom: 1px solid darkgray;
+    padding-bottom: 10px;
+}
+
+.LayoutRight .Inner .DemoPageControl.dx-acc-r .dxtc-sb .dx-acc.dxWeb_tcScrollRight:before,
+.LayoutRight .Inner .DemoPageControl.dx-acc-r .dxtc-sb .dx-acc.dxWeb_tcScrollLeft:before,
+.dx-acc.LogoImage:before 
+{
+    content: url('sprite.png');
+}
+.LayoutRight .Inner .DemoPageControl.dx-acc-r .dxtc-sb .dx-acc.dxWeb_tcScrollLeft:before
+{
+    left: 0px;
+    top: -90px;
+}			
+.LayoutRight .Inner .DemoPageControl.dx-acc-r .dxtc-sb .dx-acc.dxWeb_tcScrollRight:before
+{
+    left: -25px;
+    top: -90px;
+}
+
+.LayoutRight .Inner .DemoPageControl.dx-acc-r .dxtc-sb .dx-acc.dxWeb_tcScrollLeft.dxWeb_tcScrollLeftDisabled:before
+{
+    left: 0px;
+    top: -112px;
+}
+.LayoutRight .Inner .DemoPageControl.dx-acc-r .dxtc-sb .dx-acc.dxWeb_tcScrollRight.dxWeb_tcScrollRightDisabled:before
+{
+    left: -25px;
+    top: -112px;
+}
+.dx-acc.LogoImage:before 
+{
+    left: 0px;
+    top: -56px;
+}
+
+.exportToolbarCaption {
+    height: 38px;
+    padding: 0 6px 0 6px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: default;
+}
+
+li[id*=MenuExportButtons_DXI1_IS] {
+    display: none;
+}

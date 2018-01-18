@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>展示</h2>
+
+@(Html.DevExtreme().DataGrid()
+                        .Columns(columns =>
+                        {
+                            columns.Add()
+                                .DataField("Factory.Name")
+                                .Caption("工厂")
+                                .GroupIndex(0);
+
+                            columns.Add()
+                                .DataField("WorkShop.Name")
+                                .Caption("车间")
+                                .GroupIndex(1);
+                            columns.Add()
+                                .DataField("Line.Name")
+                                .Caption("产线")
+                                .GroupIndex(2);
+                            columns.Add()
+                                .DataField("Station.Name")
+                                .Caption("工位");
+
+                        })
+                  .DataSource(d => d.WebApi().Controller("FactoriesApi")
+                    .LoadAction("GetViewModels")
+                 )
+
+                .FilterRow(f => f.Visible(true))
+                .HeaderFilter(f => f.Visible(true))
+                .GroupPanel(p => p.Visible(true))
+                .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                .Height(400)
+                .ShowBorders(true)
+                .RemoteOperations(true)
+                .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+)
+
+
+
+<h2>工厂管理</h2>
+
+@(Html.DevExtreme().DataGrid()
+                                .Columns(columns =>
+                                {
+                                    columns.Add()
+                                        .DataField("Name")
+                                        .Caption("名称");
+                                    columns.Add()
+                                        .DataField("Location")
+                                        .Caption("位置");
+                                })
+                          .DataSource(d => d.WebApi().Controller("FactoriesApi")
+                            .LoadAction("GetFactories").Key("ID")
+                            .InsertAction("PostFactory").Key("ID")
+                            .UpdateAction("PutFactory").Key("ID")
+                            .DeleteAction("DeleteFactory").Key("ID")
+                         )
+
+                        .FilterRow(f => f.Visible(true))
+                        .HeaderFilter(f => f.Visible(true))
+                        .GroupPanel(p => p.Visible(true))
+                        .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                        .Height(300)
+                        .ShowBorders(true)
+                        .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+                        .RemoteOperations(true)
+                        .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+)
+
+
+<h2>车间管理</h2>
+
+@(Html.DevExtreme().DataGrid()
+                                .Columns(columns =>
+                                {
+                                    columns.Add()
+                                        .DataField("Name")
+                                        .Caption("名称");
+                                    columns.Add()
+                                        .DataField("FactoryID")
+                                        .Caption("厂房")
+                                        .Lookup(lookup => lookup
+                                            .DataSource(d => d.WebApi().Controller("FactoriesApi").LoadAction("GetFactories").Key("ID"))
+                                            .ValueExpr("ID")
+                                            .DisplayExpr("Name")
+                                        );
+                                })
+                          .DataSource(d => d.WebApi().Controller("FactoriesApi")
+                            .LoadAction("GetWorkShops").Key("ID")
+                            .InsertAction("PostWorkShop").Key("ID")
+                            .UpdateAction("PutWorkShop").Key("ID")
+                            .DeleteAction("DeleteWorkShop").Key("ID")
+                         )
+
+                        .FilterRow(f => f.Visible(true))
+                        .HeaderFilter(f => f.Visible(true))
+                        .GroupPanel(p => p.Visible(true))
+                        .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                        .Height(300)
+                        .ShowBorders(true)
+                        .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+                        .RemoteOperations(true)
+                        .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+)
+
+
+
+<h2>产线管理</h2>
+
+@(Html.DevExtreme().DataGrid()
+                            .Columns(columns =>
+                            {
+                                columns.Add()
+                                    .DataField("Name")
+                                    .Caption("名称");
+                                columns.Add()
+                                    .DataField("WorkShopID")
+                                    .Caption("车间")
+                                    .Lookup(lookup => lookup
+                                        .DataSource(d => d.WebApi().Controller("FactoriesApi").LoadAction("GetWorkShops").Key("ID"))
+                                        .ValueExpr("ID")
+                                        .DisplayExpr("Name")
+                                    );
+                            })
+                      .DataSource(d => d.WebApi().Controller("FactoriesApi")
+                        .LoadAction("GetLines").Key("ID")
+                        .InsertAction("PostLine").Key("ID")
+                        .UpdateAction("PutLine").Key("ID")
+                        .DeleteAction("DeleteLine").Key("ID")
+                     )
+
+                    .FilterRow(f => f.Visible(true))
+                    .HeaderFilter(f => f.Visible(true))
+                    .GroupPanel(p => p.Visible(true))
+                    .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                    .Height(300)
+                    .ShowBorders(true)
+                    .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+                    .RemoteOperations(true)
+                    .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+)
+
+
+
+<h2>工位管理</h2>
+
+@(Html.DevExtreme().DataGrid()
+                        .Columns(columns =>
+                        {
+                            columns.Add()
+                                .DataField("Name")
+                                .Caption("名称");
+                            columns.Add()
+                                .DataField("LineID")
+                                .Caption("产线")
+                                .Lookup(lookup => lookup
+                                    .DataSource(d => d.WebApi().Controller("FactoriesApi").LoadAction("GetLines").Key("ID"))
+                                    .ValueExpr("ID")
+                                    .DisplayExpr("Name")
+                                );
+                        })
+                  .DataSource(d => d.WebApi().Controller("FactoriesApi")
+                    .LoadAction("GetStations").Key("ID")
+                    .InsertAction("PostStation").Key("ID")
+                    .UpdateAction("PutStation").Key("ID")
+                    .DeleteAction("DeleteStation").Key("ID")
+                 )
+
+                .FilterRow(f => f.Visible(true))
+                .HeaderFilter(f => f.Visible(true))
+                .GroupPanel(p => p.Visible(true))
+                .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                .Height(400)
+                .ShowBorders(true)
+                .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+                .RemoteOperations(true)
+                .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+)
+
+
+

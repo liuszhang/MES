@@ -1,0 +1,14 @@
+@model DevExpress.DashboardWeb.Mvc.DashboardSourceModel
+@Html.DevExpress().DashboardViewer(settings =>
+{
+    settings.Name = "QualityDashboardViewer";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "QualityDashboardViewerPartial" };
+    settings.ExportRouteValues = new { Controller = "Home", Action = "QualityDashboardViewerPartialExport" };
+    settings.Width = Unit.Percentage(100);
+    settings.Height = Unit.Percentage(100);
+    
+    //settings.ClientSideEvents.Init = "grid_Init";
+    //settings.ClientSideEvents.BeginCallback = "grid_BeginCallback";
+    //settings.ClientSideEvents.EndCallback = "grid_EndCallback";
+
+}).BindToSource(Model).GetHtml()

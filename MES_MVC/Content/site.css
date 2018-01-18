@@ -1,0 +1,202 @@
+/*Layout*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+    -ms-overflow-style: scrollbar;
+}
+header {
+    flex: none;
+    border-bottom: 1px solid #c7c7c7;
+    background:#fff;
+    width: 100%;
+    -webkit-transition: all 0.5s ease-out 0s;
+    -moz-transition: all 0.5s ease-out 0s;
+    -o-transition: all 0.5s ease-out 0s;
+    transition: all 0.5s ease-out 0s;
+    top: -100px;
+    z-index: 1000;
+}
+header.shrink {
+    opacity: 0.9;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.title {
+    float: left;
+    padding: 8px 0px;
+}
+.title a {
+    font-weight:600;
+    font-size: 1.8em;
+    color: #c7c7c7;
+    text-decoration: none;
+}
+.title p {
+    color: #b2b2b2;
+    margin: 0;
+}
+.expandBar {
+    padding: 0px !important;
+    width: 100%;
+}
+.expandedPanel .title {
+    display: none;
+}
+.panelContent {
+    padding-top: 15px;
+}
+.expandedPanel .pull-right  {
+    float: none !important;
+}
+.panelItem {
+    display: inline-block;
+}
+.expandedPanel .panelItem {
+    display: block;
+}
+.expandedPanel .panelContent {
+    padding-bottom: 15px;
+}
+.searchBox {
+    margin-left: 20px;
+}
+.searchBox img,
+.searchBox .dx-acc {
+    display: none;
+}
+.searchBoxButton {
+    font-size: 17px;
+}
+.navMenu {
+    float: right;
+    margin: 0px 0px 2px 0px;
+}
+.expandedPanel .navMenu {
+    width: 100%;
+    margin: 10px 0px;
+}
+.expandedPanel .searchBox {
+    width: 100%;
+    margin-left: 0px;
+}
+.loginButton {
+    margin: 0px 0px 1px 20px;
+}
+.expandedPanel .loginButton {
+    width: 100%;
+    margin: 10px 0px 0px 0px;
+    text-align:left;
+}
+.expandedPanel .loginButton .dropdown-toggle {
+    width: 100%;
+}
+.loginButton-large,
+.expandedPanel .loginButton-small {
+    display: none;
+}
+.expandedPanel .loginButton-large {
+    display: inline-block;
+}
+.btnBackToTop {
+    background: none;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 70px;
+    height: 70px;
+    z-index: 100;
+    display: inline;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btnBackToTop i {
+    font-size: 60px;
+    color: #c7c7c7;
+}
+.btnBackToTop i:hover {
+    color: #e0e0e0;
+}
+.footerUp {
+    padding-bottom: 26px;
+    background: #6f6f6f;
+}
+.footerDown {
+    background: #525252;
+}
+.footerDown p {
+    margin: 16px 0px;
+}
+.wrapper {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+.content {
+    flex: 1 0 auto;
+    margin-bottom: 40px;
+}
+footer {
+    flex: none;
+    color: white;
+}
+footer a {
+    color: #cecaca;
+}
+footer a:hover,
+footer a:focus {
+    color: #fff;
+}
+footer h4 {
+    margin-top: 32px;
+}
+.latestPosts li:not(:last-child) {
+    border-bottom: 1px dotted #fff;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+/*Home*/
+.mainText {
+    margin: 0 auto;
+    max-width: 650px;
+}
+.features {
+    margin-top: 40px;
+}
+.features .media {
+    margin-top: 20px;
+}
+.features .featureIcon {
+    font-size: 50px;
+}
+.marginTop20 {
+    margin-top: 20px;
+}
+.marginTop40 {
+    margin-top: 40px;
+}
+.customers .media {
+    margin-top: 40px;
+}
+/*Contact Us*/
+.map {
+    height: 300px;
+}
+/*Blog*/
+.blogImage {
+    width: 100%;
+}
+.dataViewPosts .blogImage {
+    padding-top: 25px;
+}
+.blogNavBar .blogNabVarGroupHeader a {
+    text-decoration: none !important;
+}
+.blogNavBar {
+    margin-top: 45px;
+}
+.user {
+    font-size: 64px;
+}

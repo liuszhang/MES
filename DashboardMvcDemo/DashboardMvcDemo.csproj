@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{761D2D09-08AF-47E7-9090-8C8A1E213296}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DevExpress.Web.Demos</RootNamespace>
+    <AssemblyName>DevExpress.Web.Demos.MVCxDashboard</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.CodeParser.v16.2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v16.2.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v16.2.Web">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v16.2.Web.Mvc5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v16.2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v16.2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.Mvc5.v16.2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.v16.2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v16.2">
+      <HintPath>
+      </HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Code\CodeFormatter.cs" />
+    <Compile Include="Code\CustomerSupport.cs" />
+    <Compile Include="Code\Dashboards\ChampionsLeagueStatisticsDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\TasksDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\EUTradeOverviewDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\EnergyConsumptionDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\EnergyStatisticsDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\OverviewDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\CustomerSupportDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\HumanResourcesDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\ProductDetailsDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\RevenueAnalysisDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\RevenueByIndustry.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\SalesDetailsDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\SalesOverviewDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\SalesPerformanceDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\Dashboards\WebsiteStatistics.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\DataHelpers.cs" />
+    <Compile Include="Code\DataLoader.cs" />
+    <Compile Include="Code\DemoGroupModel.cs" />
+    <Compile Include="Code\DemoModel.cs" />
+    <Compile Include="Code\DemoModelBase.cs" />
+    <Compile Include="Code\DemosModel.cs" />
+    <Compile Include="Code\ExternalDemoModel.cs" />
+    <Compile Include="Code\HumanResources.cs" />
+    <Compile Include="Code\IntroFeatureModel.cs" />
+    <Compile Include="Code\IntroPageModel.cs" />
+    <Compile Include="Code\OverviewPageModel.cs" />
+    <Compile Include="Code\RevenueAnalysis.cs" />
+    <Compile Include="Code\SalesDataGenerator.cs" />
+    <Compile Include="Code\SalesDetails.cs" />
+    <Compile Include="Code\SalesOverview.cs" />
+    <Compile Include="Code\SalesPerformance.cs" />
+    <Compile Include="Code\ThemeGroupModel.cs" />
+    <Compile Include="Code\ThemeModel.cs" />
+    <Compile Include="Code\ThemeModelBase.cs" />
+    <Compile Include="Code\ThemesModel.cs" />
+    <Compile Include="Code\Utils.cs" />
+    <Compile Include="Code\WebsiteStatistics.cs" />
+    <Compile Include="Controllers\FullScreenSamplesController.cs" />
+    <Compile Include="Controllers\DemoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OverviewController.cs" />
+    <Compile Include="Controllers\SamplesController.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.EUTradeOverview.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.ChampionsLeagueStatistics.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.EnergyConsumption.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.EnergyStatistics.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.ProductDetails.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.RevenueByIndustry.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.CustomerSupport.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.HumanResources.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.RevenueAnalysis.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.Tasks.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.SalesPerformance.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.SalesDetails.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.SalesOverview.cs" />
+    <Compile Include="Controllers\Samples\SamplesController.WebsiteStatistics.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChampionsLeagueStatistics.cs" />
+    <Compile Include="Models\Tasks.cs" />
+    <Compile Include="Models\EUTradeOverview.cs" />
+    <Compile Include="Models\EnergyConsumption.cs" />
+    <Compile Include="Models\EnergyStatistics.cs" />
+    <Compile Include="Models\ProductDetails.cs" />
+    <Compile Include="Models\RevenueByIndustry.cs" />
+    <Compile Include="Models\Overview.cs" />
+    <Compile Include="Models\SalesOverview.cs" />
+    <Compile Include="Models\CustomerSupport.cs" />
+    <Compile Include="Models\HumanResources.cs" />
+    <Compile Include="Models\RevenueAnalysis.cs" />
+    <Compile Include="Models\SalesDetails.cs" />
+    <Compile Include="Models\SalesPerformance.cs" />
+    <Compile Include="Models\WebsiteStatistics.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="App_Data\DashboardChampionsLeagueStatistics.xml" />
+    <Content Include="App_Data\DashboardEnergyConsumptionBySector.xml" />
+    <Content Include="App_Data\DashboardEnergyConsumptionTotal.xml" />
+    <Content Include="App_Data\DashboardEnergyStatictics.xml" />
+    <Content Include="App_Data\DashboardProductDetails.xml" />
+    <Content Include="App_Data\DashboardRevenueByIndustry.xml" />
+    <Content Include="Content\Components.css" />
+    <Content Include="Content\Loading.gif" />
+    <Content Include="Content\Platform.css" />
+    <Content Include="Content\ProductDetailsImages\DesktopLCD 21 Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\DesktopLCD 21.jpg" />
+    <Content Include="Content\ProductDetailsImages\DesktopLED 21 Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\DesktopLED 21.jpg" />
+    <Content Include="Content\ProductDetailsImages\HD Video Player Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\HD Video Player.jpg" />
+    <Content Include="Content\ProductDetailsImages\Projector Plus Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\Projector Plus.jpg" />
+    <Content Include="Content\ProductDetailsImages\Projector PlusHD Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\Projector PlusHD.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperLCD 42 Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperLCD 42.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperLCD 70 Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperLCD 70.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperLED 42 Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperLED 42.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperPlasma 50 Secondary.jpg" />
+    <Content Include="Content\ProductDetailsImages\SuperPlasma 50.jpg" />
+    <Content Include="Scripts\EUTradeOverview.js" />
+    <Content Include="Scripts\jquery-1.11.3.js" />
+    <Content Include="Scripts\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\SalesDetailsData.js" />
+    <Content Include="Scripts\SalesDetailsPopup.js" />
+    <Content Include="Views\Samples\FullscreenButton.cshtml" />
+    <Content Include="Views\Overview\Overview.cshtml" />
+    <Content Include="Views\Overview\OverviewPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\RevenueByIndustry.cshtml" />
+    <Content Include="Views\FullScreenSamples\RevenueByIndustryPartial.cshtml" />
+    <Content Include="Views\Samples\RevenueByIndustry.cshtml" />
+    <Content Include="Views\Samples\RevenueByIndustryPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\EnergyConsumption.cshtml" />
+    <Content Include="Views\FullScreenSamples\EnergyConsumptionPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\EnergyStatistics.cshtml" />
+    <Content Include="Views\FullScreenSamples\EnergyStatisticsPartial.cshtml" />
+    <Content Include="Views\Samples\EnergyConsumption.cshtml" />
+    <Content Include="Views\Samples\EnergyConsumptionPartial.cshtml" />
+    <Content Include="Views\Samples\EnergyStatistics.cshtml" />
+    <Content Include="Views\Samples\EnergyStatisticsPartial.cshtml" />
+    <Content Include="Views\Samples\SalesDetailsScripts.cshtml" />
+    <Content Include="Views\FullScreenSamples\SalesDetailsScripts.cshtml" />
+    <Content Include="Views\Shared\_FullScreenLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\DashboardCustomerSupport.xml" />
+    <Content Include="App_Data\DashboardEmployeesAndDepartments.xml" />
+    <Content Include="App_Data\DashboardSales.xml" />
+    <Content Include="App_Data\Demos.xml" />
+    <Content Include="App_Data\Themes.xml" />
+    <Content Include="Content\CodeFormatter.css" />
+    <Content Include="Content\DashboardSite.css" />
+    <Content Include="Content\DemoIcons\SalesOverview.png" />
+    <Content Include="Content\DemoIcons\ChampionsLeague.png" />
+    <Content Include="Content\DemoIcons\SalesPerformance.png" />
+    <Content Include="Content\Screens.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\sprite.png" />
+    <Content Include="Content\VideoButton.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\Demo.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Code\Dashboards\ChampionsLeagueStatisticsDashboard.resx">
+      <DependentUpon>ChampionsLeagueStatisticsDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\TasksDashboard.resx">
+      <DependentUpon>TasksDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\EUTradeOverviewDashboard.resx">
+      <DependentUpon>EUTradeOverviewDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\EnergyConsumptionDashboard.resx">
+      <DependentUpon>EnergyConsumptionDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\EnergyStatisticsDashboard.resx">
+      <DependentUpon>EnergyStatisticsDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\OverviewDashboard.resx">
+      <DependentUpon>OverviewDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\CustomerSupportDashboard.resx">
+      <DependentUpon>CustomerSupportDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\HumanResourcesDashboard.resx">
+      <DependentUpon>HumanResourcesDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\ProductDetailsDashboard.resx">
+      <DependentUpon>ProductDetailsDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\RevenueAnalysisDashboard.resx">
+      <DependentUpon>RevenueAnalysisDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\RevenueByIndustry.resx">
+      <DependentUpon>RevenueByIndustry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\SalesDetailsDashboard.resx">
+      <DependentUpon>SalesDetailsDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\SalesOverviewDashboard.resx">
+      <DependentUpon>SalesOverviewDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\SalesPerformanceDashboard.resx">
+      <DependentUpon>SalesPerformanceDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Code\Dashboards\WebsiteStatistics.resx">
+      <DependentUpon>WebsiteStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\DemoTabsPartial.cshtml" />
+    <Content Include="Views\Shared\EventMonitor.cshtml" />
+    <Content Include="Views\Shared\HeadPartial.cshtml" />
+    <Content Include="Views\Shared\NavigationPartial.cshtml" />
+    <Content Include="Views\Shared\SearchListPartial.cshtml" />
+    <Content Include="Views\Shared\SearchPartial.cshtml" />
+    <Content Include="Views\Shared\ThemeSelectorPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\FooterTextPartial.cshtml" />
+    <Content Include="Views\Samples\SalesOverviewPartial.cshtml" />
+    <Content Include="Views\Samples\SalesOverview.cshtml" />
+    <Content Include="Views\Samples\SalesPerformance.cshtml" />
+    <Content Include="Views\Samples\SalesPerformancePartial.cshtml" />
+    <Content Include="Views\Samples\CustomerSupport.cshtml" />
+    <Content Include="Views\Samples\CustomerSupportPartial.cshtml" />
+    <Content Include="Views\Samples\HumanResources.cshtml" />
+    <Content Include="Views\Samples\HumanResourcesPartial.cshtml" />
+    <Content Include="Views\Samples\RevenueAnalysis.cshtml" />
+    <Content Include="Views\Samples\RevenueAnalysisPartial.cshtml" />
+    <Content Include="Views\Samples\SalesDetails.cshtml" />
+    <Content Include="Views\Samples\SalesDetailsPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\CustomerSupport.cshtml" />
+    <Content Include="Views\FullScreenSamples\CustomerSupportPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\HumanResources.cshtml" />
+    <Content Include="Views\FullScreenSamples\HumanResourcesPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\RevenueAnalysis.cshtml" />
+    <Content Include="Views\FullScreenSamples\RevenueAnalysisPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\SalesDetails.cshtml" />
+    <Content Include="Views\FullScreenSamples\SalesDetailsPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\SalesOverview.cshtml" />
+    <Content Include="Views\FullScreenSamples\SalesOverviewPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\SalesPerformance.cshtml" />
+    <Content Include="Views\FullScreenSamples\SalesPerformancePartial.cshtml" />
+    <Content Include="Views\Shared\ErrorMessage.cshtml" />
+    <Content Include="Views\FullScreenSamples\WebsiteStatistics.cshtml" />
+    <Content Include="Views\FullScreenSamples\WebsiteStatisticsPartial.cshtml" />
+    <Content Include="Views\Samples\WebsiteStatistics.cshtml" />
+    <Content Include="Views\Samples\WebsiteStatisticsPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\ChampionsLeagueStatistics.cshtml" />
+    <Content Include="Views\FullScreenSamples\ChampionsLeagueStatisticsPartial.cshtml" />
+    <Content Include="Views\Samples\ChampionsLeagueStatistics.cshtml" />
+    <Content Include="Views\Samples\ChampionsLeagueStatisticsPartial.cshtml" />
+    <Content Include="Views\Samples\ProductDetails.cshtml" />
+    <Content Include="Views\Samples\ProductDetailsPartial.cshtml" />
+    <Content Include="Views\FullScreenSamples\ProductDetails.cshtml" />
+    <Content Include="Views\FullScreenSamples\ProductDetailsPartial.cshtml" />
+    <Content Include="App_Data\EUTradeOverview.dat" />
+    <Content Include="Views\FullScreenSamples\EUTradeOverview.cshtml" />
+    <Content Include="Views\FullScreenSamples\EUTradeOverviewPartial.cshtml" />
+    <Content Include="Views\Samples\EUTradeOverview.cshtml" />
+    <Content Include="Views\Samples\EUTradeOverviewPartial.cshtml" />
+    <Content Include="Views\Samples\EUTradeOverviewScripts.cshtml" />
+    <Content Include="Views\FullScreenSamples\EUTradeOverviewScripts.cshtml" />
+    <Content Include="Views\Shared\ThemeParametersSelectorPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Samples\TasksPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Samples\Tasks.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Samples\TasksScripts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\FullScreenSamples\Tasks.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\FullScreenSamples\TasksPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\FullScreenSamples\TasksScripts.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60461</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

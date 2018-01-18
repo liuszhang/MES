@@ -1,0 +1,27 @@
+﻿<div class="Search" id="SearchPanel" @Html.Raw(Utils.GetAccessibilityRoleAttribute("search"))>
+@Html.DevExpress().Image(s => {
+    s.Name = "SearchIcon";
+    s.Properties.SpriteCssClass = "Pic";
+    s.Properties.ClientSideEvents.Click = "DXDemo.focusSearch";
+}).GetHtml()
+
+@Html.DevExpress().TextBox(s => {
+    s.Name = "SearchBox";
+    s.Height = Unit.Pixel(23);
+    s.Width = Unit.Pixel(242);
+    s.Properties.MaxLength = 50;
+    s.ControlStyle.CssClass = "SearchBox";
+    s.EnableTheming = false;
+    s.Properties.ClientSideEvents.KeyUp = "DXDemo.Search.onSearchBoxKeyPress";
+    s.Properties.ClientSideEvents.GotFocus = "DXDemo.Search.onSearchBoxGotFocus";
+    s.Properties.ClientSideEvents.KeyDown = "DXDemo.Search.onSearchBoxKeyDown";
+
+    if (Utils.IsAccessibilityDemo)
+        s.Properties.NullText = "Search";
+    
+}).GetHtml()
+
+<b class="Clear"></b>
+</div>
+
+@Html.Partial("SearchListPartial", new List<SearchResult>())

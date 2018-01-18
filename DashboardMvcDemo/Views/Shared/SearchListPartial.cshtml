@@ -1,0 +1,56 @@
+﻿@model List<SearchResult>
+
+@Html.DevExpress().PopupControl(s => {
+    s.Name = "SearchPopup";
+    s.CallbackRouteValues = new { Controller = "Home", Action = "SearchListPartial" };
+    s.EnableTheming = false;
+    s.ShowHeader = false;
+    s.PopupAlignCorrection = PopupAlignCorrection.Disabled;
+    s.PopupVerticalAlign = PopupVerticalAlign.Below;
+    s.PopupHorizontalAlign = PopupHorizontalAlign.LeftSides;
+    s.ControlStyle.CssClass = "SearchPopup";
+    s.Width = Unit.Pixel(275);
+    s.SettingsLoadingPanel.Text = "SEARCHING...";
+    s.Styles.LoadingDiv.CssClass = "LoadingDiv";
+    s.Images.LoadingPanel.Url = "~/Content/Loading.gif";
+    s.Styles.LoadingPanel.CssClass = "SearchLoadingPanel";
+    s.ClientSideEvents.BeginCallback = "DXDemo.Search.onSearchPopupBeginCallback";
+    s.ClientSideEvents.EndCallback = "DXDemo.Search.onSearchPopupEndCallback";
+    
+    s.SetContent(() => {
+        if(Model != null && Model.Any()) {
+            ViewContext.Writer.Write("<div id=\"ResultsPanel\" class=\"ResultsPanel\">");
+            Html.DevExpress().NavBar(settings => {
+                settings.Name = "SearchResultsNavBar";
+                settings.ControlStyle.CssClass = "ResultsNavBar";
+                settings.EnableTheming = false;
+                settings.Width = Unit.Percentage(100);
+                settings.AccessibilityCompliant = true;
+                settings.ShowExpandButtons = false;
+                settings.EncodeHtml = false;
+                settings.AllowExpanding = false;
+                settings.EnableClientSideAPI = true;
+                settings.AllowSelectItem = true;
+
+                settings.SetItemTextTemplateContent(c => {
+                    ViewContext.Writer.Write(string.Format("<div id=\"sr_{0}_{1}\">{2}</div>", c.Item.Group.Index, c.Item.Index, c.Item.Text));
+                });
+
+                foreach(var productGroup in Model.GroupBy(sr => sr.Product)) {
+                    var product = productGroup.Key;
+                    var groupNode = settings.Groups.Add(product.NavItemTitle.ToUpper(), string.Empty, string.Empty, Utils.GenerateDemoUrl(product.Intro));
+                    foreach(var res in productGroup) {
+                        groupNode.Items.Add(res.Text, string.Empty, string.Empty, Utils.GenerateDemoUrl(res.Demo));
+                    }
+                }
+                
+            }).GetHtml();
+            ViewContext.Writer.Write("</div>");
+        }
+        else {
+            ViewContext.Writer.Write("<div id=\"NoResultsPanel\" class=\"NoResultsPanel\">");
+            ViewContext.Writer.Write(string.Format("No results found for <b id=\"RequestText\">{0}</b>", ViewData["RequestText"]));
+            ViewContext.Writer.Write("</div>");
+        }
+    });
+}).GetHtml()

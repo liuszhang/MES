@@ -1,0 +1,9 @@
+﻿@model DashboardSourceModel
+
+@Html.DevExpress().DashboardViewer(settings => {
+    settings.Name = "dashboardViewer1";
+    settings.CallbackRouteValues = new { Controller = "Samples", Action = "ProductDetailsPartial" };
+    settings.ExportRouteValues = new { Controller = "Samples", Action = "ProductDetailsPartialExport" };
+    settings.AllowExportDashboardItems = true;
+    settings.FullscreenMode = true;
+}).BindToSource(Model).GetHtml()

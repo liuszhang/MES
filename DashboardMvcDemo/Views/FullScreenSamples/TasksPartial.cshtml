@@ -1,0 +1,13 @@
+﻿@model DashboardSourceModel
+
+@Html.DevExpress().DashboardViewer(settings => {
+    settings.Name = "dashboardViewer1";
+    settings.CallbackRouteValues = new { Controller = "Samples", Action = "TasksPartial" };
+    settings.ExportRouteValues = new { Controller = "Samples", Action = "TasksPartialExport" };
+    settings.AllowExportDashboardItems = true;
+    settings.FullscreenMode = true;
+    settings.CalculateHiddenTotals = true;
+    settings.ClientSideEvents.ItemClick = "function(s, e) { onItemClick(s, e); }";
+    settings.ClientSideEvents.Init = "function(s, e) { initPopup(s, e); }";
+    settings.ClientSideEvents.ItemVisualInteractivity = "function(s, e) { onItemVisualInteractivity(s, e); }";
+}).BindToSource(Model).GetHtml()

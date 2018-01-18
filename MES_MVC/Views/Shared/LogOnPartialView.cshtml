@@ -1,0 +1,25 @@
+@if(!Request.IsAuthenticated) { 
+    <a href="@Url.Action("Login", "Account")" class="btn btn-default loginButton loginButton-small pull-right" title="Login">
+        <span class="glyphicon glyphicon-log-in"></span>
+    </a>
+    <a href="@Url.Action("Login", "Account")" class="btn btn-default loginButton loginButton-large pull-right">
+        <span class="glyphicon glyphicon-log-in"></span> Login
+    </a>
+} else { 
+    <div class="dropdown loginButton loginButton-small pull-right">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="@User.Identity.Name">
+            <span class="glyphicon glyphicon-user"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="@Url.Action("Index", "Manage")"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="@Url.Action("LogOff", "Account")"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+    <a href="@Url.Action("Index", "Manage")" class="btn btn-default loginButton loginButton-large">
+        <span class="glyphicon glyphicon-cog"></span> Settings
+    </a>
+    <a href="@Url.Action("LogOff", "Account")" class="btn btn-default loginButton loginButton-large" title="Logout">
+        <span class="glyphicon glyphicon-log-out"></span> Logout
+    </a>
+}

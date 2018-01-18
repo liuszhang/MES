@@ -1,0 +1,8 @@
+﻿@{
+    Layout = "../Shared/_FullScreenLayout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.Action("TasksPartial")
+    @Html.Action("TasksScripts")
+}

@@ -1,0 +1,64 @@
+﻿<a href="javascript:void(0)" class="ThemeButton" id="ThemeParametersButton">
+    THEME SETTINGS
+    @Html.DevExpress().Image(s => {
+    s.Name = "cGlyph";
+    s.Properties.SpriteCssClass = "Glyph";
+}).GetHtml()
+</a>
+@Html.DevExpress().PopupControl(s => {
+    s.Name = "ThemeParametersPopup";
+    s.ControlStyle.CssClass = "theme-parameters-popup";
+    s.EnableTheming = false;
+    s.ShowHeader = false;
+    s.ShowShadow = false;
+    s.PopupAnimationType = AnimationType.None;
+    s.PopupElementID = "ThemeParametersButton";
+    s.PopupHorizontalAlign = PopupHorizontalAlign.RightSides;
+    s.PopupVerticalAlign = PopupVerticalAlign.TopSides;
+    s.PopupHorizontalOffset = 24;
+    s.PopupVerticalOffset = -19;
+    s.PopupAlignCorrection = PopupAlignCorrection.Disabled;
+    s.PopupAction = PopupAction.LeftMouseClick;
+    s.Width = 309;
+    s.ClientSideEvents.Init = "DXThemeSettingsPopupContainer_Init";
+    s.SetContent(() => {
+        ViewContext.Writer.Write("<div class='themes-button-wrapper'></div>");
+        ViewContext.Writer.Write("<div class='button-wrapper'><div class='color-button-border'></div></div><div class='button-wrapper-bottomBorder'></div><b class='Clear'></b>");
+        ViewContext.Writer.Write("<div class='parameters-container-wrapper'><div class='parameters-container'>");
+        if(Utils.CanChangeBaseColor) {
+            Html.DevExpress().Label(l => { l.Name = "lblBaseColor"; l.Text = "Base Color"; l.ControlStyle.CssClass = "caption"; }).GetHtml();
+            foreach(var color in Utils.CustomBaseColors) {
+                ViewContext.Writer.Write("<div class='color-item-container'><div class='color-item-wrapper'>");
+                Html.DevExpress().Button(b => {
+                    b.Name = "btnColor" + color;
+                    b.Text = string.Empty;
+                    b.GroupName = "colors";
+                    b.EnableTheming = false;
+                    b.ControlStyle.CssClass = "color-item";
+                    b.ControlStyle.BackColor = ColorTranslator.FromHtml(color);
+                    b.Styles.Style.CheckedStyle.CssClass = "selected-item";
+                    b.ClientSideEvents.Click = string.Format("function(){{ DXDemo.SetCurrentBaseColor('{0}'); }}", color);
+                    var selectedColor = !string.IsNullOrEmpty(ASPxWebControl.GlobalThemeBaseColor) ? ASPxWebControl.GlobalThemeBaseColor : Utils.CurrentThemeDefaultBaseColor;
+                    b.Checked = selectedColor == color;
+                }).GetHtml();
+                ViewContext.Writer.Write("</div></div>");
+            }
+        }
+        Html.DevExpress().Label(l => { l.Name = "lblThemeFont"; l.Text = "Font"; l.ControlStyle.CssClass = "caption-font"; }).GetHtml();
+        Html.DevExpress().RadioButtonList(rbl => {
+            rbl.Name = "rblFonts";
+            rbl.Width = Unit.Percentage(100);
+            rbl.Properties.RepeatColumns = 2;
+            rbl.Properties.RepeatLayout = RepeatLayout.Table;
+            rbl.Theme = "Metropolis";
+            rbl.ControlStyle.Border.BorderStyle = BorderStyle.None;
+            rbl.Properties.ClientSideEvents.SelectedIndexChanged = "function(){{ DXDemo.SetCurrentFont(rblFonts.GetSelectedItem().value); }}";
+            rbl.PreRender = (sender, e) => {
+                var rbList = (ASPxRadioButtonList)sender;
+                rbList.Paddings.Padding = 0;
+                rbList.SelectedIndex = !string.IsNullOrEmpty(ASPxWebControl.GlobalThemeFont) ? rbList.Items.IndexOfValue(ASPxWebControl.GlobalThemeFont) : 0;
+            };
+        }).BindList(Utils.GetFontFamiliesDataSource()).GetHtml();
+        ViewContext.Writer.Write("</div></div>");
+    });
+}).GetHtml()

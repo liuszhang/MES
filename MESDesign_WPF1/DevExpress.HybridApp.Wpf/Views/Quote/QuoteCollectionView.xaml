@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="DevExpress.DevAV.Views.QuoteCollectionView"
+        xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxm="http://schemas.devexpress.com/winfx/2008/xaml/map"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxpg="http://schemas.devexpress.com/winfx/2008/xaml/pivotgrid"
+        xmlns:dxcr="http://schemas.devexpress.com/winfx/2008/xaml/charts/rangecontrolclient"
+        xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+        xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:viewmodel="clr-namespace:DevExpress.DevAV.ViewModels"
+        xmlns:common="clr-namespace:DevExpress.DevAV.Common.View"
+        xmlns:conv="clr-namespace:DevExpress.DevAV.Converters"
+        xmlns:base="clr-namespace:DevExpress.DevAV"
+        xmlns:devav="clr-namespace:DevExpress.DevAV"
+        mc:Ignorable="d"
+        d:DesignHeight="400" d:DesignWidth="600"
+        DataContext="{dxmvvm:ViewModelSource viewmodel:QuoteCollectionViewModel}">
+
+    <UserControl.Resources>
+        <conv:AbsoluteToLocalConverter x:Key="converter" MinValue="20" MaxValue="50"/>
+        <base:AddressToGeoPointConverter x:Key="AddressToGeoPointConverter"/>
+        <conv:HalfValueConverter x:Key="HalfValueConverter" NegativeValue="True"/>
+        <dxmvvm:BooleanToObjectConverter x:Key="boolToMaxWidthConverter" FalseValue="4000" TrueValue="0"/>
+        <Style x:Key="RangeControlStyle" TargetType="{x:Type dxe:RangeControl}">
+            <Setter Property="ShowLabels" Value="False"/>
+        </Style>
+        <dxe:EditRangeToFilterCriteriaConverter x:Key="EditRangeToFilterCriteriaConverter"/>
+        <ControlTemplate x:Key="{dxet:ProgressBarEditThemeKey ResourceKey=PanelLeftSideHorizontalTemplate, ThemeName=HybridApp}" TargetType="{x:Type ContentControl}">
+            <Border Background="#FF00879C" />
+        </ControlTemplate>
+    </UserControl.Resources>
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="工位异常申报" Style="{StaticResource TextBlockTitleBlueStyle}"/>
+        <!--<dxwui:AppBar DockPanel.Dock="Bottom" HideMode="AlwaysVisible">
+            <dxwui:AppBarToggleButton x:Name="pivotTableViewButton" Label="Pivot Table"
+                                      IsChecked="{Binding ElementName=mapViewButton, Path=IsChecked, Converter={dxmvvm:BooleanNegationConverter}, Mode=TwoWay}"
+                                      Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/PivotTable.png"/>
+            <dxwui:AppBarToggleButton x:Name="mapViewButton" Label="Map View" IsChecked="False"
+                                      Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/MapView.png"/>
+        </dxwui:AppBar>-->
+        <dxlc:TileLayoutControl Background="#FF0E6D38" VerticalAlignment="Top" Padding="10" Orientation="Horizontal">
+            <dxlc:Tile Header="暂时离开" FontSize="60" Background="#FFC9B80C"/>
+            <dxlc:Tile Header="设备故障" FontSize="60" Background="#FFDC3200"/>
+            <dxlc:Tile Header="系统故障" FontSize="60" Background="#FFF32713"/>
+            <dxlc:Tile Header="物料异常" Size="Small"/>
+            <dxlc:Tile Header="上厕所" Size="Small"/>
+            <dxlc:Tile Header="设计异常" Size="Small"/>
+            <dxlc:Tile Header="工艺异常" Size="Small"/>
+            <dxlc:Tile Header="资料缺失" Size="Small"/>
+            <dxlc:Tile Header="物料呼叫" Size="Small"/>
+            <dxlc:Tile Header="人员意外" Size="Small"/>
+            <dxlc:Tile Header="紧急停线" Size="Small"/>
+            <dxlc:Tile Header="呼叫换班" Size="Small"/>
+        </dxlc:TileLayoutControl>
+    </DockPanel>
+</UserControl>

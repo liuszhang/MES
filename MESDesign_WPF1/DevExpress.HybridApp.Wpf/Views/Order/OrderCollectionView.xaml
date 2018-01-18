@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="DevExpress.DevAV.Views.OrderCollectionView"
+xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+xmlns:dxcr="http://schemas.devexpress.com/winfx/2008/xaml/charts/rangecontrolclient"
+xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+xmlns:viewmodel="clr-namespace:DevExpress.DevAV.ViewModels"
+xmlns:cview="clr-namespace:DevExpress.DevAV.Common.View"
+xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"
+xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
+xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+xmlns:local="clr-namespace:DevExpress.DevAV.Common.View"
+xmlns:devav="clr-namespace:DevExpress.DevAV"
+             
+mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="600"
+DataContext="{dxmvvm:ViewModelSource viewmodel:OrderCollectionViewModel}">
+    
+    <dxmvvm:Interaction.Behaviors>
+        <dxwui:WinUIMessageBoxService/>
+    </dxmvvm:Interaction.Behaviors>
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="设备名称：数控加工中心" Style="{StaticResource TextBlockTitleBlueStyle}"/>
+        <dxwui:AppBar DockPanel.Dock="Bottom" HideMode="AlwaysVisible">
+            <dxwui:AppBarButton Label="重置" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedEntity}" Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/Edit.png"/>
+            <dxwui:AppBarSeparator/>
+            <dxwui:AppBarButton Label="提交" Command="{Binding ShowPrintPreviewCommand}" CommandParameter="{Binding ElementName=tableView}" Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/Print.png"/>
+        </dxwui:AppBar>
+        <dxlc:LayoutControl Orientation="Horizontal" AllowItemSizing="False" Margin="42,0,42,2" Padding="2">
+            <dxlc:LayoutControl.Resources>
+                <Style TargetType="dxlc:LayoutItem">
+                    <Setter Property="ElementSpace" Value="55"/>
+                </Style>
+            </dxlc:LayoutControl.Resources>
+            <dxlc:LayoutItem HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,5"
+                                 dxlc:LayoutControl.AllowVerticalSizing="False" dxlc:LayoutControl.AllowHorizontalSizing="False">
+                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="28"/>
+                        <ColumnDefinition Width="2*" MaxWidth="{Binding IsChecked, ElementName=hideButton, Converter={dxmvvm:BooleanToObjectConverter  FalseValue='4000', TrueValue='0'}}"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <dxg:GridControl Name="gridControl" Grid.Column="0" Grid.Row="0"
+                                     ItemsSource="{Binding AverageOrders}">
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="MouseDoubleClick">
+                                <dxmvvm:EventToCommand.EventArgsConverter>
+                                    <dx:EventArgsToDataRowConverter/>
+                                </dxmvvm:EventToCommand.EventArgsConverter>
+                            </dxmvvm:EventToCommand>
+                        </dxmvvm:Interaction.Behaviors>
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn IsSmart="True" FieldName="InvoiceNumber" Header="点检项编号" Width="120" FixedWidth="True"/>
+                            <dxg:GridColumn IsSmart="True" FieldName="CustomerId" Header="点检序号" Width="60" FixedWidth="True"/>
+                            <dxg:GridColumn FieldName="OrderTerms" Header="点检描述" ReadOnly="True"  FixedWidth="False"/>
+                            <dxg:GridColumn IsSmart="True" FieldName="PONumber" Header="结果类型"  ReadOnly="True" FixedWidth="False"/>
+                            <!--<dxg:GridColumn Header="结果录入" FixedWidth="True" Width="Auto" AllowEditing="True">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:CheckEditSettings Content="是否合格"/>
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>-->
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView Name="tableView"
+                                           
+                                           SearchControl="{Binding ElementName=searchControl}"
+                                           ShowSearchPanelMode="Never"
+                                           AutoWidth="True"
+                                           AllowEditing="True"
+                                           AllowGrouping="False"
+                                           ShowGroupPanel="False"
+                                           ShowFixedTotalSummary="False"
+                                           AllowPerPixelScrolling="True"
+                                           ShowFilterPanelMode="Never"
+                                           AllowMoveColumnToDropArea="False"
+                                           ShowIndicator="False">
+                                <dxmvvm:Interaction.Behaviors>
+                                    <cview:PrintableControlPreviewService/>
+                                </dxmvvm:Interaction.Behaviors>
+                                <dxg:TableView.ColumnMenuCustomizations>
+                                    <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.GroupBox }"/>
+                                    <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.SearchPanel }"/>
+                                </dxg:TableView.ColumnMenuCustomizations>
+                            </dxg:TableView>
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+
+                    <dxg:GridControl Grid.Column="1" Grid.Row="0"
+                                     ItemsSource="{Binding IsNGOrOK}" HorizontalAlignment="Center" Margin="-3,0,0,0">
+                        
+                        <dxg:GridControl.Columns>
+                            <dxg:GridColumn FieldName="IsChecked" FixedWidth="True" Width="Auto" Header="结果录入" AllowEditing="True">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:CheckEditSettings TextBlock.TextAlignment="Left" Content="是否合格"/>
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                        </dxg:GridControl.Columns>
+                        <dxg:GridControl.View>
+                            <dxg:TableView 
+                                           
+                                           ShowSearchPanelMode="Never"
+                                           AutoWidth="True"
+                                           AllowEditing="True"
+                                           AllowGrouping="False"
+                                           ShowGroupPanel="False"
+                                           ShowFixedTotalSummary="False"
+                                           AllowPerPixelScrolling="True"
+                                           ShowFilterPanelMode="Never"
+                                           AllowMoveColumnToDropArea="False"
+                                           ShowIndicator="False">
+                                
+                            </dxg:TableView>
+                        </dxg:GridControl.View>
+                    </dxg:GridControl>
+
+
+
+
+                    <ToggleButton x:Name="hideButton" Grid.Column="2" Grid.RowSpan="2"
+                              IsChecked="False"
+                              Style="{DynamicResource ResourceKey=HideButtonStyle}"/>
+                    <Grid Grid.Column="3" Grid.RowSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock HorizontalAlignment="Center" Height="40"
+                                      FontSize="16"
+                                      Text="今日设备耗时统计"/>
+                        <dxc:ChartControl Grid.Row="1" BorderThickness="0" Palette="{StaticResource chartsPalette}">
+                            <dxc:ChartControl.Legend>
+                                <dxc:Legend VerticalPosition="BottomOutside"
+                                        HorizontalPosition="Center"
+                                        FontSize="15"
+                                        Orientation="Horizontal"
+                                        Margin="0,-10,0,0" BorderThickness="0"/>
+                            </dxc:ChartControl.Legend>
+                            <dxc:ChartControl.Diagram>
+                                <dxc:SimpleDiagram2D>
+                                    <dxc:PieSeries2D DataSource="{Binding MachWorkInfo.MachWorkTimeInfo}"
+                                                                     ArgumentDataMember="Name" ValueDataMember="Value"
+                                                                     LegendTextPattern="{}{A}" HoleRadiusPercent="50">
+                                        <dxc:PieSeries2D.Model>
+                                            <dxc:BorderlessFlatPie2DModel/>
+                                        </dxc:PieSeries2D.Model>
+                                        <dxc:PieSeries2D.Label>
+                                            <dxc:SeriesLabel Visible="True" dxc:PieSeries.LabelPosition="Inside"
+                                                     TextPattern="{}{V}">
+                                            </dxc:SeriesLabel>
+                                        </dxc:PieSeries2D.Label>
+                                    </dxc:PieSeries2D>
+                                </dxc:SimpleDiagram2D>
+                            </dxc:ChartControl.Diagram>
+                        </dxc:ChartControl>
+                    </Grid>
+                </Grid>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutControl>
+    </DockPanel>
+</UserControl>

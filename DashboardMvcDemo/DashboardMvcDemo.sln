@@ -1,0 +1,21 @@
+﻿Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardMvcDemo", "DashboardMvcDemo.csproj", "{761D2D09-08AF-47E7-9090-8C8A1E213296}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{761D2D09-08AF-47E7-9090-8C8A1E213296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761D2D09-08AF-47E7-9090-8C8A1E213296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761D2D09-08AF-47E7-9090-8C8A1E213296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761D2D09-08AF-47E7-9090-8C8A1E213296}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

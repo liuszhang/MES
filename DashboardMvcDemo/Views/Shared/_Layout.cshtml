@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head id="Head1">
+    <title>@Utils.GetCurrentDemoPageTitle()</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Site.css?v=" + Utils.GetVersionSuffix())" />
+    @if(!DemosModel.Current.IsRootDemo) {
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/CodeFormatter.css")" />
+    }
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Components.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Platform.css?v=" + Utils.GetVersionSuffix())" />
+    <script src="@Url.Content("~/Scripts/Demo.js?v=" + Utils.GetVersionSuffix())" type="text/javascript"></script>
+    @if(!Utils.IsIncludeThirdPartyClientLibraries) {
+    <script src="@Url.Content("~/Scripts/jquery-1.11.3.min.js")" type="text/javascript"></script>
+    }
+    @RenderSection("AdditionalResources", false)
+    @Html.Partial("HeadPartial")
+    <style>
+        @@font-face
+        {
+            font-family: "arima madurai";
+            src:url("@Url.Content("~/Content/Fonts/CustomFont0.woff")?v=@Utils.GetVersionSuffix()") format('woff');
+        }
+        @@font-face
+        {
+            font-family: "comfortaa";
+            src:url("@Url.Content("~/Content/Fonts/CustomFont1.woff")?v=@Utils.GetVersionSuffix()") format('woff');
+        }
+        @@font-face
+        {
+            font-family: "coda";
+            src:url("@Url.Content("~/Content/Fonts/CustomFont2.woff")?v=@Utils.GetVersionSuffix()") format('woff');
+        }
+    </style>
+</head>
+<body>
+    @RenderSection("CustomTopAreaHolder", false)
+    <div class="LayoutContainer">
+        <div class="LayoutLeft">
+            <div class="Inner">
+                <div class="Header">
+                    <div class="AspLogo">
+                        <h2><a href="@Url.Content("~/")">@DemosModel.Instance.GlobalHeader.LogoPlatformSubject</a></h2>
+                        <h5><a href="@Url.Content("~/")">@DemosModel.Instance.GlobalHeader.LogoPlatformDescription</a></h5>
+                    </div>
+                </div>
+                @if (!DemosModel.Current.IsRootDemo && !Utils.CurrentDemo.IsErrorPage) {
+                    <div class="Separator">
+                    </div>
+                    @Html.Partial("SearchPartial")
+                    <div class="Navigation" @Html.Raw(Utils.GetAccessibilityRoleAttribute("navigation"))>
+                        @Html.Partial("NavigationPartial")
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="LayoutRight">
+            <div class="Inner">
+                <div class="Header" @Html.Raw(Utils.GetAccessibilityRoleAttribute("banner"))>
+                    <div class="Buttons">
+                        @*<a class="DownloadButton" href="@AssemblyInfo.DXLinkTrial">
+                            @Html.DevExpress().Image(s => {
+                                s.Name = "TrialLogo";
+                                s.Properties.SpriteCssClass = "Icon";
+                                s.Properties.AlternateText = "Free Trial";
+                            }).GetHtml()
+                            ZKZH
+                        </a>*@
+                        @*<a class="BuyButton" href="@AssemblyInfo.DXLinkBuyNowASP">
+                            @Html.DevExpress().Image(s => {
+                                s.Name = "BuyLogo";
+                                s.Properties.SpriteCssClass = "Icon";
+                                s.Properties.AlternateText = "Buy Now";
+                            }).GetHtml()
+                            BUY NOW
+                        </a>*@
+                        <div class="Separator Vertical"></div>
+                        @*<a href="http://www.devexpress.com" class="Logo">
+                            @Html.DevExpress().Image(s => {
+                                s.Name = "DevExLogo";
+                                s.Properties.SpriteCssClass = "LogoImage";
+                                s.Properties.AlternateText = "DevExpress";
+                            }).GetHtml()
+                        </a>*@
+                    </div>
+                </div>
+                <b class="Clear"></b>
+                @if (!DemosModel.Current.IsRootDemo && !Utils.CurrentDemo.IsErrorPage) {
+                <div class="Separator"></div>
+                    if(Utils.CanChangeTheme) {
+                        <div style="float: right;">
+                            <div class="theme-selector-container">
+                                @Html.Partial("ThemeSelectorPartial")
+                            </div>
+                            @if(Utils.CanApplyThemeParameters) {
+                            <div class="theme-parameters-selector-container">
+                                @Html.Partial("ThemeParametersSelectorPartial")
+                            </div>
+                            }
+                        </div>
+                    }
+                    @RenderSection("TopRightMenuRegion", false)
+                    <div @Html.Raw(Utils.GetAccessibilityRoleAttribute("main"))>
+                    @if(Utils.CurrentDemoPage != null) {
+                        <h1 class="DemoTitle">
+                            <span class="DemoNavigationTitle">@Utils.GetDemoNavigationTitle()</span>
+                            <span>@Utils.CurrentDemo.Title</span>
+                        </h1>
+                        <b class="Clear"></b>
+                    }
+                    @if(Utils.IsIntro) {
+                        <div class="IntroArea">
+                            <table class="Banner">
+                                <tr>
+                                    <td class="LeftArea">
+                                        <div class="SmallScreenshotShadow">
+                                            <a href="@Utils.CurrentIntro.BannerUrl" target="_blank">
+                                                <img src="@Url.Content(Utils.CurrentIntro.BannerImageUrl)" alt="See overview video" />
+                                                <img src="@Url.Content("~/Content/VideoButton.png")" class="VideoButton" alt="See overview video" />
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="RightArea">
+                                        <h1>@Utils.CurrentIntro.BannerTitle</h1>
+                                        @Utils.CurrentIntro.BannerText
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="LeftArea"><a href="@Utils.CurrentIntro.BannerUrl" class="BannerLink" target="_blank">See overview video</a></td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </table>
+                            @if (Utils.GenerateFeaturedDemos().Count > 0) {
+                            <div class="FeaturesHeader">
+                                FEATURED TECHNICAL DEMOS
+                                <div class="Separator"></div>
+                            </div>
+                            }
+                            @foreach (var demo in Utils.GenerateFeaturedDemos()) {
+                                <table class="Banner Featured">
+                                    <tr>
+                                        <td class="LeftArea">
+                                            <div class="SmallScreenshotShadow">
+                                                <a href="@Url.Content(demo.NavigateUrl)">
+                                                    <img src="@Url.Content(demo.ImageUrl)" alt="@demo.Title" />
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="RightArea">
+                                            <h3>@demo.Title</h3>
+                                            @Html.Raw(demo.Description)
+                                            <a href="@Url.Content(demo.NavigateUrl)" class="SeeDemo">See demo</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            }
+                            @RenderBody()
+                        </div>
+                    }
+                    else {
+                        <div id="DemoArea">
+                            @if (!Utils.IsOverview) {
+                                @RenderBody()
+                                <div class="Clear"></div>
+                                @Html.Partial("DemoTabsPartial")
+                            }
+                            else {
+                            <table class="OverviewArea">
+                                <tr>
+                                    <td class="LeftArea">
+                                        @RenderBody()
+                                        <div class="Description">
+                                            <span class="Title">@Utils.GetDescriptionTitle()</span>
+                                            <div class="TextContent">@Html.Raw(Utils.CurrentDemo.Description)</div>
+                                        </div>
+                                    </td>
+                                    <td class="RightArea">
+                                        <div class="TextContent">
+                                        @if (Utils.CurrentDemoPage.SeeAlsoLinks.Count > 0) {
+                                            <span class="Title">Resources to Learn</span>
+                                            <ul>
+                                            @foreach (var sa in Utils.CurrentDemoPage.SeeAlsoLinks) {
+                                                <li><a href="@Utils.EncodeUrl(Url.Content(sa.Url))">@sa.Title</a></li>
+                                            }
+                                            </ul>
+                                        }
+                                        </div>
+                                        <div class="TextContent KeyFeatures">
+                                        @if (Utils.CurrentOverview.KeyFeatures.Count > 0) {
+                                            <span class="Title">Key Features</span>
+                                            <ul>
+                                            @foreach (var keyFeature in Utils.CurrentOverview.KeyFeatures) {
+                                                <li>
+                                                    <span class="KeyFeatureName">@Html.Raw(keyFeature.GetNameHtml())</span>
+                                                    @if (!String.IsNullOrEmpty(keyFeature.Description)) {
+                                                        <div class="KeyFeatureDescription">@Html.Raw(keyFeature.Description)</div>
+                                                    }
+                                                </li>
+                                            }
+                                            </ul>
+                                        }
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            }
+                        </div>
+                    }
+                    </div>
+                }
+                </div>
+            </div>
+            <b class="Clear"></b>
+            @if (DemosModel.Current.IsRootDemo && !Utils.CurrentDemo.IsErrorPage) {
+                <div class="Separator"></div>
+                <div class="RootIntro">
+                    @RenderBody()
+                    <div class="Header">
+                        <h1>When only the best will do.</h1>
+                        Over 50 MVC Extensions
+                    </div>
+                    @Html.Partial("SearchPartial")
+                    @Html.Partial("ProductsPartial")
+                </div>
+            }
+            else if (Utils.CurrentDemo.IsErrorPage) {
+                <div class="Separator"></div>
+                @RenderBody()                
+            }
+            <div class="LayoutFooterSpacing"></div>
+        </div>
+    <div class="LayoutFooter">
+        <div class="LayoutLeft" @Html.Raw(Utils.GetAccessibilityRoleAttribute("contentinfo"))>
+            <div class="FooterInner">
+                <div class="Separator Orange"></div>
+                <div class="Version">
+                    Version: @Utils.GetVersionText()
+                </div>
+                <div class="Copyrights">
+                    Copyright &copy; 2006-@DateTime.Now.Year
+                    ZKZH
+                </div>
+            </div>
+        </div>
+        <div class="LayoutRight" @Html.Raw(Utils.GetAccessibilityRoleAttribute("complementary"))>
+            <div class="FooterInner">
+                <div class="Separator"></div>
+                @Html.Partial("FooterTextPartial")
+            </div>
+        </div>
+    </div>
+</body>
+</html>

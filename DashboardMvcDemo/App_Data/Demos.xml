@@ -1,0 +1,307 @@
+﻿<Demos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Demos.xsd" ExpandAllDemosAtFirstTime="true">
+  <DemoProduct Key="Dashboard" Url="DashboardDemos" IsMvc="true" Title="DevExpress ASP.NET MVC Dashboard" SeoTitle="ASP.NET MVC Dashboard Viewer" SupportsTheming="false" NavItemTitle="Dashboard">
+    <Keywords>
+      dashboard, dashboards, interactive, sales, resources
+    </Keywords>
+
+    <DownloadUrl>
+      http://go.devexpress.com/DevExpressDownload_UniversalTrial.aspx
+    </DownloadUrl>
+
+    <BuyUrl>
+      http://go.devexpress.com/DevExpress_AspDemos_BuyNow.aspx
+    </BuyUrl>
+
+    <DocUrl>
+      http://go.devexpress.com/Dashboard_Help.aspx
+    </DocUrl>
+
+    <IntegrationImageUrl></IntegrationImageUrl>
+    <Intro Title="Introduction" SeoTitle="ASP.NET MVC Dashboard Viewer">
+      <BannerTitle>
+        Simple and Easy-to-Use Dashboard Viewer for ASP.NET MVC
+      </BannerTitle>
+      <BannerText>
+        Easily share your findings and insights by publishing interactive professional-looking dashboards on the Web.
+      </BannerText>
+      <BannerImageUrl>~/Content/Screens.png</BannerImageUrl>
+      <BannerUrl>http://www.youtube.com/watch?v=eApetOTCxcU</BannerUrl>
+
+      <DescriptionTitle>Welcome to the online demo site of the Dashboard Viewer for ASP.NET MVC</DescriptionTitle>
+      <Description>
+        <![CDATA[
+            <p>
+                This website demonstrates some of the many features and capabilities available to you when using DevExpress Dashboard. These features include:
+            </p>
+            ]]>
+      </Description>
+    </Intro>
+
+    <Overview Title="Overview">
+      <DescriptionTitle>About Dashboard</DescriptionTitle>
+      <Description>
+        <![CDATA[
+              <p>The dashboard is displayed using the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17001">DashboardViewer extension</a> in ASP.NET MVC web applications. Follow three simple steps below to add the DevExpress DashboardViewer extension and display the dashboard within this extension.</p>
+              
+              <p>1. Model. First, you will need a Model object for the DashboardViewer to bind to. <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16307">Create a dashboard at design time</a> within Visual Studio and assign its type to the Model's <a href="http://documentation.devexpress.com/#Dashboard/DevExpressDashboardWebMvcDashboardSourceModel_DashboardSourcetopic">DashboardSource</a> property.</p>
+              <code lang="CSharp">
+                 public class OverviewSettings {
+                     public static DashboardSourceModel Model {
+                         get {
+                             return new DashboardSourceModel() {
+                                 DashboardSource = typeof(OverviewDashboard),
+                             };
+                         }
+                     }
+                 }
+              </code>
+              <p>2. View. Next, declare the DashboardViewer extension inside the View. Declare the DashboardViewer extension inside of Partial View and define how AJAX requests will be routed back to your controller using the <a href="http://documentation.devexpress.com/#Dashboard/DevExpressDashboardWebMvcDashboardViewerSettings_CallbackRouteValuestopic">CallbackRouteValues</a> property.</p>
+              <code lang="html">
+                @model DashboardSourceModel
+                @Html.DevExpress().DashboardViewer(settings => {
+                    settings.Name = "dashboardViewer1";
+                    settings.CallbackRouteValues = new { 
+                        Controller = "Overview",
+                        Action = "OverviewPartial"
+                    };
+                    settings.ExportRouteValues = new { 
+                        Controller = "Overview", 
+                        Action = "OverviewPartialExport" 
+                    };
+                    settings.Width = new Unit("550px");
+                    settings.Height = new Unit("500px");
+                }).BindToSource(Model).GetHtml()
+              </code>
+              <br />
+              <p>3. Controller. Finally, the controller is where you will need to define the action methods that handle DashboardViewer's callbacks. The "OverviewPartial" action method below handles a callbacks, while OverviewSettings.Model gets settings from the model to pass to the View. </p>
+              <code lang="CSharp">
+                public partial class OverviewController : DemoController {
+		                public override string Name { get { return ""; } }
+
+		                public ActionResult Index() {
+			                return DemoView("Overview");
+		                }
+
+		                [ValidateInput(false)]
+		                public ActionResult OverviewPartial() {
+			                return PartialView("OverviewPartial", OverviewSettings.Model);
+		                }
+
+		                public FileStreamResult OverviewPartialExport() {
+			                return DashboardViewerExtension.Export("dashboardViewer1", OverviewSettings.Model);
+		                }
+	              }
+              </code>
+            ]]>
+      </Description>
+      <SeeAlso Url="http://www.devexpress.com/Products/NET/Dashboard/get-started.xml" Title="Getting Started" />
+      <SeeAlso Url="http://www.youtube.com/user/DeveloperExpress/search?query=Dashboards" Title="Training Videos" />
+      <SeeAlso Url="http://documentation.devexpress.com/#Dashboard/CustomDocument12049" Title="Documentation" />
+      <KeyFeature Name="Support for Multiple Datasource Types">
+        <Description>
+          <![CDATA[
+             The DevExpress Dashboard supports more than a dozen database servers from different vendors (e.g., MS SQL Server, MS Access Database, Oracle, etc.). You can use MS Analysis Services (OLAP) as a data source for the Dashboard. It works with all data objects supported by Visual Studio® .NET. In addition, you can bind a dashboard to XML data or any data object implementing the IEnumerable or IListSource interface.
+            ]]>
+        </Description>
+      </KeyFeature>
+      <KeyFeature Name="Helpful Dashboard Items">
+        <Description>
+          <![CDATA[
+             Dashboard Items represent UI elements used to visualize data within the dashboard in various ways.
+            ]]>
+        </Description>
+      </KeyFeature>
+      <KeyFeature Name="Interactivity Between Dashboard Items">
+        <Description>
+          <![CDATA[
+             The DevExpress Dashboard includes features that enable interaction between various dashboard items. These features include Master Filtering and Drill-Down.
+            ]]>
+        </Description>
+      </KeyFeature>
+      <KeyFeature Name="Data Shaping">
+        <Description>
+          <![CDATA[
+             The Dashboard allows you to perform various data shaping operations (such as grouping, sorting and filtering).
+            ]]>
+        </Description>
+      </KeyFeature>
+      <KeyFeature Name="Dashboard Layout">
+        <Description>
+          <![CDATA[
+             You can fully customize the dashboard layout. For instance, you can arrange and resize dashboard items, specify a dashboard title, etc.
+            ]]>
+        </Description>
+      </KeyFeature>
+      <KeyFeature Name="Printing and Exporting">
+        <Description>
+          <![CDATA[
+             The Dashboard provides the capability to print or export both individual items of a dashboard and the entire dashboard. You can use a wide range of options that allow you to customize a document before printing.
+            ]]>
+        </Description>
+      </KeyFeature>
+    </Overview>
+    
+    <DemoGroup Key="Samples" Title="Samples">
+      <Demo Key="SalesOverview" Title="Sales Overview" SeoTitle="Sales Overview Dashboard" HighlightedIndex="0" HighlightedImageUrl="~/Content/DemoIcons/SalesOverview.png">
+        <Description>
+          <![CDATA[<p>This dashboard shows statistics on sales of bicycles, related equipment and accessories.</p>
+		  <p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15150">grid</a> on the left shows sales breakdown by state. <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15264">Gauges</a> illustrate sales by the product category compared to target values. The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument14719">chart</a> visualizes sales through time by the product category.</p>
+		  <p><a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15251">Click one or several rows</a> in the grid to view data for required states on the chart and gauges. To reset the selection, use the Clear Master Filter button in the grid caption.</p>
+		  <p>You can select a time interval in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15265">Range Filter</a> at the bottom to filter by date. For this, use its selection thumbs or select the required interval from the context menu.</p>
+		  <p>To view the dashboard in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16939">full screen mode</a> that provides the best look for your tablet computer, click Full Screen View at the top right.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/SalesOverviewPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/SalesOverview.cs</SourceFile>
+        <HighlightedDescription>
+          Shows statistics on sales of bicycles, related equipment and accessories.
+        </HighlightedDescription>
+      </Demo>
+      <Demo Key="SalesPerformance" Title="Sales Performance" SeoTitle="Sales Performance Dashboard"  HighlightedIndex="1" HighlightedImageUrl="~/Content/DemoIcons/SalesPerformance.png">
+        <Description>
+          <![CDATA[<p>This dashboard displays sales performance parameters YTD.</p>
+      <p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16487">map</a> indicates sales by state in different <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16486">colors</a>. Use the Values button in the map caption to switch between different values. You can also select one or several states in the map to view sales data for specific states. To reset the selection, use the Clear Master Filter button in the map caption.</p>
+		  <p><a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15263">Cards</a> at the right show key sales metrics <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15374">compared to the target</a>. The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15150">grid</a> displays sales by product and marks top 5/bottom 5 products. Moreover, Revenue values are colored depending on whether they greater or less than average.</p>
+      <p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument14719">chart</a> illustrates monthly sales for top five products.</p>
+		  <p>To view the dashboard in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16939">full screen mode</a> that provides the best look for your tablet computer, click Full Screen View at the top right.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/SalesPerformancePartial.cshtml</SourceFile>
+        <SourceFile>~/Models/SalesPerformance.cs</SourceFile>
+        <HighlightedDescription>
+          Displays sales performance parameters YTD.
+        </HighlightedDescription>
+      </Demo>
+      <Demo Key="SalesDetails" Title="Sales Details" SeoTitle="Sales Details Dashboard">
+        <Description>
+          <![CDATA[<p>This dashboard provides an in-depth view of sales data.</p>
+		  <p>Use <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17659">list boxes</a> on the left to view data for individual categories and states.</p>
+		  <p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15263">cards</a> on the right display sales by product. <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17490">Click the desired card</a> to see product sale details along with underlying data.</p>
+		  <p>You can also select the value to display within cards. Use the Values button in the caption to switch between Revenue, Units Sold, and Returns.</p>
+      <p>To view the dashboard in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16939">full screen mode</a> that provides the best look for your tablet computer, click Full Screen View at the top right.</p>]]>
+		</Description>
+        <SourceFile>~/Views/Samples/SalesDetailsPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/SalesDetails.cs</SourceFile>
+        <SourceFile>~/Scripts/SalesDetailsData.js</SourceFile>
+      </Demo>
+      <Demo Key="RevenueAnalysis" Title="Revenue Analysis" SeoTitle="Revenue Analysis Dashboard">
+        <Description>
+          <![CDATA[<p>This dashboard shows revenue data.</p>
+			<p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument14719">bar chart</a> shows the revenue by year, while the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15262">pies</a> show the revenue and number of units sold by the product category.</p>
+      <p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15266">pivot table</a> shows the revenue and number of units sold by product and state. Revenue data cells are colored using color ranges depending on they values while top states and the best category are marked.</p>
+			<p>To view the dashboard in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16939">full screen mode</a> that provides the best look for your tablet computer, click Full Screen View at the top right.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/RevenueAnalysisPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/RevenueAnalysis.cs</SourceFile>
+      </Demo>
+      <Demo Key="HumanResources" Title="Human Resources" SeoTitle="Human Resources Dashboard">
+        <Description>
+          <![CDATA[<p>This dashboard contains human resources department statistics.</p>
+				<p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15150">grid</a> and <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15263">cards</a> on the left show staff turnover through time and staff turnover breakdown by department respectively. If the turnover rate exceeds 1%, the value gets marked with a <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15374">warning</a> - an orange circle. <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument14719">Bar charts</a> and <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15262">pies</a> show payroll structure and work absence reason statistics for <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15696">top 5</a> employees and for the entire company.</p>
+				<p>In the grid, you can <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15251">select years</a> to filter data in pies, bar charts and cards. You can also click a selected row to <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15252">drill-down</a> to months and select a required month in the same manner. To drill up, click the Drill Up button in the grid dashboard item's caption.</p>
+				<p>You can also <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15380">select cards</a> to filter data in bar charts and pies by department.</p>
+				<p>To view the dashboard in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16939">full screen mode</a> that provides the best look for your tablet computer, click Full Screen View at the top right.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/HumanResourcesPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/HumanResources.cs</SourceFile>
+      </Demo>
+      <Demo Key="CustomerSupport" Title="Customer Support" SeoTitle="Customer Support Dashboard">
+        <Description>
+          <![CDATA[<p>This dashboard shows data from customer support service statistics.</p>
+				<p><a href="http://documentation.devexpress.com/#Dashboard/CustomDocument14719">Charts</a> on the left show the number of opened issues through time and the number of processed issues by platform. The charts on the right show the average response time in the same manner.</p>
+				<p>In both bar charts, you can <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument14948">drill down</a> from platforms to support engineers. To do this, click any bar, and the chart will show data for this platform by employee. To drill up, click the Drill Up button in the dashboard item's caption.</p>
+				<p>You can also select a time interval in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15265">Range Filter</a> at the bottom to filter data by date.</p>
+				<p>To view the dashboard in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16939">full screen mode</a> that provides the best look for your tablet computer, click Full Screen View at the top right.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/CustomerSupportPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/CustomerSupport.cs</SourceFile>
+      </Demo>
+    <Demo Key="RevenueByIndustry" Title="Revenue by Industry" SeoTitle="Revenue by Industry Dashboard">
+      <Description>
+        <![CDATA[<p>This dashboard displays revenue data by industry.</p>
+		  <p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17659">list box</a> on the left lists US industries, while the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16505">map</a> indicates revenues for all industries based on geographic locations.</p>
+		  <p>You can <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17661">select list box values</a> to view revenue distribution for specific industries.</p>
+      <p>The map supports <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17225">clustering</a> which is used to aggregate bubbles based on map size or zoom level. <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16506">Click map bubbles/callouts</a> to view the industries present in the selected region/city.</p>
+		  <p>To reset selection, use the Clear Master Filter button.</p>]]>
+      </Description>
+      <SourceFile>~/Views/Samples/RevenueByIndustryPartial.cshtml</SourceFile>
+      <SourceFile>~/Models/RevenueByIndustrySupport.cs</SourceFile>
+    </Demo>
+      <Demo Key="EnergyConsumption" Title="Energy Consumption" SeoTitle="Energy Consumption Dashboard">
+			<Description>
+				<![CDATA[<p>This dashboard shows energy consumption by country.</p>
+	  		<p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16505">bubble map</a> indicates the energy production for each country via the bubble size, while the energy shortage is expressed via the bubble color.</p>
+	  		<p>You can <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16506">select individual countries</a> on the map to see more detailed information. The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15262">pie</a> shows energy consumption by sector for the selected country.</p>
+	  		<p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument14719">chart</a> displays energy consumption by sector over time. Use the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17633">Parameters</a> button in the dashboard title to display energy statistics in different years.</p>]]>
+			</Description>
+			<SourceFile>~/Views/Samples/EnergyConsumptionPartial.cshtml</SourceFile>
+			<SourceFile>~/Models/EnergyConsumption.cs</SourceFile>
+		</Demo>
+		<Demo Key="EnergyStatistics" Title="Energy Statistics" SeoTitle="Energy Statistics Dashboard">
+			<Description>
+				<![CDATA[<p>This dashboard shows energy statistics by country.</p>
+	  		<p>The <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16505">pie map</a> on the left shows the energy production and import for european countries, and indicates the contribution of each energy type to the total values. Use the Values button in the map caption to switch between the production and import.</p>
+	  		<p>You can <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument16506">select required countries</a> to see detailed information. <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15263">Cards</a> show energy production compared to import for the selected countries. <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15380">Select the energy type</a> to see the domestic share and the variation of the energy production over time for each country in the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument15150">grid</a>. Note that the domestic share values are colored depending on their values.</p>
+	  		<p>To reset the selection, use Clear Master Filter buttons. Use the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17633">Parameters</a> button in the dashboard title to display energy statistics in different years.</p>]]>
+			</Description>
+			<SourceFile>~/Views/Samples/EnergyStatisticsPartial.cshtml</SourceFile>
+			<SourceFile>~/Models/EnergyStatistics.cs</SourceFile>
+		</Demo>
+    <Demo Key="WebsiteStatistics" Title="Website Statistics" SeoTitle="Website Statistics Dashboard">
+      <Description>
+        <![CDATA[<p>This dashboard displays website statistics including traffic information and browser usage.</p>
+	  		<p>The dashboard contains two <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17586">groups</a>. The top group visualizes variations related to visitor count and allows you to filter this data by traffic sources using the <a href="http://documentation.devexpress.com/#Dashboard/CustomDocument17659">tree view</a> on the left.</p>
+	  		<p>The bottom group evaluates browser usage based upon browser version.</p>]]>
+      </Description>
+      <SourceFile>~/Views/Samples/WebsiteStatisticsPartial.cshtml</SourceFile>
+      <SourceFile>~/Models/WebsiteStatistics.cs</SourceFile>
+    </Demo>
+      <Demo Key="ChampionsLeagueStatistics" Title="Champions League Statistics" SeoTitle="Champions League Statistics Dashboard" HighlightedIndex="2" HighlightedImageUrl="~/Content/DemoIcons/ChampionsLeague.png">
+        <Description>
+          <![CDATA[<p>This dashboard displays the UEFA Champions League statistics by football clubs for three seasons.</p>
+          <p>The <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument114805">Scatter Chart</a> visualizes league statistics for countries whose clubs participated at least in one season. <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument114808">Click</a> the required bubble to see country statistics by season on the <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument14752">Bar Chart</a> below. You can also double-click bubbles to <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument114809">drill down</a> to detailed statistics by club. Besides, you can select bars on the Bar Chart below to filter the Scatter Chart by corresponding seasons.</p>
+          <p>The <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument15266">pivot table</a> on the right shows goal difference statistics by clubs for all seasons. You can also use the <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument17659">Combo Box</a> above to filter the pivot by countries.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/ChampionsLeagueStatisticsPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/ChampionsLeagueStatistics.cs</SourceFile>
+        <HighlightedDescription>
+          Displays the UEFA Champions League statistics by football clubs for three seasons.
+        </HighlightedDescription>
+      </Demo>
+      <Demo Key="ProductDetails" Title="Product Details" SeoTitle="Product Details Dashboard">
+        <Description>
+          <![CDATA[<p>This dashboard allows you to visualize sales details for individual products.</p>
+          <p>The <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument15268">text box</a> on the left contains a detailed product description and sales summary while the <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument15267">bound images</a> show the appearance of this product. On the right part of the dashboard, you can see product sales through time and <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument17622">filter data</a> by the required company.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/ProductDetailsPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/ProductDetails.cs</SourceFile>
+      </Demo>
+      <Demo Key="EUTradeOverview" Title="EU Trade Overview" SeoTitle="EU Trade Overview Dashboard" IsNew="true">
+        <Description>
+          <![CDATA[<p>This dashboard provides insights to trade statistics between EU and its main partners in the 2015 year. A <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument117175">Treemap</a> dashboard item is used to visualize import and export statistics by product groups and individual products. You can switch between import and export values using a drop-down menu in the Treemap caption.</p>
+<p>Use the Partner <a href="https://documentation.devexpress.com/#Dashboard/CustomDocument17622">filter element</a> to see import/export statistics between EU and a desired partner. You can also filter a dashboard by a product group.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/EUTradeOverviewPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/EUTradeOverview.cs</SourceFile>
+      </Demo>
+      <Demo Key="Tasks" Title="计划看板" SeoTitle="生产计划与执行情况看板" IsNew="true">
+        <Description>
+          <![CDATA[<p>ZKZH.</p>]]>
+        </Description>
+        <SourceFile>~/Views/Samples/TasksPartial.cshtml</SourceFile>
+        <SourceFile>~/Models/TasksDashboard.cs</SourceFile>
+      </Demo>
+    </DemoGroup>
+  </DemoProduct>
+  <Search>
+    <Synonyms>
+      <Group>datasource, databinding, binding, database, databind</Group>
+      <Group>grid, gridview, gridviewcontrol, aspxgridview</Group>
+      <Group>eXpress, Persistent, xpo</Group>
+    </Synonyms>
+    <Exclusions>
+      <Words>devexpress, dx, asp, devex, asp.net, demo, demos, web</Words>
+      <Prefixes>aspx, asp, xtra, client, dx, web</Prefixes>
+      <Postfixes>s, ing, control, e, ies</Postfixes>
+    </Exclusions>
+  </Search>
+  <GlobalHeader LogoPlatformSubject="ASP.NET MVC" LogoPlatformDescription="THE WEB, YOUR WAY"/>
+</Demos>

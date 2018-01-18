@@ -1,0 +1,74 @@
+﻿<script type="text/javascript">
+    DXDemo.CurrentThemeCookieKey = "@Utils.CurrentThemeCookieKey";
+</script>
+
+<a href="javascript:void(0)" class="ThemeButton" title="Current Theme: @Utils.CurrentThemeTitle" id="ThemeButton">
+@Html.DevExpress().Image(s => {
+    s.Name = "tPic";
+    s.Properties.SpriteCssClass = "Icon";
+}).GetHtml()
+THEMES
+@Html.DevExpress().Image(s => {
+    s.Name = "tGlyph";
+    s.Properties.SpriteCssClass = "Glyph";
+}).GetHtml()
+</a>
+
+@functions {
+    void RenderThemes(List<ThemeGroupModel> themeGroups){
+        foreach (ThemeGroupModel themeGroup in themeGroups) {
+            ViewContext.Writer.Write(string.Format("<div class=\"ThemeColumnItem\"><div class=\"ThemeGroup\">{0}</div>", themeGroup.Title.ToUpper()));
+            Html.DevExpress().Menu(menuSettings => {
+                menuSettings.Name = "ThemeGroupMenu" + themeGroup.Name;
+                menuSettings.ControlStyle.CssClass = "ThemeGroupMenu";
+                menuSettings.Orientation = Orientation.Vertical;
+                menuSettings.EnableTheming = false;
+                menuSettings.ItemImagePosition = ImagePosition.Left;
+
+                foreach (ThemeModel theme in themeGroup.Themes) {
+                    MVCxMenuItem menuItem = menuSettings.Items.Add(theme.Title, theme.Name);
+                    menuItem.Image.SpriteProperties.CssClass = "DemoSprite " + theme.SpriteCssClass;
+                    menuItem.Selected = (theme.Name == Utils.CurrentTheme);
+                }
+
+                menuSettings.SetItemTextTemplateContent(c => {
+                    ViewContext.Writer.Write(string.Format("<div class=\"ThemeIco\"><span class=\"Theme{0}\"></span></div>{1}", c.Item.Name, c.Item.Text));
+                });
+
+                menuSettings.ClientSideEvents.ItemClick = "function(s,e){ DXDemo.SetCurrentTheme(e.item.name); }";
+            }).GetHtml();
+            ViewContext.Writer.Write("</div>");
+        }
+    }
+}
+
+@Html.DevExpress().PopupControl(
+    settings => {
+        settings.Name = "ThemeSelectorPopup";
+        settings.EnableTheming = false;
+        settings.ControlStyle.CssClass = "ThemeSelectorPopup";
+        settings.ShowShadow = false;
+        settings.ShowHeader = false;
+        settings.PopupAnimationType = AnimationType.None;
+
+        settings.PopupElementID = "ThemeButton";
+        settings.PopupHorizontalAlign = PopupHorizontalAlign.RightSides;
+        settings.PopupVerticalAlign = PopupVerticalAlign.TopSides;
+        settings.PopupHorizontalOffset = 24;
+        settings.PopupVerticalOffset = -19;
+        settings.PopupAlignCorrection = PopupAlignCorrection.Disabled;
+        
+        settings.PopupAction = PopupAction.LeftMouseClick;
+        settings.Width = Unit.Pixel(450);
+        settings.ClientSideEvents.Init = "DXSelectorPopupContainer_Init";
+        
+        settings.SetContent(() => {
+            ViewContext.Writer.Write("<div class=\"ButtonWrapper\"><div class=\"ThemeButtonBorder\"></div></div>");
+            ViewContext.Writer.Write("<div class=\"ButtonWrapperBtmBorder\"></div><b class=\"Clear\"></b>");
+            ViewContext.Writer.Write("<div class=\"ContainerWrapper\"><div class=\"ThemeContainer\"><div class=\"ThemeColumnLeft\">");
+            RenderThemes(ThemesModel.Current.LeftGroups);
+            ViewContext.Writer.Write("</div><div class=\"ThemeColumnRight\">");
+            RenderThemes(ThemesModel.Current.RightGroups);
+            ViewContext.Writer.Write("</div><b class=\"Clear\"></b></div></div>");
+        });
+    }).GetHtml()

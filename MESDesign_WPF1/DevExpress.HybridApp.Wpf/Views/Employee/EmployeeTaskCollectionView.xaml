@@ -1,0 +1,207 @@
+﻿<UserControl
+            xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+            xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+            xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
+            xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+            xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+            xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+            xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing"
+            xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+            xmlns:viewmodel="clr-namespace:DevExpress.DevAV.ViewModels"
+            xmlns:cview="clr-namespace:DevExpress.DevAV.Common.View"
+            xmlns:views="clr-namespace:DevExpress.DevAV.Views"
+            xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+            xmlns:devav="clr-namespace:DevExpress.DevAV;assembly=DevExpress.DevAV.v16.2.Data"
+            xmlns:view="clr-namespace:DevExpress.DevAV.Views"
+            xmlns:dxei="http://schemas.devexpress.com/winfx/2008/xaml/editors/internal"
+            xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v16.2" x:Class="DevExpress.DevAV.Views.TaskCollectionView"
+            mc:Ignorable="d"
+            DataContext="{dxmvvm:ViewModelSource {x:Type viewmodel:EmployeeTaskCollectionViewModel}}">
+    <UserControl.Resources>
+        <dxmvvm:ObjectToObjectConverter x:Key="PriorityToImageConverter">
+            <dxmvvm:MapItem Source="Low" Target="pack://application:,,,/Resources/Priority/LowPriority.png"/>
+            <dxmvvm:MapItem Source="Normal" Target="pack://application:,,,/Resources/Priority/NormalPriority.png"/>
+            <dxmvvm:MapItem Source="High" Target="pack://application:,,,/Resources/Priority/MediumPriority.png"/>
+            <dxmvvm:MapItem Source="Urgent" Target="pack://application:,,,/Resources/Priority/HighPriority.png"/>
+        </dxmvvm:ObjectToObjectConverter>
+        <ControlTemplate x:Key="ExpandToggleButtonTemplate"  TargetType="{x:Type ToggleButton}">
+            <ContentPresenter/>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Stretch="None" Source="pack://application:,,,/Resources/ArrowRight.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Stretch="None" Source="pack://application:,,,/Resources/ArrowLeft.png"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="PriorityColumnDispayTemplate">
+            <Image Height="24" Width="24" Source="{Binding Data.Priority, Converter={StaticResource PriorityToImageConverter}}"/>
+        </ControlTemplate>
+        <Style x:Key="completionColumnTotalSummaryContentStyle" TargetType="{x:Type ContentPresenter}">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel HorizontalAlignment="Right" Margin="{StaticResource totalSummaryMargin}">
+                            <TextBlock HorizontalAlignment="Right" Foreground="{StaticResource grayForegroundBrush}" TextTrimming="CharacterEllipsis" TextAlignment="Right" IsHitTestVisible="False"><Run Text="TOTAL # OF TASKS" /><LineBreak /><Run Text="{Binding Column.TotalSummaryText, Mode=OneWay}" Foreground="{StaticResource blackForegroundBrush}" FontWeight="Bold" /></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="{dxet:ProgressBarEditThemeKey ResourceKey=PanelBackgroundHorizontalTemplate, ThemeName=HybridApp}" TargetType="{x:Type ContentControl}">
+            <Border Background="Transparent" />
+        </ControlTemplate>
+        <ControlTemplate x:Key="{dxet:ProgressBarEditThemeKey ResourceKey=PanelLeftSideHorizontalTemplate, ThemeName=HybridApp}" TargetType="{x:Type ContentControl}">
+            <Border Background="#FF00879C" />
+        </ControlTemplate>
+        <ControlTemplate x:Key="{dxet:ProgressBarEditThemeKey ResourceKey=DisplayTemplate, ThemeName=HybridApp}">
+            <dxe:RangeEditBasePanel x:Name="PART_Editor" dxei:EditorMarginHelper.Margin="12,10,12,10,0,1,1,1" />
+        </ControlTemplate>
+    </UserControl.Resources>
+
+    <dxmvvm:Interaction.Behaviors>
+        <dxwui:WinUIMessageBoxService/>
+        <dxwui:WinUIDialogService />
+        <dx:WindowedDocumentUIService  WindowType="{x:Type dxwui:WinUIDialogWindow}">
+            <dx:WindowedDocumentUIService.WindowStyle>
+                <Style TargetType="{x:Type dxwui:WinUIDialogWindow}">
+                    <Setter Property="ShowTitle" Value="False"/>
+                </Style>
+            </dx:WindowedDocumentUIService.WindowStyle>
+        </dx:WindowedDocumentUIService>
+    </dxmvvm:Interaction.Behaviors>
+    <DockPanel>
+        <dxwui:AppBar DockPanel.Dock="Bottom" HideMode="AlwaysVisible">
+            <Label Content="提示信息：" HorizontalAlignment="Left" Height="89" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Foreground="Red" FontSize="60" Margin="0,0,-351,0"/>
+            <Label Content="请继续扫描物料条码" Height="89" Style="{DynamicResource SimpleLabel}" VerticalAlignment="Top" Margin="300,0,0,0" Background="White" Foreground="#FFFF0606" FontSize="60"/>
+        </dxwui:AppBar>
+        <!--<view:StaticFiltersPanel DockPanel.Dock="Left"/>-->
+        <dxlc:LayoutControl Orientation="Vertical">
+            <dxlc:LayoutGroup x:Name="工位状态" Header="工位状态" View="GroupBox" Background="#FF3E65EC">
+                <dxlc:LayoutItem Label="人员：" FontSize="18">
+                    <dxe:TextEdit IsReadOnly="True"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="工位：" FontSize="18">
+                    <dxe:TextEdit IsReadOnly="True"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="工序：" FontSize="18">
+                    <dxe:TextEdit IsReadOnly="True"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="工位状态：" Height="34" LabelHorizontalAlignment="Right" Margin="50,0,0,0" FontSize="18">
+                    <Ellipse Fill="#FF30EA27" Stroke="Black" Width="34"/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup x:Name="扫码区域" Header="扫码区域" Background="#FF3E65EC" View="GroupBox" Orientation="Vertical">
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="移转编号" FontSize="18">
+                        <dxe:TextEdit/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="标准工时" FontSize="18" Width="120">
+                        <dxe:TextEdit IsReadOnly="True"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="开始时间" FontSize="18">
+                        <dxe:TextEdit IsReadOnly="True"/>
+                    </dxlc:LayoutItem>
+                    <dx:SimpleButton Content="开工" Width="75" IsEnabled="True" ButtonKind="Simple" Visibility="Visible"/>
+                    <dx:SimpleButton Content="完工" Width="75"/>
+
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+
+                    <ProgressBar Height="25" Style="{DynamicResource SimpleProgressBar}"/>
+
+                    <ToggleButton Content="暂停计时" Height="34" Width="75"/>
+
+                </dxlc:LayoutGroup>
+
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutGroup x:Name="工单信息" Header="工单信息" Background="#FF3E65EC" View="GroupBox" Orientation="Vertical">
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem Label="工单编号" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="计划数量" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="完成数量" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="流转类型" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem Label="产品名称" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="产品编号" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="计量单位" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="移转数量" FontSize="16">
+                            <dxe:TextEdit IsReadOnly="True"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup x:Name="作业指导" Header="作业指导" Background="#FF3E65EC" View="GroupBox" Height="116" ItemSpace="0" Width="220">
+                    <dxlc:LayoutItem Label="点击放大" VerticalAlignment="Stretch" RenderTransformOrigin="0.5,0.5" FontSize="6" Margin="-10">
+                        <dxlc:LayoutItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </dxlc:LayoutItem.RenderTransform>
+                        <dxe:ImageEdit Stretch="UniformToFill"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutGroup x:Name="物料信息" Header="物料信息" Background="#FF3E65EC" View="GroupBox" Height="78">
+                    <dxlc:LayoutItem Label="物料码" FontSize="18">
+                        <dxe:TextEdit/>
+                    </dxlc:LayoutItem>
+                    <dx:SimpleButton Content="一键叫料" Width="75"/>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup x:Name="不良送检" Header="不良送检" Background="#FF3E65EC" View="GroupBox" Height="78">
+                    <dxlc:LayoutItem Label="移转编码" FontSize="18">
+                        <dxe:TextEdit IsReadOnly="True"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="送检原因" FontSize="18" VerticalAlignment="Stretch">
+                        <dx:DropDownButton Content="DropDownButton" PopupContent="1,2,3"/>
+                    </dxlc:LayoutItem>
+                    <dx:SimpleButton Content="送检" Width="75"/>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+            <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True">
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" AllowGrouping="False" ShowGroupPanel="False"/>
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="物料编码"/>
+                <dxg:GridColumn FieldName="物料名称"/>
+                <dxg:GridColumn FieldName="单位"/>
+                <dxg:GridColumn FieldName="BOM数量"/>
+                <dxg:GridColumn FieldName="使用数量"/>
+            </dxg:GridControl>
+        </dxlc:LayoutControl>
+    </DockPanel>
+</UserControl>

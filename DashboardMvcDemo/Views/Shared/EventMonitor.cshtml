@@ -1,0 +1,16 @@
+﻿<div class="EventLogPanel">
+    <div id="EventLog" style="width:520px">
+    </div>
+    <input type="button" value="Clear" onclick="DXEventMonitor.Clear()" />
+</div>
+@if((bool)ViewData["ShowEventListPanel"]) {
+<div id="EventListContainer" class="EventListPanel">
+    Trace Events:<br />
+    @{
+        string[] events = (string[])ViewData["ClientSideEvents"];   
+    }
+    @for (int i = 0; i < events.Length; i++) {
+        <input type="checkbox" id="EventCheck@(events[i])" checked="checked" /><label for="EventCheck@(events[i])">@(events[i].Replace("_", " "))</label><br />
+    }
+</div>
+}

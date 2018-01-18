@@ -1,0 +1,35 @@
+@Html.DevExpress().GridView(gv=>{
+    gv.Name = "SearchGridView";
+    gv.CallbackRouteValues = new { Controller = "Pages", Action = "SearchGridViewPartial" };
+    gv.Width = Unit.Percentage(100);
+    gv.Styles.Cell.BorderBottom.BorderWidth = 0;
+
+    gv.KeyFieldName = "Id";
+    gv.Columns.Add(c => {
+        c.FieldName = "Id";
+        c.Caption = "Subject";
+        c.ColumnType = MVCxGridViewColumnType.HyperLink;
+        var properties = c.PropertiesEdit as HyperLinkProperties;
+        string urlFormatString = Url.Action("BlogPost", "Pages", new { id = "{0}" });
+        properties.NavigateUrlFormatString = HttpUtility.UrlDecode(urlFormatString);
+        properties.TextField = "Subject";
+        c.CellStyle.HorizontalAlign = HorizontalAlign.Left;
+    });
+    gv.PreviewFieldName = "Body";
+
+    gv.PreRender = (sender, e) => {
+        var gridView = (MVCxGridView)sender;
+        var query = ViewBag.Query;
+        if(!string.IsNullOrEmpty(query))
+            gridView.SearchPanelFilter = query;
+    };
+    
+    gv.Settings.ShowPreview = true;
+    gv.Settings.ShowColumnHeaders = false;
+    gv.SettingsSearchPanel.Visible = true;
+    gv.SettingsSearchPanel.SearchInPreview = true;
+    gv.SettingsBehavior.MaxPreviewTextLength = 250;
+    gv.SettingsPager.PageSize = 5;
+    gv.SettingsPager.EnableAdaptivity = true;
+    gv.SettingsText.EmptyDataRow = "Nothing matches the specified criteria";
+}).Bind(Model).GetHtml()

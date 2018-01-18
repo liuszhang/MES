@@ -1,0 +1,111 @@
+﻿
+
+@{
+    ViewBag.Title = "产品管理";
+}
+
+
+
+<h2>产品明细</h2>
+
+@(Html.DevExtreme().DataGrid()
+        .Columns(columns =>
+        {
+            columns.Add()
+                .DataField("Name")
+                .Caption("产品名称");
+            columns.Add()
+                .DataField("SeriNum")
+                .Caption("产品编码");
+            columns.Add()
+                .DataField("Count")
+                .Caption("库存数量");
+            columns.Add()
+                .DataField("TypeID")
+                .Caption("产品类型")
+                .Lookup(lookup => lookup
+                    .DataSource(d => d.WebApi().Controller("ProductTypesApi").LoadAction("Get").Key("ID"))
+                    .ValueExpr("ID")
+                    .DisplayExpr("Name")
+                );
+        })
+  .DataSource(d => d.WebApi().Controller("ProductsApi")
+    .LoadAction("GetProducts").Key("ID")
+    .InsertAction("PostProduct").Key("ID")
+    .UpdateAction("PutProduct").Key("ID")
+    .DeleteAction("DeleteProduct").Key("ID")
+ )
+
+.FilterRow(f => f.Visible(true))
+.HeaderFilter(f => f.Visible(true))
+.GroupPanel(p => p.Visible(true))
+.Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+.Height(600)
+.ShowBorders(true)
+.Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+.RemoteOperations(true)
+.Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+)
+
+
+<h2>按产品类型查看</h2>
+
+@(Html.DevExtreme().DataGrid()
+                                    .Columns(columns =>
+                                    {
+                                        //columns.Add()
+                                        //.Width(50)
+                                        //    .DataField("ID");
+
+                                        columns.Add()
+                                                                    .DataField("Name")
+                                                                    .Caption("类型");
+                                    })
+                                    .DataSource(d => d.WebApi().Controller("ProductTypesApi")
+                                        .LoadAction("Get").Key("ID")
+                                        .InsertAction("Post").Key("ID")
+                                        .UpdateAction("Put").Key("ID")
+                                        .DeleteAction("DeleteProductType").Key("ID")
+                                     )
+
+                                    .FilterRow(f => f.Visible(true))
+                                    .HeaderFilter(f => f.Visible(true))
+                                    //.GroupPanel(p => p.Visible(true))
+                                    .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                                    .Height(400)
+                                    .ShowBorders(true)
+
+                                    .MasterDetail(md => md
+                                        .Enabled(true)
+                                        .Template(@<text>
+
+                                            @(Html.DevExtreme().DataGrid()
+                                                             .Columns(columns =>
+                                                    {
+                                                                columns.Add()
+                                                        .DataField("Name")
+                                                        .Caption("产品名称");
+                                                                columns.Add()
+                                                        .DataField("SeriNum")
+                                                        .Caption("产品编码");
+                                                                columns.Add()
+                                                        .DataField("Count")
+                                                        .Caption("库存数量");
+                                                            })
+                                                                                            .DataSource(d => d.WebApi()
+                                                                                                .Controller("ProductTypesApi")
+                                                                                                .LoadAction("TypeList")
+                                                                                                .LoadParams(new { typeID = new JS("data.ID") })
+                                                                                            )
+                                            )
+
+                                        </text>)
+                                                                            )
+
+
+                                                                   .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+                                                                   .RemoteOperations(true)
+)
+
+
+

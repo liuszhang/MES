@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@(Html.DevExtreme().DataGrid()
+                                .Columns(columns =>
+                                {
+                                    columns.Add()
+                                        .DataField("Name")
+                                        .Caption("姓名");
+                                })
+                          .DataSource(d => d.WebApi().Controller("EmployeesApi")
+                            .LoadAction("GetEmployees").Key("ID")
+                            .InsertAction("PostEmployee").Key("ID")
+                            .UpdateAction("PutEmployee").Key("ID")
+                            .DeleteAction("DeleteEmployee").Key("ID")
+                         )
+
+                        .FilterRow(f => f.Visible(true))
+                        .HeaderFilter(f => f.Visible(true))
+                        .GroupPanel(p => p.Visible(true))
+                        .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                        .Height(300)
+                        .ShowBorders(true)
+                        .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true))
+                        .RemoteOperations(true)
+                        .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+)
+

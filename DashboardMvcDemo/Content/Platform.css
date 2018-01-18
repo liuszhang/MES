@@ -1,0 +1,878 @@
+﻿/* Tags */
+div.spacer 
+{
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+}
+div.hint 
+{ 
+    border: solid 1px #A8A8A8; 
+    background-color: #FEFFDE; 
+    color: #5A5A5A; 
+    padding: 10px; 
+    font-size: 10px; 
+}
+input, select, textarea
+{
+    font: 13px 'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif;
+}
+/* Demo Elements */
+.vertComponentContainer
+{
+	float:left; 
+}
+.vertOptionsPanel
+{
+	float:left; 
+	padding: 0px 20px;
+}
+.horizOptionsPanel
+{
+	width: 100%;
+}
+.vertOptionsPanel div,
+.horizOptionsPanel div
+{
+	float: left;
+	clear: both;
+}
+.vertOptionsPanel label,
+.horizOptionsPanel label
+{
+    display: block;
+    float: left;
+    width: 150px;    
+    clear: both;
+    padding: 4px 0px;
+}
+.vertOptionsPanel label.checkBox,
+.horizOptionsPanel label.checkBox,
+.vertOptionsPanel label.radio,
+.horizOptionsPanel label.radio
+{
+    clear: right;
+}
+
+.vertOptionsPanel input,
+.horizOptionsPanel input,
+.vertOptionsPanel select,
+.horizOptionsPanel select,
+.vertOptionsPanel textarea,
+.horizOptionsPanel textarea
+{
+    float: left;
+    display: block; 
+    margin: 1px 0px;
+}
+.vertOptionsPanel select,
+.horizOptionsPanel select
+{
+    margin: 2px 0px 1px;
+}
+.vertOptionsPanel input[type="checkbox"],
+.horizOptionsPanel input[type="checkbox"]
+{
+    clear: none;
+    padding: 0px;
+    height: 22px;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+.vertOptionsPanel input[type="checkbox"].leftMost,
+.horizOptionsPanel input[type="checkbox"].leftMost,
+.vertOptionsPanel input[type="radio"].leftMost,
+.horizOptionsPanel input[type="radio"].leftMost
+{
+    clear: left;
+}
+
+.vertOptionsPanel input[type="submit"],
+.horizOptionsPanel input[type="submit"],
+.vertOptionsPanel input[type="button"],
+.horizOptionsPanel input[type="button"]
+{
+    clear: both;
+    margin: 8px 0 0;
+    padding: 3px 12px;
+}
+.vertOptionsPanel#pivotGridExportOptionsPanel label
+{
+	width: 200px;
+}
+.horizOptionsPanel#pgFieldsCustomizationOptionsPanel label
+{
+	width: 170px;
+}
+.horizOptionsPanel#pgFieldsCustomizationOptionsPanel select
+{
+	width: 150px;
+}
+.horizOptionsPanel#pgFieldsCustomizationOptionsPanel label.longText
+{
+	clear: right;
+	width: 240px;
+}
+.horizOptionsPanel#pivotGridChartsIntegration label
+{
+	width: auto;
+	padding-right: 5px;
+}
+.horizOptionsPanel#pivotGridChartsIntegration input[type="checkbox"]
+{
+	margin-left: 5px;
+}
+.vertOptionsPanel#menuClientSideAPIPanel label
+{
+    width: 80px;    
+}
+.vertOptionsPanel#navBarDataBindingPanel label
+{
+    width: 50px;    
+}
+.vertOptionsPanel#navBarFeaturesPanel label
+{
+    width: 130px;    
+}
+.vertOptionsPanel#navBarClientSideAPIPanel label
+{
+    width: 90px;    
+}
+.vertOptionsPanel#popupControlFeaturesPanel label
+{
+    width: 180px;    
+}
+.vertOptionsPanel#popupControlFeaturesPanel select
+{
+	width: 130px;
+}
+.vertOptionsPanel#popupControlFeaturesPanel input[type="text"]
+{
+	width: 50px;
+}
+.vertOptionsPanel#popupControlFeaturesPanel div
+{
+    width: 400px;
+}
+.vertOptionsPanel#roundPanelFeaturesPanel label
+{
+    width: 60px;    
+}
+.vertOptionsPanel#treeViewClientSideAPIPanel label
+{
+    width: 90px;    
+}
+.vertOptionsPanel#treeViewClientSideAPIPanel div
+{
+    width: 270px;
+}
+.horizOptionsPanel#splitterClientSideAPIPanel label
+{
+    width: 200px;    
+}
+.horizOptionsPanel#splitterClientSideAPIPanel select
+{
+    width: 105px;    
+}
+.horizOptionsPanel#splitterClientSideAPIPanel input[type="button"]
+{
+    clear: none;
+    margin: 0px 8px;
+}
+.vertOptionsPanel#tabControlFeaturesPanel div
+{
+    width: 250px;
+}
+.vertOptionsPanel#tabControlFeaturesPanel select
+{
+    width: 95px;
+}
+.horizOptionsPanel#tabControlClientSideAPIPanel label
+{
+    width: 90px;    
+}
+.horizOptionsPanel#tabControlClientSideAPIPanel div
+{
+    width: 700px;
+}
+.horizOptionsPanel#tabControlClientSideAPIPanel input[type="button"]
+{
+    clear: none;
+    margin-top: 2px;
+}
+.vertOptionsPanel#htmlEditorFeaturesPanel label
+{
+    width: 120px;    
+}
+.vertOptionsPanel .validationMessage
+{
+    float: left;
+    display: block; 
+    margin: 4px 10px;
+    color: red;
+    font-size: 11px;
+}
+.vertOptionsCell td
+{
+    padding: 5px;
+}
+.vertOptionsCell label
+{
+    white-space: nowrap;
+}
+
+.EventListPanel input[type="checkbox"]
+{
+    margin-right: 5px;
+    margin-top: 1px;
+}
+.EventLogPanel input[type="button"]
+{
+    padding: 3px 12px;
+}
+
+.imageSliderFeaturesPanel select, .imageSliderFeaturesPanel label
+{
+	width: 180px;
+}
+.imageSliderFeaturesPanel .navigationBar label 
+{
+	width: 280px;
+}
+
+.CreateDatabasePanel .text
+{
+    padding: 8px 0;
+}
+
+.performace_test_result
+{
+    margin: 8px 0;
+}
+
+.performace_test_result td
+{
+    padding: 4px 8px 4px 0;
+    white-space: nowrap;
+}
+
+.employee_form .employee_panel
+{
+    float: left;
+    display: block;
+    padding-right: 30px;
+    width: 150px;
+    height: 400px;
+}
+.employee_form .details_panel
+{
+    float: left;
+    display: block;
+    width: 650px;
+    height: 370px;
+}
+.employee_form .text
+{
+    padding: 4px 0px;
+}
+.employee_form .column
+{
+    float: left;
+}
+.employee_form .column div
+{
+}
+.employee_form .column label
+{
+    display: table-cell;
+    font-weight: bold;
+    padding: 4px 0px;
+    width: 85px;
+    vertical-align: middle;
+}
+.employee_form .column span
+{
+    display: table-cell;
+    padding: 4px 0px;
+    width: 470px;
+}
+
+.templateTable {
+	border-collapse: collapse;
+    width: 100%;
+}
+.templateTable td {
+	border: solid 1px #C2C2C2;
+	padding: 2px;
+}
+.templateCaption td.caption {
+	background: #ECF2F3;
+}    
+
+table.sitemap
+{
+    font-family: Tahoma,Arial; 
+    text-align: left;
+}
+table.sitemap th
+{
+    font-size: 12pt; 
+    font-weight: normal; 
+    color: #283B56;
+    border-bottom: 3px solid #D2E5FF;
+    padding: 1px 1px 1px 10px;
+    text-align: left;
+}
+table.sitemap ul
+{
+    margin-top: -4px;
+    color:#5689C5;
+    padding-left: 40px;
+}
+table.sitemap li
+{
+    margin-left: -16px;
+    padding: 1px;
+}
+table.sitemap a
+{
+    font-size:9pt; 
+    color:#5689C5;
+    text-decoration: underline;
+}
+label.technologyTitle
+{
+    font-size: 10px; 
+    color: #003399; 
+    font-weight: bold;
+    display: block;
+    margin: 2px 0px;
+}
+input[type="checkbox"].technology
+{
+    margin-right: 2px;
+}
+
+.edit_form .line
+{
+    display: block;
+    float: left;
+    clear: both;
+    width: 620px;
+    margin: 1px 0px;
+}
+.edit_form .label,
+.edit_form .wideLabel
+{
+    display: block;
+    float: left;
+    width: 120px;    
+    clear: left;
+    padding: 4px 0px;
+}
+.edit_form .wideLabel
+{
+	width: 200px;
+}
+.edit_form .editor
+{
+    float: left;
+    margin-right: 8px;
+    width: 180px;
+}
+.edit_form .checkEditor
+{
+    float: left;
+    margin-right: 8px;
+}    
+.edit_form .button
+{    
+    margin: 8px 4px 0px 0px;
+    float: left;
+}
+.edit_form .validator
+{   
+    display: block;    
+    float: left;
+    clear: right;
+    padding: 3px 0px; 
+    color: red;
+    font-family: Verdana;
+    font-size: 8pt;
+}
+.edit_form#validationForm .label
+{
+    width: 80px;    
+}
+.edit_form#popupControlForm .label
+{
+    width: 70px;    
+}
+.edit_form#popupControlForm .button
+{
+    margin: 8px 4px 84px 0px;
+}
+.edit_form#popupForm .label
+{
+    width: 70px;    
+}
+.edit_form#jQueryValidationForm .line
+{
+	width: 230px;
+}
+.edit_form#popupForm .line
+{
+    width: 300px;    
+}
+.details_form
+{
+    padding: 8px 0px;
+}
+.details_form .image
+{
+    display: block;    
+    float: left;
+    clear: left;
+    margin-right: 8px;
+}
+.details_form .memo
+{
+    float: left;
+    clear: right;
+}
+
+.pager_template
+{
+    height: 32px;
+}
+.pager_template div.left
+{
+    padding: 3px;
+    float: left;
+    height: 30px;
+    width: 600px;
+}
+.pager_template div.right
+{
+    padding: 3px;
+    float: right;
+    height: 30px;
+    width: 200px;
+}
+.pager_template .button
+{
+    float: left;
+    margin: 2px;
+}
+.pager_template .editor
+{
+    float: left;
+    margin: 3px 0px 1px;
+}
+.pager_template label
+{
+    float: left;
+    display: block;
+    margin: 2px 4px;
+    padding: 4px 0px;
+}
+
+.selection_form .values_panel
+{
+    float: left;
+    display: block;
+    padding-right: 15px;
+    width: 150px;
+    height: 300px;
+}
+.selection_form .text
+{
+    padding: 4px 0px;
+}
+.selection_form .grid
+{
+    float: left;
+    width: 530px;
+}
+
+.menu_scrolling_frame
+{
+    border:1px solid #D5D7DC;
+    height:300px;
+    overflow:hidden;
+    width:100%;
+}
+
+.editorsPanel
+{
+	float:left; 
+	text-align:left; 
+	width: 800px;
+}
+
+.editorsPanel div.trackBarContainer
+{
+	float:left; 
+	text-align:left;
+	width: 300px;
+	height: 80px;
+}
+
+.verticalTrackBar
+{
+	margin-left: 70px;
+}
+
+.verticalTrackBarLabel
+{
+	margin-top: 70px;
+}
+
+.trackBarPanel
+{
+	height: 440px;
+}
+
+.editorsPanel div.editorContainer 
+{
+	float:left; 
+	text-align:left; 
+	width: 220px;
+	padding: 2px 0px;
+}
+.editorsPanel label
+{
+    display: block;
+    float: left;
+    width: 400px;    
+    clear: right;
+    line-height: 150%;
+    padding: 0px 0px 24px;
+}
+
+.databinding_menu
+{
+    display: block;
+    float: left;
+    background-color: transparent;
+    border-width: 0px;
+}
+.databinding_panel
+{
+    display: block;
+    float: left;
+    clear: right;
+    padding: 130px 100px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.description_area 
+{ 
+    font-size: 12px; 
+    background-color: #FFFFFF; 
+    color: #3D3D3D; 
+    font-family: Verdana; 
+    line-height: 20px; 
+    margin: 0px; 
+}
+.description_area img  
+{
+    cursor: pointer; 
+    vertical-align: baseline; 
+    margin: 0px 0px 0px 1px; 
+}
+.description_area img  
+{
+    width: 10px; 
+    height: 20px; 
+    cursor: pointer; 
+    vertical-align: middle; 
+    margin: 0px 0px 0px 2px; 
+}
+.description_area span>img 
+{ 
+    vertical-align: top; 
+}
+.description_area span
+{
+    white-space: nowrap;    
+}
+
+.template_area
+{
+    float: left;
+    clear: right;
+    padding: 110px 0px;
+    width: 670px;
+    text-align: center;
+}
+.template_area span
+{
+    cursor: pointer;
+}
+.template_window img  
+{
+    border: solid 1px #F3F3F3; 
+}
+.template_window .hover  
+{
+    border: dotted 1px #454545; 
+}
+.template_window .help 
+{
+    background-color: #FFFBBA; 
+    border: 1px solid #BAAE6D; 
+    margin: 4px; 
+    color: #9E8A4F; 
+    padding: 4px;
+    display: none;
+}
+.template_window p.description 
+{
+    margin: 0px; 
+    padding: 0px; 
+}
+.template_window .blue_content  
+{
+    background-color: #B3DAE3; 
+    padding: 10px; 
+}
+.template_window .color_img  
+{
+    cursor: pointer;
+    border: solid 1px #F3F3F3;
+}
+.template_window .hover
+{
+    border: dotted 1px #454545;
+}
+.template_window .blue_content  
+{
+    background-color: #B3DAE3; 
+    padding: 10px; 
+}
+.template_window .blue_img  
+{
+    border: solid 1px #454545; 
+}
+.template_window .gray_content  
+{
+    background-color: #E9EBE6; 
+    padding: 10px; 
+}
+.template_window .gray_img  
+{
+    border: solid 1px #454545; 
+}
+.template_window .green_content  
+{
+    background-color: #B0DEA5; 
+    padding: 10px; 
+}
+.template_window .green_img  
+{
+    border: solid 1px #454545; 
+}
+.template_window .pink_content  
+{
+    background-color: #FCCDD9; 
+    padding: 10px; 
+}
+.template_window .pink_img  
+{
+    border: solid 1px #454545; 
+}
+.template_window .yellow_content  
+{
+    background-color: #F7E0C1; 
+    padding: 10px; 
+}
+.template_window .yellow_img  
+{
+    border: solid 1px #454545; 
+}
+
+.component_list 
+{
+	list-style: none none outside;
+	float:left;
+	margin: 0;
+	padding: 10px 0 10px 10px !important;
+	width: 215px;
+}
+.component_list_item 
+{
+	padding: 4px 0px 3px;
+}
+.component_list_item a
+{
+	text-decoration: none;
+}
+
+.imageGallery .item
+{
+    margin: 4px;
+    width: 100px;
+}
+.imageGallery .empty_collection_text
+{
+    color: Gray;
+}
+.imageGallery .text
+{
+    font-size: 8pt;
+}    
+.imageGallery .buttons
+{
+    padding: 8px 0px;
+}    
+
+form.imagePreview
+{
+    display: block;
+    float: left;
+    width: 650px;    
+    clear: both;
+}
+form.imagePreview .uploadContainer
+{
+    display: block;
+    float: left;
+    width: 380px;    
+    clear: left;
+}
+form.imagePreview .imageContainer
+{
+    display: block;
+    float: left;
+    clear: right;
+    
+    border: solid 2px gray;        
+    margin: 4px 0px 0px 15px;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+    text-align: center;    
+}
+form.imagePreview label
+{
+    display: block;
+    float: left;
+    width: 100px;    
+    clear: left;
+    margin: 4px 0px;
+}
+form.imagePreview .editorArea
+{
+    display: block;    
+    float: left;
+    width: 180px;
+    margin: 4px 0px;
+}    
+form.imagePreview .text
+{
+    font-size: 8pt;
+}    
+
+form.multiSelection .uploadContainer,
+form.cloud .uploadContainer
+{
+	float: left;
+    margin-right: 80px;
+}
+form.multiSelection .contentFooter,
+form.cloud .contentFooter
+{
+	clear: both;
+    padding-top: 20px;
+}
+
+.scrolling_Tab a 
+{
+	padding-left: 50px !important;
+	padding-right: 50px !important;
+}
+
+.pcTemplates
+{
+	float: left;
+}
+
+.pcTemplates .dxtc-strip
+{
+	float: left;
+	padding: 0;
+}
+
+.pcTemplates .dxtc-strip li {
+	display:block;
+	float:left;
+	margin:0;
+	height: 31px;
+}
+
+.pcTemplates .dxtc-content
+{
+	float: left;
+	border-top: none !important;
+}
+
+.componentTree .head
+{
+    font: 12pt;
+    float: left;
+    line-height: 48px;
+    padding: 0 4px;
+}
+.componentTree .body
+{
+    color: #494B50;
+    font: 8pt Verdana;
+    float: left;
+    height: 32px;
+    padding: 2px 4px;
+}
+.componentTree .link
+{
+    color: #0C3C8C;
+    text-decoration: none;
+}
+.componentTree .img
+{
+    margin: 2px;
+    float: left;
+}
+.chartOptionsPanel
+{
+	background: #FFFFFF;
+	border: solid 1px #CCCCCC;
+	width: auto;
+	padding: 16px 24px 16px 24px;
+}
+.reportOptionsPanel
+{
+	background: #F9F9FA;
+	border: solid 1px #D3D6DA;
+	-moz-box-shadow:inset 0px 1px 4px rgba(0, 0, 0, 0.117188);
+    -webkit-box-shadow:inset 0px 1px 4px rgba(0, 0, 0, 0.117188);
+    box-shadow:inset 0px 1px 4px rgba(0, 0, 0, 0.117188);
+	width: auto;
+	padding: 16px 24px 16px 24px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.reportBorder
+{
+	background: white;
+	border: solid 1px #8A8A8A;
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.34);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.34);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.34);
+	padding: 5px 5px 5px 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}

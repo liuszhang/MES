@@ -1,0 +1,33 @@
+<Themes>
+    <ThemeGroup Title="Defaults" Name="Defaults" Float="Left">
+        <Theme Title="Default" Name="" SpriteCssClass="ThemeDefaultImage"></Theme>
+        <Theme Title="DevExpress Style" Name="DevEx" SpriteCssClass="ThemeDevExImage" FontSize="11px" FontFamily="Verdana, Geneva, sans-serif"></Theme>
+        <Theme Title="Metropolis" Name="Metropolis" SpriteCssClass="ThemeMetropolisImage" BaseColor="#FF8800" FontSize="12px" FontFamily="'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Metropolis Blue" Name="MetropolisBlue" SpriteCssClass="ThemeMetropolisBlueImage" BaseColor="#0072C6" FontSize="12px" FontFamily="'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif"></Theme>
+    </ThemeGroup>
+    <ThemeGroup Title="Mobile" Name="Mobile" Float="Right">
+        <Theme Title="Moderno" Name="Moderno" SpriteCssClass="ThemeModernoImage" BaseColor="#1279c0" FontSize="14px" FontFamily="'Segoe UI','Helvetica Neue','Droid Sans',Arial,Tahoma,Geneva,Sans-serif"></Theme>
+        <Theme Title="iOS" Name="iOS" SpriteCssClass="ThemeiOSImage" BaseColor="#007BF7" FontSize="14px" FontFamily="'Segoe UI', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif"></Theme>
+		    <Theme Title="Material" Name="Material" SpriteCssClass="ThemeMaterialImage" BaseColor="#009688" FontSize="14px" FontFamily="'Roboto Regular', Helvetica, 'Droid Sans', Tahoma, Geneva, sans-serif"></Theme>
+    </ThemeGroup>
+    <ThemeGroup Title="Misc" Name="Misc" Float="Right">
+        <Theme Title="Aqua" Name="Aqua" SpriteCssClass="ThemeAquaImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Black Glass" Name="BlackGlass" SpriteCssClass="ThemeBlackGlassImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Glass" Name="Glass" SpriteCssClass="ThemeGlassImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Mulberry" Name="Mulberry" SpriteCssClass="ThemeMulberryImage" BaseColor="#BF4E6A" FontSize="14px" FontFamily="'Segoe UI','Helvetica Neue','Droid Sans',Arial,Tahoma,Geneva,Sans-serif"></Theme>
+        <Theme Title="Plastic Blue" Name="PlasticBlue" SpriteCssClass="ThemePlasticBlueImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Red Wine" Name="RedWine" SpriteCssClass="ThemeRedWineImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Soft Orange" Name="SoftOrange" SpriteCssClass="ThemeSoftOrangeImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Youthful" Name="Youthful" SpriteCssClass="ThemeYouthfulImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+    </ThemeGroup>
+    <ThemeGroup Title="Office 2010" Name="Office2010" Float="Left">
+        <Theme Title="Office 2010 Blue" Name="Office2010Blue" SpriteCssClass="ThemeOffice2010BlueImage" FontSize="11px" FontFamily="Verdana, Geneva, sans-serif"></Theme>
+        <Theme Title="Office 2010 Black" Name="Office2010Black" SpriteCssClass="ThemeOffice2010BlackImage" FontSize="11px" FontFamily="Verdana, Geneva, sans-serif"></Theme>
+        <Theme Title="Office 2010 Silver" Name="Office2010Silver" SpriteCssClass="ThemeOffice2010SilverImage" FontSize="11px" FontFamily="Verdana, Geneva, sans-serif"></Theme>
+    </ThemeGroup>
+    <ThemeGroup Title="Office 2003" Name="Office2003" Float="Left">
+        <Theme Title="Office 2003 Blue" Name="Office2003Blue" SpriteCssClass="ThemeOffice2003BlueImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Office 2003 Olive" Name="Office2003Olive" SpriteCssClass="ThemeOffice2003OliveImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+        <Theme Title="Office 2003 Silver" Name="Office2003Silver" SpriteCssClass="ThemeOffice2003SilverImage" FontSize="12px" FontFamily="Tahoma, Geneva, sans-serif"></Theme>
+    </ThemeGroup>
+</Themes>

@@ -1,0 +1,29 @@
+@Html.DevExpress().NavBar(nb => {
+    nb.Name = "BlogsCategoriesNavBar";
+    nb.Width = Unit.Percentage(100);
+    nb.AllowExpanding = false;
+    nb.ShowExpandButtons = false;
+    nb.ControlStyle.CssClass = "blogNavBar";
+    nb.Styles.GroupHeader.CssClass = "blogNabVarGroupHeader";
+    
+    nb.Groups.Add("Archive (All)").NavigateUrl = DevExpressHelper.GetUrl(new { Controller = "Pages", Action = "BlogTimeline" });
+    foreach(var yearsGroup in MES_MVC.Models.BlogPostsProvider.GetBlogsByCategories())
+    {
+        var navBarGroup = nb.Groups.Add(string.Format("{0} ({1})", yearsGroup.Key.ToString(), yearsGroup.Value.Sum(b => b.Value.Count())));
+        navBarGroup.NavigateUrl = DevExpressHelper.GetUrl(new {
+            Controller = "Pages", Action = "BlogTimeline", Year = yearsGroup.Key
+        });
+        foreach(var monthGroup in yearsGroup.Value)
+        {
+            var blogs = monthGroup.Value;
+            navBarGroup.Items.Add(i => {
+                var month = blogs.First().Date.ToString("MMMM");
+                i.Text = String.Format("{0} ({1})", month, blogs.Count());
+                i.NavigateUrl = DevExpressHelper.GetUrl(new {
+                    Controller = "Pages", Action = "BlogTimeline",
+                    Year = yearsGroup.Key, Month = monthGroup.Key
+                });
+            });
+        }
+    }
+}).GetHtml()

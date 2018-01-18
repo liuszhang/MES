@@ -1,0 +1,103 @@
+﻿@functions{
+    string GetRootNodeMarker() {
+        return Utils.IsIntro ? "Bold" : string.Empty;
+    }
+
+    void LoadTreeView(MVCxTreeViewNodeCollection nodes, DemoProductModel product) {
+        var demoProductNode = nodes.Add(product.NavItemTitle, string.Empty, string.Empty, Utils.GenerateDemoUrl(product.Intro));
+        demoProductNode.Name = product.Key;
+        if(product.IsNew)
+            SetNewMarker(demoProductNode);
+        LoadTreeView(product, demoProductNode);
+    }
+    void LoadTreeView(DemoProductModel product, MVCxTreeViewNode productNode) {
+        if (product.Overview != null) {
+            var overviewNode = productNode.Nodes.Add(product.Overview.Key, string.Empty, string.Empty, Utils.GenerateDemoUrl(product.Overview));
+            overviewNode.Name = string.Format("{0}_{1}", product.Key, product.Overview.Key);
+        }
+        foreach (var group in product.Groups) {
+            var groupNode = productNode.Nodes.Add(group.Title);
+            groupNode.Name = string.Format("{0}_{1}", product.Key, group.Key);
+            foreach (var demo in group.GetAllDemos()) {
+                var demoNode = groupNode.Nodes.Add(demo is OverviewPageModel ? demo.Key : demo.Title, string.Empty, string.Empty, Utils.GenerateDemoUrl(demo));
+                demoNode.Name = string.Format("{0}_{1}_{2}", product.Key, group.Key, demo.Key);
+                if (demo.IsUpdated)
+                    SetUpdatedMarker(demoNode);
+                if (demo.IsNew)
+                    SetNewMarker(demoNode);
+            }
+            if (group.IsNew)
+                SetNewMarker(groupNode);
+        }
+    }
+    void SetNewMarker(MVCxTreeViewNode node) {
+        if (!node.Text.Contains("<span"))
+            node.Text += "<span class=\"NewIco\"></span>";
+        SetUpdatedMarker(node.Parent);
+    }
+    void SetUpdatedMarker(TreeViewNode node) {
+        while (node != null) {
+            if (!node.Text.Contains("<span"))
+                node.Text += "<span class=\"UpdatedIco\"></span>";
+            node = node.Parent;
+        }
+    }
+}
+
+@if(Utils.IsSiteMode) {
+    <div class="IntroPageLink">
+        @if(Utils.RootProduct != null) {
+            @Html.DevExpress().Image(settings => {
+                settings.Name = "RootDemoIco";
+                settings.Properties.SpriteCssClass = "Ico";
+            }).GetHtml()
+            <a class="Text @GetRootNodeMarker()" href="@Url.Content(Utils.GenerateDemoUrl(Utils.RootProduct.Intro))">
+                @Utils.RootProduct.NavItemTitle
+            </a>
+        }
+    </div>
+}
+
+@Html.DevExpress().TreeView(settings => {
+    settings.Name = "NavigationTreeView";
+    settings.EnableTheming = false;
+    settings.ControlStyle.CssClass = "DemoTree";
+    settings.ShowTreeLines = false;
+    settings.ClientSideEvents.NodeClick = "DXDemo.treeViewNodeClick";
+    settings.ClientSideEvents.ExpandedChanging = "DXDemo.treeViewExpandedChanging";
+    settings.AccessibilityCompliant = true;
+    settings.EncodeHtml = false;
+    settings.Width = Unit.Pixel(268);
+            
+    if(!Utils.IsSiteMode) {
+        LoadTreeView(settings.Nodes, Utils.CurrentDemo.Product);
+    }
+    else {
+        foreach(var demoProduct in DemosModel.Instance.SortedDemoProducts) {
+            if(!demoProduct.HideNavItem && !demoProduct.IsRootDemo)
+                LoadTreeView(settings.Nodes, demoProduct);
+        }
+    }
+
+    if (DemosModel.Instance.ExpandAllDemosAtFirstTime) {
+        settings.SaveStateToCookies = true;
+        settings.SaveStateToCookiesID = "NavigationTreeViewState";
+    }
+    
+    settings.PreRender = (s, e) => {
+        var treeView = s as MVCxTreeView;
+        var node = treeView.Nodes.FindByName(Utils.CurrentDemoNodeName);
+        treeView.SelectedNode = node;
+        if(node != null) {
+            treeView.ExpandToNode(node);
+            node.Expanded = true;
+            while(node != null) {
+                node.NodeStyle.CssClass = "demo-selected";
+                node = node.Parent;
+            }
+        }
+        if (DemosModel.Instance.ExpandAllDemosAtFirstTime && Request.Cookies["NavigationTreeViewState"] == null) {
+            treeView.ExpandAll();
+        }
+    };
+}).GetHtml()

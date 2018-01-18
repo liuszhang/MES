@@ -1,0 +1,9 @@
+﻿@model DashboardSourceModel
+
+@Html.DevExpress().DashboardViewer(settings => {
+    settings.Name = "dashboardViewer1";
+    settings.CallbackRouteValues = new { Controller = "Overview", Action = "OverviewPartial" };
+    settings.ExportRouteValues = new { Controller = "Overview", Action = "OverviewPartialExport" };
+    settings.Width = new Unit("550px");
+    settings.Height = new Unit("500px");
+}).BindToSource(Model).GetHtml()

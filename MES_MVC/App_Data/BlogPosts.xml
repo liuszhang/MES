@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<BlogPosts>
+  <BlogPost>
+    <Id>0</Id>
+    <Category>ASP.NET</Category>
+    <Subject>Upcoming webinar: Give AdHoc Query Powers to Your ASP.NET Grid Users</Subject>
+    <DateString>2016-02-01 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image0.png</ImageUrl>
+    <Body>
+      Mehul and I will present a really cool webinar on one of our new WebForms controls, the ASPxQueryBuilder. Though this control is in beta, it offers a really nice way to your end users to visually create all kinds of difficult sql-based queries on the datastore(s) made available to them. We will start by showing how the control works from an end-user perspective, and next, we will show what it takes to implement this control in your application. Finally we will show you a couple of things like restricting the amount of entities shown in the query builder.
+    </Body>
+  </BlogPost>
+  <BlogPost>
+    <Id>1</Id>
+    <Category>HTML5</Category>
+    <Subject>HTML5 Chart and Data Visualization Widgets - Enhancements</Subject>
+    <DateString>2016-01-26 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image1.png</ImageUrl>
+    <Body>
+      Our upcoming release includes a number of important enhancements/features to our HTML5 data visualization widgets - making them faster and more flexible than ever before. We've been hard at work tuning performance and HTML5 Chart rendering has been improved significantly...In some instances up to 3 times faster. With this release, our Pie Chart widget can display multiple series. Series are displayed as nested rings, which gives end-users an easy way to detect even the slightest differences between point values. We've also made it easier to analyze information with the HTML5 Pie Widget. You can now interact with a point using its label; necessary when a point value is too small and is displayed as a thin pie or doughnut sector. Another new HTML5 Vector Map feature is support of unlimited layers. As you'd expect with this capability, you can now display additional information on your map using layers (areas, markers and lines). Map layers accept GeoJSON formatted data. You can allow users to select a single layer element or multiple elements. Layer elements support hovered states and can display a tooltip on hover. In addition, you can group layer elements by color or size and display the legend based on grouping. As is evident in the screenshots above, when used together, multiple layers along with customizable projections provide you a broad range of data visuzliation capabilities/options. Tell us what you think. We want to hear your thoughts on these new features.
+    </Body>
+  </BlogPost>
+  <BlogPost>
+    <Id>2</Id>
+    <Category>HTML5</Category>
+    <Subject>HTML5 Form Layout Widget</Subject>
+    <DateString>2015-12-17 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image2.png</ImageUrl>
+    <Body>
+      New major version will ship with a great new addition to our HTML5 / JavaScript widget collection - dxForm. As I'll explain in a moment, this client-side widget was designed to simplify how you create and layout forms. You may be asking how easy is it to use...The answer is extremely easy. The following screenshot represents a simple form - with a single column layout. To generate this layout, you simply create a form instance and pass a data object to it. When the dxForm widget generates a form item for a data field, it selects the appropriate data editor (based on data type) and transforms the data field name to a label with appropriate text. For instance, if a data field name is “firstName”, “First Name” will be used for the label. If the auto-generated label does not meet with your satisfaction, you can implement a custom algorithm for label text generation. dxForm allows you to specify validation rules for individual items. If rules are defined for an item, it is marked as a required. Each editor is validated separately when it loses focus. You can, however, validate all editors simultaneously by calling the validate method (when validating all editors, a validation summary will be displayed at the bottom of the form). orm item values are automatically updated when you assign a new data object to the formData option. Alternatively, you can update the required data field using the updateData method. In this instance, the widget is not re-rendered...It only updates the required item values. Two-way binding for AngularJS and Knockout is also supported.
+    </Body>
+  </BlogPost>
+  <BlogPost>
+    <Id>3</Id>
+    <Category>XAF</Category>
+    <Subject>XAF - Web UX Enhancements</Subject>
+    <DateString>2015-11-02 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image3.png</ImageUrl>
+    <Body>
+      In this release cycle, we've evolved our web page templates and themes optimized for touch devices. While we still continue to refine things, we believe that this feature is ready to be used in production and we do not expect major breaking changes going forward.
+    </Body>
+  </BlogPost>
+  <BlogPost>
+    <Id>4</Id>
+    <Category>ASP.NET</Category>
+    <Subject>Upcoming webinar: Give AdHoc Query Powers to Your ASP.NET Grid Users</Subject>
+    <DateString>2016-03-01 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image0.png</ImageUrl>
+    <Body>
+      Mehul and I will present a really cool webinar on one of our new WebForms controls, the ASPxQueryBuilder. Though this control is in beta, it offers a really nice way to your end users to visually create all kinds of difficult sql-based queries on the datastore(s) made available to them. We will start by showing how the control works from an end-user perspective, and next, we will show what it takes to implement this control in your application. Finally we will show you a couple of things like restricting the amount of entities shown in the query builder.
+    </Body>
+  </BlogPost>
+  <BlogPost>
+    <Id>5</Id>
+    <Category>HTML5</Category>
+    <Subject>HTML5 Chart and Data Visualization Widgets - Enhancements</Subject>
+    <DateString>2016-03-26 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image1.png</ImageUrl>
+    <Body>
+      Our upcoming release includes a number of important enhancements/features to our HTML5 data visualization widgets - making them faster and more flexible than ever before. We've been hard at work tuning performance and HTML5 Chart rendering has been improved significantly...In some instances up to 3 times faster. With this release, our Pie Chart widget can display multiple series. Series are displayed as nested rings, which gives end-users an easy way to detect even the slightest differences between point values. We've also made it easier to analyze information with the HTML5 Pie Widget. You can now interact with a point using its label; necessary when a point value is too small and is displayed as a thin pie or doughnut sector. Another new HTML5 Vector Map feature is support of unlimited layers. As you'd expect with this capability, you can now display additional information on your map using layers (areas, markers and lines). Map layers accept GeoJSON formatted data. You can allow users to select a single layer element or multiple elements. Layer elements support hovered states and can display a tooltip on hover. In addition, you can group layer elements by color or size and display the legend based on grouping. As is evident in the screenshots above, when used together, multiple layers along with customizable projections provide you a broad range of data visuzliation capabilities/options. Tell us what you think. We want to hear your thoughts on these new features.
+    </Body>
+  </BlogPost>
+  <BlogPost>
+    <Id>6</Id>
+    <Category>HTML5</Category>
+    <Subject>HTML5 Form Layout Widget</Subject>
+    <DateString>2015-12-20 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image2.png</ImageUrl>
+    <Body>
+      New major version will ship with a great new addition to our HTML5 / JavaScript widget collection - dxForm. As I'll explain in a moment, this client-side widget was designed to simplify how you create and layout forms. You may be asking how easy is it to use...The answer is extremely easy. The following screenshot represents a simple form - with a single column layout. To generate this layout, you simply create a form instance and pass a data object to it. When the dxForm widget generates a form item for a data field, it selects the appropriate data editor (based on data type) and transforms the data field name to a label with appropriate text. For instance, if a data field name is “firstName”, “First Name” will be used for the label. If the auto-generated label does not meet with your satisfaction, you can implement a custom algorithm for label text generation. dxForm allows you to specify validation rules for individual items. If rules are defined for an item, it is marked as a required. Each editor is validated separately when it loses focus. You can, however, validate all editors simultaneously by calling the validate method (when validating all editors, a validation summary will be displayed at the bottom of the form). orm item values are automatically updated when you assign a new data object to the formData option. Alternatively, you can update the required data field using the updateData method. In this instance, the widget is not re-rendered...It only updates the required item values. Two-way binding for AngularJS and Knockout is also supported.
+    </Body>
+  </BlogPost>
+  <BlogPost>
+    <Id>7</Id>
+    <Category>XAF</Category>
+    <Subject>XAF - Web UX Enhancements</Subject>
+    <DateString>2015-10-02 12:00:00</DateString>
+    <ImageUrl>~/Content/Images/Blog/image3.png</ImageUrl>
+    <Body>
+      In this release cycle, we've evolved our web page templates and themes optimized for touch devices. While we still continue to refine things, we believe that this feature is ready to be used in production and we do not expect major breaking changes going forward.
+    </Body>
+  </BlogPost>
+</BlogPosts>

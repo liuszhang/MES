@@ -1,0 +1,13 @@
+﻿<link href="@Url.Content("~/Content/DashboardSite.css")" rel="stylesheet" />
+
+@Html.DevExpress().GetStyleSheets("light.compact",
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new StyleSheet { ExtensionSuite = ExtensionSuite.DashboardViewer },
+
+    // Default theme for some demos
+    new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout, Theme = "Default" }
+)
+@Html.DevExpress().GetScripts(
+    new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+    new Script { ExtensionSuite = ExtensionSuite.DashboardViewer }
+) 

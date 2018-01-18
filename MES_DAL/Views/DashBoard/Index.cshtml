@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "产品看板";
+}
+
+@(Html.DevExtreme().PieChart()
+                .ID("pie")
+                .Size(s => s.Width(500))
+                .Palette(VizPalette.Bright)
+                .Series(s => s
+                    .Add()
+                    .ArgumentField("Name")
+                    .ValueField("Count")
+                    .Label(l => l
+                        .Visible(true)
+                        .Connector(c => c
+                            .Visible(true)
+                            .Width(1)
+                        )
+                    )
+                )
+                .Title("产品数量分布")
+                .Export(e => e.Enabled(true))
+                .OnPointClick(@<text>
+                    function (e) {
+                    var point = e.target;
+                    toggleVisibility(point);
+                    }
+                </text>)
+                                        .OnLegendClick(@<text>
+                                            function (e) {
+                                            var arg = e.target;
+                                            toggleVisibility(this.getAllSeries()[0].getPointsByArg(arg)[0]);
+                                            }
+                                        </text>)
+                                                                .DataSource(d => d.WebApi().Controller("ProductsApi").LoadAction("GetProducts").Key("ID"))
+)
+
+<script>
+    function toggleVisibility(item) {
+        if (item.isVisible()) {
+            item.hide();
+        } else {
+            item.show();
+        }
+    }
+</script>
+
+
+
+
+@(Html.DevExtreme().Chart()
+                .ID("chart")
+                .Rotated(true)
+                .DataSource(d => d.WebApi().Controller("ProductsApi").LoadAction("GetProducts").Key("ID"))
+                .Series(s => s.Add()
+                    .Label(l => l
+                        .Visible(true)
+                        .BackgroundColor("#c18e92")
+                    )
+                    .Color("#79cac4")
+                    .Type(SeriesType.Bar)
+                    .ArgumentField("Name")
+                    .ValueField("Count")
+                )
+                .Title("产品看板")
+                .ArgumentAxis(a => a
+                    .Label(l => l
+                        .CustomizeText(@<text>
+                            function() {
+                            return "" + this.valueText;
+                            }
+                        </text>)
+                                            )
+                                        )
+                                        .ValueAxis(a => a.Add()
+                                            .Label(l => l.Visible(false))
+                                        )
+                                        .Export(e => e.Enabled(true))
+                                        .Legend(l => l.Visible(false))
+)
+
+<div class="left">
+
+    @(Html.DevExtreme().CircularGauge()
+                                    .ID("c1")
+                                    .Geometry(g => g
+                                        .StartAngle(135)
+                                        .EndAngle(45)
+                                    ).
+                                    Scale(s => s
+                                        .StartValue(45)
+                                        .EndValue(-45)
+                                        .TickInterval(45)
+                                        .Label(l => l.CustomizeText(@<text>
+                                            function (arg) {
+                                            return arg.valueText + "°";
+                                            }
+                                        </text>))
+                                                                    )
+                                                                    .ValueIndicator(v => v
+                                                                        .Type(GaugeIndicatorType.RangeBar)
+                                                                        .BaseValue(0)
+                                                                    )
+                                                                    .Value(20)
+    )
+</div>
+<div class="left">
+
+
+    @(Html.DevExtreme().LinearGauge()
+                                    .ID("c2")
+                                    .Geometry(g => g.Orientation(Orientation.Vertical))
+                                    .Scale(s => s
+                                        .StartValue(-45)
+                                        .EndValue(45)
+                                        .TickInterval(45)
+                                        .Label(l => l.CustomizeText(@<text>
+                                            function (arg) {
+                                            return arg.valueText + "°";
+                                            }
+                                        </text>))
+                                                                    )
+                                                                    .ValueIndicator(v => v
+                                                                        .BaseValue(0)
+                                                                    )
+                                                                    .Value(-10)
+    )
+
+</div>
+
+
+
+
+
+

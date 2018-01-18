@@ -1,0 +1,295 @@
+﻿<UserControl x:Class="DevExpress.DevAV.Views.CustomerCollectionView"
+        xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxi="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:viewmodel="clr-namespace:DevExpress.DevAV.ViewModels"
+        xmlns:views="clr-namespace:DevExpress.DevAV.Views"
+        xmlns:common="clr-namespace:DevExpress.DevAV.Common.View"
+        xmlns:local="clr-namespace:DevExpress.DevAV"
+        xmlns:devav="clr-namespace:DevExpress.DevAV"
+        mc:Ignorable="d"
+        d:DesignHeight="768" d:DesignWidth="1024"
+        DataContext="{dxmvvm:ViewModelSource viewmodel:OrderCollectionViewModel}">
+
+    <UserControl.Resources>
+        <dxmvvm:ObjectToObjectConverter x:Key="ContactsVisibilityConverter">
+            <dxmvvm:MapItem Source="Contacts" Target="Visible"/>
+            <dxmvvm:MapItem Source="Stores" Target="Collapsed"/>
+        </dxmvvm:ObjectToObjectConverter>
+        <dxmvvm:ObjectToObjectConverter x:Key="StoresVisibilityConverter">
+            <dxmvvm:MapItem Source="Contacts" Target="Collapsed"/>
+            <dxmvvm:MapItem Source="Stores" Target="Visible"/>
+        </dxmvvm:ObjectToObjectConverter>
+        <local:PictureConverter x:Key="PictureConverter" />
+        <DataTemplate x:Key="CustomerEmployeeTemplate">
+            <Border Background="Transparent">
+                <Grid Margin="0,0,16,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="1" BorderBrush="#FFC3C3C3">
+                        <common:DpiResizingPanel>
+                            <dxe:ImageEdit Height="120" Width="120" IsReadOnly="True" EditValue="{Binding Picture, Converter={StaticResource PictureConverter}}" ShowBorder="False"/>
+                        </common:DpiResizingPanel>
+                    </Border>
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,5,0,0" TextBlock.FontSize="12">
+                        <TextBlock Text="{Binding FullName}" HorizontalAlignment="Center" Foreground="{StaticResource darkGrayForegroundBrush}" />
+                        <TextBlock Text="{Binding Position}" HorizontalAlignment="Center" Foreground="{StaticResource grayForegroundBrush}" />
+                        <TextBlock Text="{Binding Address.City, Converter={dxmvvm:FormatStringConverter FormatString='({0})'}}" HorizontalAlignment="Center" Foreground="{StaticResource grayForegroundBrush}" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="CustomerStoreTemplate">
+            <Border Background="Transparent">
+                <Grid Margin="0,0,16,0" Width="120">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <common:DpiResizingPanel>
+                        <dxe:ImageEdit Height="120" IsReadOnly="True" EditValue="{Binding Crest.LargeImage}" ShowBorder="False" />
+                    </common:DpiResizingPanel>
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,5,0,0" TextBlock.FontSize="12">
+                        <TextBlock Text="{Binding Address.City}" HorizontalAlignment="Center" Foreground="{StaticResource darkGrayForegroundBrush}" />
+                        <TextBlock Text="{Binding AddressLine}" HorizontalAlignment="Center" Foreground="{StaticResource grayForegroundBrush}" TextAlignment="Center" TextWrapping="WrapWithOverflow" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <Style x:Key="slideViewItemStyle" TargetType="dxwui:SlideViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="dxwui:SlideViewItem">
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="nameColumnTotalSummaryContentStyle" TargetType="ContentPresenter">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel HorizontalAlignment="Left" Margin="{StaticResource totalSummaryMargin}">
+                            <TextBlock HorizontalAlignment="Left" Foreground="{StaticResource grayForegroundBrush}" TextTrimming="CharacterEllipsis" TextAlignment="Left" IsHitTestVisible="False">
+                                <Run Text="CUSTOMER COUNT: " />
+                                <Run Text="{Binding Column.TotalSummaryText, Mode=OneWay}" Foreground="{StaticResource blackForegroundBrush}" FontWeight="Bold" />
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="monthlySalesColumnTotalSummaryContentStyle" TargetType="ContentPresenter">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel HorizontalAlignment="Right" Margin="{StaticResource totalSummaryMargin}">
+                            <TextBlock HorizontalAlignment="Right" Foreground="{StaticResource grayForegroundBrush}" TextTrimming="CharacterEllipsis" TextAlignment="Right" IsHitTestVisible="False">
+                                <Run Text="TOTAL SALES (FY2013): " />
+                                <Run Text="{Binding Column.TotalSummaryText, Mode=OneWay}" Foreground="{StaticResource blackForegroundBrush}" FontWeight="Bold" />
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="{dxet:ButtonsThemeKey ResourceKey=DropDownGlyph, ThemeName=HybridApp}">
+            <Border VerticalAlignment="Stretch" Width="25" SnapsToDevicePixels="True" Background="Transparent">
+                <Path x:Name="dropDownGlyph" Stretch="Fill" Fill="#FF7F7F7F" Data="F1 M 0,0L 9,0L 5,5" Margin="0,3,0,0" Width="9" Height="5" />
+            </Border>
+            <DataTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Fill" TargetName="dropDownGlyph" Value="#FF404040" />
+                </Trigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <ControlTemplate TargetType="{x:Type ButtonBase}" x:Key="{dxet:ButtonsThemeKey ResourceKey=ButtonTemplate, ThemeName=HybridApp}">
+            <ContentPresenter x:Name="PART_Glyph" VerticalAlignment="Stretch" Style="{DynamicResource {dxet:ButtonsThemeKey ResourceKey=ButtonInfoContentStyle, ThemeName=HybridApp}}" />
+        </ControlTemplate>
+    </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dxwui:WinUIMessageBoxService/>
+    </dxmvvm:Interaction.Behaviors>
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="质量点检  | 工单号：123  |  产品名称：电机控制器  |  工序：OP20" Style="{StaticResource TextBlockTitleBlueStyle}" Margin="42,16,0,10"/>
+        <dxwui:AppBar DockPanel.Dock="Bottom" HideMode="AlwaysVisible">
+            <dxwui:AppBarButton Label="重置" Command="{Binding NewCommand}" Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/New.png"/>
+            <dxwui:AppBarButton Label="提交" Command="{Binding EditCommand}" CommandParameter="{Binding SelectedEntity}" Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/Edit.png"/>
+            <dxwui:AppBarSeparator />
+            <dxwui:AppBarButton Label="送检" Command="{Binding CreateCustomFilterCommand}" Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/CustomFilter.png"/>
+        </dxwui:AppBar>
+        <Grid Margin="42,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="125"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <dxg:GridControl Name="gridControl" Grid.Column="0" Grid.Row="0"
+                                     ItemsSource="{Binding AverageOrders}" Margin="0,0,0,0">
+                    <dxmvvm:Interaction.Behaviors>
+                        <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="MouseDoubleClick">
+                            <dxmvvm:EventToCommand.EventArgsConverter>
+                                <dx:EventArgsToDataRowConverter/>
+                            </dxmvvm:EventToCommand.EventArgsConverter>
+                        </dxmvvm:EventToCommand>
+                    </dxmvvm:Interaction.Behaviors>
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn IsSmart="True" FieldName="InvoiceNumber" Header="点检项编号" Width="120" FixedWidth="True"/>
+                        <dxg:GridColumn IsSmart="True" FieldName="CustomerId" Header="点检序号" Width="60" FixedWidth="True"/>
+                        <dxg:GridColumn FieldName="OrderTerms" Header="点检描述" ReadOnly="True"  FixedWidth="False"/>
+                        <dxg:GridColumn IsSmart="True" FieldName="PONumber" Header="结果类型"  ReadOnly="True" FixedWidth="False"/>
+                        <!--<dxg:GridColumn Header="结果录入" FixedWidth="True" Width="Auto" AllowEditing="True">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:CheckEditSettings Content="是否合格"/>
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>-->
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView Name="tableView"
+                                           
+                                           SearchControl="{Binding ElementName=searchControl}"
+                                           ShowSearchPanelMode="Never"
+                                           AutoWidth="True"
+                                           AllowEditing="True"
+                                           AllowGrouping="False"
+                                           ShowGroupPanel="False"
+                                           ShowFixedTotalSummary="False"
+                                           AllowPerPixelScrolling="True"
+                                           ShowFilterPanelMode="Never"
+                                           AllowMoveColumnToDropArea="False"
+                                           ShowIndicator="False">
+                            <dxg:TableView.ColumnMenuCustomizations>
+                                <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.GroupBox }"/>
+                                <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.SearchPanel }"/>
+                            </dxg:TableView.ColumnMenuCustomizations>
+                        </dxg:TableView>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+
+                <dxg:GridControl 
+                Grid.Column="1"
+                Width="125"
+                ItemsSource="{Binding IsNGOrOK}" 
+                HorizontalAlignment="Center"
+                Margin="-1,0,0,0">
+
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="IsChecked" FixedWidth="True" Width="Auto" Header="结果录入" AllowEditing="True">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:CheckEditSettings TextBlock.TextAlignment="Left" Content="是否合格"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView 
+                                           
+                                           ShowSearchPanelMode="Never"
+                                           AutoWidth="True"
+                                           AllowEditing="True"
+                                           AllowGrouping="False"
+                                           ShowGroupPanel="False"
+                                           ShowFixedTotalSummary="False"
+                                           AllowPerPixelScrolling="True"
+                                           ShowFilterPanelMode="Never"
+                                           AllowMoveColumnToDropArea="False"
+                                           ShowIndicator="False">
+
+                        </dxg:TableView>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+
+            </Grid>
+
+
+
+
+
+            <Grid Grid.Row="1" Margin="0,10,0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="质量缺陷图例" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="#FF806464" FontSize="13" Margin="0,0,1,0" Width="15"/>
+                <dxwui:SlideView Grid.Row="0" Grid.Column="1" Visibility="Visible" ShowBackButton="False" ItemContainerStyle="{StaticResource slideViewItemStyle}" Height="100">
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black" BorderThickness="3">
+                        <Grid Background="#FFE5E5E5" Width="100" HorizontalAlignment="Left">
+                            <Image Source="C:\Users\Public\Documents\DevExpress Demos 16.2\Components\WPF\DevExpress.HybridApp.Wpf\CS\DevExpress.HybridApp.Wpf\Resources\Products\Automation.png"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <Image Source="C:\Users\Public\Documents\DevExpress Demos 16.2\Components\WPF\DevExpress.HybridApp.Wpf\CS\DevExpress.HybridApp.Wpf\Resources\Products\Monitors.png"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <Image Source="C:\Users\Public\Documents\DevExpress Demos 16.2\Components\WPF\DevExpress.HybridApp.Wpf\CS\DevExpress.HybridApp.Wpf\Resources\Products\Projectors.png"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <Image Source="C:\Users\Public\Documents\DevExpress Demos 16.2\Components\WPF\DevExpress.HybridApp.Wpf\CS\DevExpress.HybridApp.Wpf\Resources\Products\TVs.png"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <Image Source="C:\Users\Public\Documents\DevExpress Demos 16.2\Components\WPF\DevExpress.HybridApp.Wpf\CS\DevExpress.HybridApp.Wpf\Resources\Products\VideoPlayers.png"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                </dxwui:SlideView>
+                <dxwui:SlideView Grid.Row="1" Grid.Column="1" Visibility="Visible" ShowBackButton="False" ItemContainerStyle="{StaticResource slideViewItemStyle}">
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBlock Text="NG" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FFFF0505"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBlock Text="NG" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FFFF0505"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBlock Text="NG" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FFFF0505"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBlock Text="NG" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FFFF0505"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                    <dxwui:SlideViewItem Header="Slide View Item" Width="100" BorderBrush="Black">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBlock Text="OK" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Foreground="#FF1ECD0C"/>
+                        </Grid>
+                    </dxwui:SlideViewItem>
+                </dxwui:SlideView>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</UserControl>

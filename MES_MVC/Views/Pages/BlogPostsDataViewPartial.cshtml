@@ -1,0 +1,22 @@
+@Html.DevExpress().DataView(dv => {
+    dv.Name = "BlogPostsDataView";
+    dv.CallbackRouteValues = new { Controller = "Pages", Action = "BlogPostsDataViewPartial", Year = ViewBag.Year, Month = ViewBag.Month };
+    dv.Width = Unit.Percentage(100);
+
+    dv.ControlStyle.CssClass = "dataViewPosts";
+    dv.Styles.Content.Paddings.Padding = 0;
+    dv.Styles.Content.Border.BorderWidth = 0;
+    dv.Styles.Item.Paddings.Padding = 0;
+    dv.Styles.Item.Width = Unit.Percentage(100);
+    
+    dv.SetItemTemplateContent(c => {
+        Html.RenderPartial("BlogPostPreviewPartial", c.DataItem);
+    });
+    
+    dv.SettingsTableLayout.ColumnCount = 1;
+    dv.SettingsTableLayout.RowsPerPage = 3;
+    dv.PagerAlign = DevExpress.Web.PagerAlign.Left;
+    dv.PagerSettings.Position = PagerPosition.Bottom;
+    dv.PagerSettings.SEOFriendly = SEOFriendlyMode.Enabled;
+    dv.PagerSettings.EnableAdaptivity = true;
+}).Bind(Model).GetHtml()

@@ -1,0 +1,51 @@
+@model MES_MVC.Models.Comment
+
+@Html.DevExpress().FormLayout(fl => {
+    fl.Name = "AddCommentFormLayout";
+    fl.Width = Unit.Percentage(100);
+    fl.UseDefaultPaddings = false;
+    fl.SettingsItems.Width = Unit.Percentage(100);
+    fl.SettingsItemCaptions.Location = LayoutItemCaptionLocation.Top;
+
+    fl.Items.Add(m => m.Name, i => {
+        i.NestedExtension().TextBox(t => {
+            t.ShowModelErrors = true;
+            t.Width = Unit.Percentage(100);
+            PrepareEditorValidation(t.Properties.ValidationSettings);
+        });
+    });
+    fl.Items.Add(m => m.Email, i => {
+        i.NestedExtension().TextBox(t => {
+            t.ShowModelErrors = true;
+            t.Width = Unit.Percentage(100);
+            PrepareEditorValidation(t.Properties.ValidationSettings);
+        });
+    });
+    fl.Items.Add(m => m.Notes, i => {
+        i.NestedExtension().Memo(m => {
+            m.Width = Unit.Percentage(100);
+            m.Properties.Rows = 6;
+            m.ShowModelErrors = true;
+            PrepareEditorValidation(m.Properties.ValidationSettings);
+        });
+    });
+    fl.Items.AddEmptyItem();
+    fl.Items.Add(i => {
+        i.ShowCaption = DefaultBoolean.False;
+        i.NestedExtension().Button(b => {
+            b.Name = "Submit";
+            b.UseSubmitBehavior = true;
+            b.Width = Unit.Pixel(100);
+            b.Text = "Submit";
+        });
+    });
+}).GetHtml()
+
+@functions{
+    void PrepareEditorValidation(DevExpress.Web.ValidationSettings settigs)
+    {
+        settigs.Display = Display.Dynamic;
+        settigs.ErrorDisplayMode = ErrorDisplayMode.Text;
+        settigs.ErrorTextPosition = ErrorTextPosition.Bottom;
+    }
+}

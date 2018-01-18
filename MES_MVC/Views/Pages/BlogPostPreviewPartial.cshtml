@@ -1,0 +1,15 @@
+@{    
+    var previewTextLength = 335;
+    var blogPostUrl = Url.Action("BlogPost", "Pages", new { id = DataBinder.Eval(Model, "Id") }); 
+    var blogBody = DataBinder.Eval(Model, "Body").ToString();
+    var previewText = blogBody.Length > previewTextLength ? blogBody.Substring(0, previewTextLength) : blogBody;
+}
+<section class="row">
+    <div class="col-sm-5"><a href="@blogPostUrl"><img class="blogImage" src="@Url.Content(DataBinder.Eval(Model, "ImageUrl").ToString())" alt=""><a/></div>
+    <article class="col-sm-7">
+        <h3><a href="@blogPostUrl">@DataBinder.Eval(Model, "Subject")</a></h3>
+        <p>@previewText...</p>
+        <a href="@blogPostUrl"><big>Read more</big></a>
+    </article>
+</section>
+<hr />

@@ -1,0 +1,21 @@
+﻿.fullScreenLink
+{
+    float: right; 
+    background:#B71D1D;
+    box-shadow:3px 3px 0px 0px #D9D9D9;
+    padding:10px 9px;  
+    margin:-49px 0px 0px 0px;
+    font-weight:normal;
+}
+.fullScreenLink:hover
+{
+    background:#2F2F2F;
+}
+.fullScreenLink
+.fullScreenLink a
+.fullScreenLink a:link, 
+.fullScreenLink a:hover, 
+.fullScreenLink a:visited 
+{
+ text-decoration: none !important;   
+}

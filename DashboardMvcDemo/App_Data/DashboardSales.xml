@@ -1,0 +1,1014 @@
+<?xml version="1.0" standalone="yes"?>
+<Dashboard_DemoDataSet xmlns="http://tempuri.org/Dashboard_DemoDataSet.xsd">
+  <xs:schema id="Dashboard_DemoDataSet" targetNamespace="http://tempuri.org/Dashboard_DemoDataSet.xsd" xmlns:mstns="http://tempuri.org/Dashboard_DemoDataSet.xsd" xmlns="http://tempuri.org/Dashboard_DemoDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="Dashboard_DemoDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Categories">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="CategoryID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+                <xs:element name="CategoryName">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Products">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ProductID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+                <xs:element name="ListPrice" type="xs:decimal" />
+                <xs:element name="Name">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="CategoryID" type="xs:int" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Regions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="RegionID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+                <xs:element name="Region">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="NumberEmployees" type="xs:short" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:Categories" />
+        <xs:field xpath="mstns:CategoryID" />
+      </xs:unique>
+      <xs:unique name="Products_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:Products" />
+        <xs:field xpath="mstns:ProductID" />
+      </xs:unique>
+      <xs:unique name="Regions_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//mstns:Regions" />
+        <xs:field xpath="mstns:RegionID" />
+      </xs:unique>
+    </xs:element>
+    <xs:annotation>
+      <xs:appinfo>
+        <msdata:Relationship name="FK_Products_Categories" msdata:parent="Categories" msdata:child="Products" msdata:parentkey="CategoryID" msdata:childkey="CategoryID" />
+      </xs:appinfo>
+    </xs:annotation>
+  </xs:schema>
+  <Categories>
+    <CategoryID>1</CategoryID>
+    <CategoryName>Accessories</CategoryName>
+  </Categories>
+  <Categories>
+    <CategoryID>2</CategoryID>
+    <CategoryName>Bikes</CategoryName>
+  </Categories>
+  <Categories>
+    <CategoryID>3</CategoryID>
+    <CategoryName>Clothing</CategoryName>
+  </Categories>
+  <Categories>
+    <CategoryID>4</CategoryID>
+    <CategoryName>Components</CategoryName>
+  </Categories>
+  <Products>
+    <ProductID>1</ProductID>
+    <ListPrice>2.2900</ListPrice>
+    <Name>Patch kit</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>2</ProductID>
+    <ListPrice>4.9900</ListPrice>
+    <Name>Water Bottle</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>3</ProductID>
+    <ListPrice>7.9500</ListPrice>
+    <Name>Bike Wash</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>4</ProductID>
+    <ListPrice>8.9900</ListPrice>
+    <Name>Cycling Cap</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>5</ProductID>
+    <ListPrice>8.9900</ListPrice>
+    <Name>Racing Socks</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>6</ProductID>
+    <ListPrice>8.9900</ListPrice>
+    <Name>Road Bottle Cage</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>7</ProductID>
+    <ListPrice>9.5000</ListPrice>
+    <Name>Mountain Bike Socks</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>8</ProductID>
+    <ListPrice>9.9900</ListPrice>
+    <Name>Mountain Bottle Cage</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>9</ProductID>
+    <ListPrice>13.9900</ListPrice>
+    <Name>Taillight</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>10</ProductID>
+    <ListPrice>19.9900</ListPrice>
+    <Name>Minipump</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>11</ProductID>
+    <ListPrice>21.9800</ListPrice>
+    <Name>Fender Set - Mountain</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>12</ProductID>
+    <ListPrice>24.4900</ListPrice>
+    <Name>Half-Finger Gloves</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>13</ProductID>
+    <ListPrice>24.9900</ListPrice>
+    <Name>Mountain Pump</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>14</ProductID>
+    <ListPrice>25.0000</ListPrice>
+    <Name>Cable Lock</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>15</ProductID>
+    <ListPrice>34.9900</ListPrice>
+    <Name>Headlights - Dual-Beam</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>16</ProductID>
+    <ListPrice>34.9900</ListPrice>
+    <Name>Sport-100</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>17</ProductID>
+    <ListPrice>37.9900</ListPrice>
+    <Name>Full-Finger Gloves</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>18</ProductID>
+    <ListPrice>44.9900</ListPrice>
+    <Name>Headlights - Weatherproof</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>19</ProductID>
+    <ListPrice>49.9900</ListPrice>
+    <Name>Long-Sleeve Logo Jersey</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>20</ProductID>
+    <ListPrice>53.9900</ListPrice>
+    <Name>Short-Sleeve Classic Jersey</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>21</ProductID>
+    <ListPrice>54.9900</ListPrice>
+    <Name>Hydration Pack</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>22</ProductID>
+    <ListPrice>59.9900</ListPrice>
+    <Name>Men's Sports Shorts</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>23</ProductID>
+    <ListPrice>63.5000</ListPrice>
+    <Name>Classic Vest</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>24</ProductID>
+    <ListPrice>69.9900</ListPrice>
+    <Name>Women's Mountain Shorts</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>25</ProductID>
+    <ListPrice>74.9900</ListPrice>
+    <Name>Women's Tights</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>26</ProductID>
+    <ListPrice>89.9900</ListPrice>
+    <Name>Men's Bib-Shorts</Name>
+    <CategoryID>3</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>27</ProductID>
+    <ListPrice>120.0000</ListPrice>
+    <Name>Hitch Rack - 4-Bike</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>28</ProductID>
+    <ListPrice>125.0000</ListPrice>
+    <Name>Touring-Panniers</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>29</ProductID>
+    <ListPrice>159.0000</ListPrice>
+    <Name>All-Purpose Bike Stand</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>30</ProductID>
+    <ListPrice>539.9900</ListPrice>
+    <Name>Mountain-500</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>31</ProductID>
+    <ListPrice>539.9900</ListPrice>
+    <Name>Road-750</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>32</ProductID>
+    <ListPrice>564.9900</ListPrice>
+    <Name>Mountain-500</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>33</ProductID>
+    <ListPrice>742.3500</ListPrice>
+    <Name>Touring-3000</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>34</ProductID>
+    <ListPrice>769.4900</ListPrice>
+    <Name>Mountain-400-W</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>35</ProductID>
+    <ListPrice>782.9900</ListPrice>
+    <Name>Road-650</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>36</ProductID>
+    <ListPrice>1079.9900</ListPrice>
+    <Name>Mountain-300</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>37</ProductID>
+    <ListPrice>1120.4900</ListPrice>
+    <Name>Road-550-W</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>38</ProductID>
+    <ListPrice>1214.8500</ListPrice>
+    <Name>Touring-2000</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>39</ProductID>
+    <ListPrice>1457.9900</ListPrice>
+    <Name>Road-450</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>40</ProductID>
+    <ListPrice>1700.9900</ListPrice>
+    <Name>Road-350-W</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>41</ProductID>
+    <ListPrice>2294.9900</ListPrice>
+    <Name>Mountain-200</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>42</ProductID>
+    <ListPrice>2319.9900</ListPrice>
+    <Name>Mountain-200</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>43</ProductID>
+    <ListPrice>2384.0700</ListPrice>
+    <Name>Touring-1000</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>44</ProductID>
+    <ListPrice>2443.3500</ListPrice>
+    <Name>Road-250</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>45</ProductID>
+    <ListPrice>3374.9900</ListPrice>
+    <Name>Mountain-100</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>46</ProductID>
+    <ListPrice>3399.9900</ListPrice>
+    <Name>Mountain-100</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>47</ProductID>
+    <ListPrice>3578.2700</ListPrice>
+    <Name>Road-150</Name>
+    <CategoryID>2</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>48</ProductID>
+    <ListPrice>3.9900</ListPrice>
+    <Name>Road Tire Tube</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>49</ProductID>
+    <ListPrice>4.9900</ListPrice>
+    <Name>Mountain Tire Tube</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>50</ProductID>
+    <ListPrice>4.9900</ListPrice>
+    <Name>Touring Tire Tube</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>51</ProductID>
+    <ListPrice>20.2400</ListPrice>
+    <Name>Chain</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>52</ProductID>
+    <ListPrice>21.4900</ListPrice>
+    <Name>LL Road Tire</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>53</ProductID>
+    <ListPrice>24.9900</ListPrice>
+    <Name>LL Mountain Tire</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>54</ProductID>
+    <ListPrice>24.9900</ListPrice>
+    <Name>ML Road Tire</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>55</ProductID>
+    <ListPrice>27.1200</ListPrice>
+    <Name>LL Mountain Seat/Saddle 2</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>56</ProductID>
+    <ListPrice>27.1200</ListPrice>
+    <Name>LL Road Seat/Saddle 1</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>57</ProductID>
+    <ListPrice>27.1200</ListPrice>
+    <Name>LL Touring Seat/Saddle</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>58</ProductID>
+    <ListPrice>28.9900</ListPrice>
+    <Name>Touring Tire</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>59</ProductID>
+    <ListPrice>29.9900</ListPrice>
+    <Name>ML Mountain Tire</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>60</ProductID>
+    <ListPrice>32.6000</ListPrice>
+    <Name>HL Road Tire</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>61</ProductID>
+    <ListPrice>34.2000</ListPrice>
+    <Name>LL Headset</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>62</ProductID>
+    <ListPrice>35.0000</ListPrice>
+    <Name>HL Mountain Tire</Name>
+    <CategoryID>1</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>63</ProductID>
+    <ListPrice>39.1400</ListPrice>
+    <Name>ML Mountain Seat/Saddle 2</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>64</ProductID>
+    <ListPrice>39.1400</ListPrice>
+    <Name>ML Road Seat/Saddle 2</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>65</ProductID>
+    <ListPrice>39.1400</ListPrice>
+    <Name>ML Touring Seat/Saddle</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>66</ProductID>
+    <ListPrice>40.4900</ListPrice>
+    <Name>LL Mountain Pedal</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>67</ProductID>
+    <ListPrice>40.4900</ListPrice>
+    <Name>LL Road Pedal</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>68</ProductID>
+    <ListPrice>44.5400</ListPrice>
+    <Name>LL Mountain Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>69</ProductID>
+    <ListPrice>44.5400</ListPrice>
+    <Name>LL Road Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>70</ProductID>
+    <ListPrice>46.0900</ListPrice>
+    <Name>LL Touring Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>71</ProductID>
+    <ListPrice>52.6400</ListPrice>
+    <Name>HL Mountain Seat/Saddle 2</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>72</ProductID>
+    <ListPrice>52.6400</ListPrice>
+    <Name>HL Road Seat/Saddle 2</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>73</ProductID>
+    <ListPrice>52.6400</ListPrice>
+    <Name>HL Touring Seat/Saddle</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>74</ProductID>
+    <ListPrice>53.9900</ListPrice>
+    <Name>LL Bottom Bracket</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>75</ProductID>
+    <ListPrice>60.7450</ListPrice>
+    <Name>LL Mountain Front Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>76</ProductID>
+    <ListPrice>61.9200</ListPrice>
+    <Name>ML Mountain Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>77</ProductID>
+    <ListPrice>61.9200</ListPrice>
+    <Name>ML Road Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>78</ProductID>
+    <ListPrice>62.0900</ListPrice>
+    <Name>ML Mountain Pedal</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>79</ProductID>
+    <ListPrice>62.0900</ListPrice>
+    <Name>ML Road Pedal</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>80</ProductID>
+    <ListPrice>80.9900</ListPrice>
+    <Name>HL Mountain Pedal</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>81</ProductID>
+    <ListPrice>80.9900</ListPrice>
+    <Name>HL Road Pedal</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>82</ProductID>
+    <ListPrice>80.9900</ListPrice>
+    <Name>Touring Pedal</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>83</ProductID>
+    <ListPrice>85.5650</ListPrice>
+    <Name>LL Road Front Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>84</ProductID>
+    <ListPrice>87.7450</ListPrice>
+    <Name>LL Mountain Rear Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>85</ProductID>
+    <ListPrice>91.4900</ListPrice>
+    <Name>Front Derailleur</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>86</ProductID>
+    <ListPrice>91.5700</ListPrice>
+    <Name>HL Touring Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>87</ProductID>
+    <ListPrice>101.2400</ListPrice>
+    <Name>ML Bottom Bracket</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>88</ProductID>
+    <ListPrice>102.2900</ListPrice>
+    <Name>ML Headset</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>89</ProductID>
+    <ListPrice>106.5000</ListPrice>
+    <Name>Front Brakes</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>90</ProductID>
+    <ListPrice>106.5000</ListPrice>
+    <Name>Rear Brakes</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>91</ProductID>
+    <ListPrice>112.5650</ListPrice>
+    <Name>LL Road Rear Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>92</ProductID>
+    <ListPrice>120.2700</ListPrice>
+    <Name>HL Mountain Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>93</ProductID>
+    <ListPrice>120.2700</ListPrice>
+    <Name>HL Road Handlebars</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>94</ProductID>
+    <ListPrice>121.4600</ListPrice>
+    <Name>Rear Derailleur</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>95</ProductID>
+    <ListPrice>121.4900</ListPrice>
+    <Name>HL Bottom Bracket</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>96</ProductID>
+    <ListPrice>124.7300</ListPrice>
+    <Name>HL Headset</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>97</ProductID>
+    <ListPrice>148.2200</ListPrice>
+    <Name>LL Fork</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>98</ProductID>
+    <ListPrice>175.4900</ListPrice>
+    <Name>LL Crankset</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>99</ProductID>
+    <ListPrice>175.4900</ListPrice>
+    <Name>ML Fork</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>100</ProductID>
+    <ListPrice>209.0250</ListPrice>
+    <Name>ML Mountain Front Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>101</ProductID>
+    <ListPrice>218.0100</ListPrice>
+    <Name>Touring Front Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>102</ProductID>
+    <ListPrice>229.4900</ListPrice>
+    <Name>HL Fork</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>103</ProductID>
+    <ListPrice>236.0250</ListPrice>
+    <Name>ML Mountain Rear Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>104</ProductID>
+    <ListPrice>245.0100</ListPrice>
+    <Name>Touring Rear Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>105</ProductID>
+    <ListPrice>248.3850</ListPrice>
+    <Name>ML Road Front Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>106</ProductID>
+    <ListPrice>249.7900</ListPrice>
+    <Name>LL Mountain Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>107</ProductID>
+    <ListPrice>256.4900</ListPrice>
+    <Name>ML Crankset</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>108</ProductID>
+    <ListPrice>264.0500</ListPrice>
+    <Name>LL Mountain Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>109</ProductID>
+    <ListPrice>275.3850</ListPrice>
+    <Name>ML Road Rear Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>110</ProductID>
+    <ListPrice>300.2150</ListPrice>
+    <Name>HL Mountain Front Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>111</ProductID>
+    <ListPrice>327.2150</ListPrice>
+    <Name>HL Mountain Rear Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>112</ProductID>
+    <ListPrice>330.0600</ListPrice>
+    <Name>HL Road Front Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>113</ProductID>
+    <ListPrice>333.4200</ListPrice>
+    <Name>LL Touring Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>114</ProductID>
+    <ListPrice>337.2200</ListPrice>
+    <Name>LL Road Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>115</ProductID>
+    <ListPrice>348.7600</ListPrice>
+    <Name>ML Mountain Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>116</ProductID>
+    <ListPrice>348.7600</ListPrice>
+    <Name>ML Mountain Frame-W</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>117</ProductID>
+    <ListPrice>357.0600</ListPrice>
+    <Name>HL Road Rear Wheel</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>118</ProductID>
+    <ListPrice>364.0900</ListPrice>
+    <Name>ML Mountain Frame-W</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>119</ProductID>
+    <ListPrice>404.9900</ListPrice>
+    <Name>HL Crankset</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>120</ProductID>
+    <ListPrice>594.8300</ListPrice>
+    <Name>ML Road Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>121</ProductID>
+    <ListPrice>594.8300</ListPrice>
+    <Name>ML Road Frame-W</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>122</ProductID>
+    <ListPrice>1003.9100</ListPrice>
+    <Name>HL Touring Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>123</ProductID>
+    <ListPrice>1349.6000</ListPrice>
+    <Name>HL Mountain Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>124</ProductID>
+    <ListPrice>1364.5000</ListPrice>
+    <Name>HL Mountain Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Products>
+    <ProductID>125</ProductID>
+    <ListPrice>1431.5000</ListPrice>
+    <Name>HL Road Frame</Name>
+    <CategoryID>4</CategoryID>
+  </Products>
+  <Regions>
+    <RegionID>31</RegionID>
+    <Region>Alabama</Region>
+    <NumberEmployees>364</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>32</RegionID>
+    <Region>Arizona</Region>
+    <NumberEmployees>487</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>33</RegionID>
+    <Region>California</Region>
+    <NumberEmployees>3638</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>34</RegionID>
+    <Region>Colorado</Region>
+    <NumberEmployees>241</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>35</RegionID>
+    <Region>Connecticut</Region>
+    <NumberEmployees>321</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>36</RegionID>
+    <Region>Florida</Region>
+    <NumberEmployees>1134</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>37</RegionID>
+    <Region>Georgia</Region>
+    <NumberEmployees>405</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>38</RegionID>
+    <Region>Idaho</Region>
+    <NumberEmployees>50</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>39</RegionID>
+    <Region>Illinois</Region>
+    <NumberEmployees>563</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>40</RegionID>
+    <Region>Indiana</Region>
+    <NumberEmployees>614</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>41</RegionID>
+    <Region>Kentucky</Region>
+    <NumberEmployees>143</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>42</RegionID>
+    <Region>Maine</Region>
+    <NumberEmployees>84</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>43</RegionID>
+    <Region>Massachusetts</Region>
+    <NumberEmployees>234</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>44</RegionID>
+    <Region>Michigan</Region>
+    <NumberEmployees>734</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>45</RegionID>
+    <Region>Minnesota</Region>
+    <NumberEmployees>431</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>46</RegionID>
+    <Region>Mississippi</Region>
+    <NumberEmployees>252</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>47</RegionID>
+    <Region>Missouri</Region>
+    <NumberEmployees>431</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>48</RegionID>
+    <Region>Montana</Region>
+    <NumberEmployees>219</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>49</RegionID>
+    <Region>Nevada</Region>
+    <NumberEmployees>388</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>50</RegionID>
+    <Region>New Hampshire</Region>
+    <NumberEmployees>208</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>51</RegionID>
+    <Region>New Mexico</Region>
+    <NumberEmployees>150</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>52</RegionID>
+    <Region>New York</Region>
+    <NumberEmployees>465</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>53</RegionID>
+    <Region>North Carolina</Region>
+    <NumberEmployees>331</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>54</RegionID>
+    <Region>Ohio</Region>
+    <NumberEmployees>563</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>55</RegionID>
+    <Region>Oregon</Region>
+    <NumberEmployees>857</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>56</RegionID>
+    <Region>Rhode Island</Region>
+    <NumberEmployees>141</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>57</RegionID>
+    <Region>South Carolina</Region>
+    <NumberEmployees>114</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>58</RegionID>
+    <Region>South Dakota</Region>
+    <NumberEmployees>74</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>59</RegionID>
+    <Region>Tennessee</Region>
+    <NumberEmployees>850</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>60</RegionID>
+    <Region>Texas</Region>
+    <NumberEmployees>2001</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>61</RegionID>
+    <Region>Utah</Region>
+    <NumberEmployees>368</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>62</RegionID>
+    <Region>Virginia</Region>
+    <NumberEmployees>185</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>63</RegionID>
+    <Region>Washington</Region>
+    <NumberEmployees>2042</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>64</RegionID>
+    <Region>Wisconsin</Region>
+    <NumberEmployees>72</NumberEmployees>
+  </Regions>
+  <Regions>
+    <RegionID>65</RegionID>
+    <Region>Wyoming</Region>
+    <NumberEmployees>212</NumberEmployees>
+  </Regions>
+</Dashboard_DemoDataSet>

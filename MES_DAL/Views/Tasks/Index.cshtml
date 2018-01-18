@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@(Html.DevExtreme().DataGrid()
+            .Columns(columns =>
+            {
+                columns.Add()
+                    .DataField("ProductID")
+                    .Caption("产品名称")
+                    .Lookup(lookup => lookup
+                        .DataSource(d => d.WebApi().Controller("ProductsApi").LoadAction("GetProducts").Key("ID"))
+                        .ValueExpr("ID")
+                        .DisplayExpr("Name"));
+                columns.Add()
+                    .DataField("PlanStartTime")
+                    .DataType(GridColumnDataType.Date)
+                    .Caption("计划开始");
+                columns.Add()
+                    .DataField("StartTime")
+                    .DataType(GridColumnDataType.Date)
+                    .Caption("实际开始");
+                columns.Add()
+                    .DataField("PlanEndTime")
+                    .DataType(GridColumnDataType.Date)
+                    .Caption("计划结束");
+                columns.Add()
+                    .DataField("EndTime")
+                    .DataType(GridColumnDataType.Date)
+                    .Caption("实际结束");
+                columns.Add()
+                    .DataField("PlanNumber")
+                    .Caption("计划数量")
+                    .DataType(GridColumnDataType.Number);
+                columns.Add()
+                    .DataField("DoneNumber")
+                    .Caption("完成数量")
+                    .DataType(GridColumnDataType.Number);
+                columns.Add()
+                    .DataField("Status")
+                    .Caption("工单状态")
+                    .Lookup(lookup => lookup
+                        .DataSource(d => d.WebApi().Controller("TasksApi").LoadAction("GetTaskStatus")));
+                columns.Add()
+                    .DataField("EmployeeID")
+                    .Caption("责任人")
+                    .Lookup(lookup => lookup
+                        .DataSource(d => d.WebApi().Controller("EmployeesApi").LoadAction("GetEmployees").Key("ID"))
+                        .ValueExpr("ID")
+                        .DisplayExpr("Name"));
+                columns.Add()
+                    .DataField("DonePer")
+                    .Caption("完成百分比")
+                    .AllowEditing(false)
+                    .CellTemplate(
+                        @<text>
+                            @(Html.DevExtreme().ProgressBar()
+                            .Max(new JS("data.PlanNumber"))
+                            .Value(new JS("data.DoneNumber"))
+                            )
+                        </text>
+                    );
+            })
+      .DataSource(d => d.WebApi().Controller("TasksApi")
+        .LoadAction("GetTasks").Key("ID")
+        .InsertAction("PostTask").Key("ID")
+        .UpdateAction("PutTask").Key("ID")
+        .DeleteAction("DeleteTask").Key("ID")
+     )
+
+    .FilterRow(f => f.Visible(true))
+    .HeaderFilter(f => f.Visible(true))
+    .GroupPanel(p => p.Visible(true))
+    .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+    //.Height(600)
+    .ShowBorders(true)
+    .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true).Mode(GridEditMode.Batch))
+    .RemoteOperations(true)
+    .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+    .Pager(p => p
+        .AllowedPageSizes(new int[] { 5, 8, 15, 30 })
+        .ShowInfo(true)
+        .ShowNavigationButtons(true)
+        .ShowPageSizeSelector(true)
+        .Visible(true))
+    .Paging(p => p.PageSize(8))
+    .ColumnChooser(c => c
+        .Enabled(true)
+        .Mode(GridColumnChooserMode.Select))
+    .Selection(s=>s.Mode(SelectionMode.Multiple))
+    
+)

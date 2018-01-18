@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "质量管理";
+}
+
+<h2>质量管理</h2>
+@(Html.DevExtreme().DataGrid()
+                    .Columns(columns =>
+                    {
+                    columns.Add()
+                        .DataField("TaskID")
+                        .Caption("工单号")
+                        .Lookup(lookup => lookup
+                            .DataSource(d => d.WebApi().Controller("TasksApi").LoadAction("GetTasks").Key("ID"))
+                            .ValueExpr("ID")
+                            .DisplayExpr("ID"));
+                    columns.Add()
+                        .DataField("NGNumber")
+                        .Caption("不良数量")
+                        .DataType(GridColumnDataType.Number);                    
+                    columns.Add()
+                        .DataField("NGTypeID")
+                        .Caption("不良原因")
+                        .Lookup(lookup => lookup
+                            .DataSource(d => d.WebApi().Controller("NGTypesApi").LoadAction("GetNGTypes"))
+                            .ValueExpr("ID")
+                            .DisplayExpr("Name"));                    
+                            })
+                    .DataSource(d => d.WebApi().Controller("NGsApi")
+                    .LoadAction("GetNGs").Key("ID")
+                    .InsertAction("PostNG").Key("ID")
+                    .UpdateAction("PutNG").Key("ID")
+                    .DeleteAction("DeleteNG").Key("ID")
+                    )
+
+                            .FilterRow(f => f.Visible(true))
+                            .HeaderFilter(f => f.Visible(true))
+                            .GroupPanel(p => p.Visible(true))
+                            .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                            //.Height(600)
+                            .ShowBorders(true)
+                            .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true).Mode(GridEditMode.Batch))
+                            .RemoteOperations(true)
+                            .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+                            .Pager(p => p
+                                .AllowedPageSizes(new int[] { 5, 8, 15, 30 })
+                                .ShowInfo(true)
+                                .ShowNavigationButtons(true)
+                                .ShowPageSizeSelector(true)
+                                .Visible(true))
+                            .Paging(p => p.PageSize(8))
+                            .ColumnChooser(c => c
+                                .Enabled(true)
+                                .Mode(GridColumnChooserMode.Select))
+                            .Selection(s => s.Mode(SelectionMode.Multiple))
+
+)
+
+<h2>不良原因管理</h2>
+
+@(Html.DevExtreme().DataGrid()
+                    .Columns(columns =>
+                    {                        
+                        columns.Add()
+                            .DataField("Name")                            
+                            .Caption("不良原因");                        
+                            })
+                    .DataSource(d => d.WebApi().Controller("NGTypesApi")
+                    .LoadAction("GetNGTypes").Key("ID")
+                    .InsertAction("PostNGType").Key("ID")
+                    .UpdateAction("PutNGType").Key("ID")
+                    .DeleteAction("DeleteNGType").Key("ID"))
+
+                    .HeaderFilter(f => f.Visible(true))
+                    .Scrolling(s => s.Mode(GridScrollingMode.Virtual))
+                    //.Height(600)
+                    .ShowBorders(true)
+                    .Editing(e => e.AllowAdding(true).AllowDeleting(true).AllowUpdating(true).Mode(GridEditMode.Row))
+                    .RemoteOperations(true)
+                    .Export(e => e.Enabled(true).FileName("Products").AllowExportSelectedData(true))
+                    .Pager(p => p
+                        .AllowedPageSizes(new int[] { 5, 8, 15, 30 })
+                        .ShowInfo(true)
+                        .ShowNavigationButtons(true)
+                        .ShowPageSizeSelector(true)
+                        .Visible(true))
+                    .Paging(p => p.PageSize(8))
+
+)

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="DevExpress.DevAV.Views.ProductCollectionView"
+        xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxpdf="http://schemas.devexpress.com/winfx/2008/xaml/pdf"
+        xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
+        xmlns:dxn="clr-namespace:DevExpress.Xpf.Core.Native;assembly=DevExpress.Xpf.Core.v16.2"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:viewmodel="clr-namespace:DevExpress.DevAV.ViewModels"
+        xmlns:common="clr-namespace:DevExpress.DevAV.Common.View"
+        xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+        xmlns:devav="clr-namespace:DevExpress.DevAV"
+        xmlns:cview="clr-namespace:DevExpress.DevAV.Common.View"
+        xmlns:views="clr-namespace:DevExpress.DevAV.Views"
+        mc:Ignorable="d"
+        d:DesignHeight="400" d:DesignWidth="600"
+        DataContext="{dxmvvm:ViewModelSource viewmodel:ProductCollectionViewModel}">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dxwui:WinUIMessageBoxService/>
+    </dxmvvm:Interaction.Behaviors>
+    <DockPanel Margin="0,10,0,0">        
+        <dxwui:AppBar DockPanel.Dock="Bottom" ItemSpacing="5" HideMode="AlwaysVisible">            
+            <dxwui:AppBarButton Label="打印"  HorizontalAlignment="Center" Glyph="pack://application:,,,/DevExpress.HybridApp.Wpf;component/Resources/Toolbar/CustomFilter.png"/>
+        </dxwui:AppBar>
+        <views:StaticFiltersPanel DockPanel.Dock="Left"/>
+
+        <dxpdf:PdfViewerControl Name="viewer" ResetSettingsOnDocumentClose="False" ZoomMode="FitToWidth">
+            <dxpdf:PdfViewerControl.OutlinesViewerSettings>
+                <dxpdf:PdfOutlinesViewerSettings OutlinesViewerInitialState="Visible" />
+            </dxpdf:PdfViewerControl.OutlinesViewerSettings>
+        </dxpdf:PdfViewerControl>
+    </DockPanel>
+</UserControl>
